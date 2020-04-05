@@ -1,19 +1,16 @@
 # Jason Turner #80: https://www.youtube.com/watch?v=R8OrWVVf5CM
 
 # https://www.appveyor.com/docs/windows-images-software/#visual-studio-2019
-image: 
+images: 
   - Visual Studio 2019
 
-
-clone_folder: c:\project\source
+environment:
+  matrix:
+  - ARCH: x64
 
 build_script:
-- cmd: >-
-    mkdir build
+- cmake -G "Visual Studio 14 2015" .
+- cmake --build .
 
-    cd build
-    
-    cmake c:\projects\source -G "Visual Studio 16 2019"
-
-    cmake --build . --config "Debug"
-    
+test_script:
+- ctest -C Debug -VV
