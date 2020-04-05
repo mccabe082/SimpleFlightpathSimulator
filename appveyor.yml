@@ -5,8 +5,7 @@ image:
   - Visual Studio 2019
 
 
-clone_folder:
-  - c:\project\source
+clone_folder: c:\project\source
 
 build_script:
 - cmd: >-
