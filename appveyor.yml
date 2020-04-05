@@ -1,7 +1,7 @@
 # Jason Turner #80: https://www.youtube.com/watch?v=R8OrWVVf5CM
 
 # https://www.appveyor.com/docs/windows-images-software/#visual-studio-2019
-images: 
+image: 
   - Visual Studio 2019
 
 environment:
