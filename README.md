@@ -18,5 +18,6 @@ Current project objectives...
 - Use of a [prescribed C++ source directory layout](https://api.csswg.org/bikeshed/?force=1&url=https://raw.githubusercontent.com/vector-of-bool/pitchfork/develop/data/spec.bs)
 - Adherance to the C++ [Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines)
 - Pilot CTest and BDD-Style TDD using [Catch<sup>2</sup>](https://github.com/catchorg/Catch2)
+- [AppVeyor](https://www.youtube.com/watch?v=R8OrWVVf5CM) or Travis CI
 - Use of [Key-based](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh) authentication
 
