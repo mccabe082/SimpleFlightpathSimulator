@@ -20,4 +20,5 @@ Current project objectives...
 - Pilot CTest and BDD-Style TDD using [Catch<sup>2</sup>](https://github.com/catchorg/Catch2)
 - [AppVeyor](https://www.youtube.com/watch?v=R8OrWVVf5CM) or Travis CI
 - Use of [Key-based](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh) authentication
+- https://www.appveyor.com/
 
