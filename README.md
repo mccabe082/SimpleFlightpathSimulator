@@ -19,4 +19,5 @@ Current project objectives...
 - Adherance to the C++ [Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines)
 - Pilot CTest and BDD-Style TDD using [Catch<sup>2</sup>](https://github.com/catchorg/Catch2)
 - Use of [Key-based](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh) authentication
+- https://www.appveyor.com/
 
