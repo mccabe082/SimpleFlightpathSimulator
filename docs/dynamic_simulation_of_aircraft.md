@@ -53,6 +53,8 @@ The aircraft can be simulated over time, $t$ by numerically integrating the ODEs
 
 - given an aircraft in an initial <a name="state">state</a> $\hat{X}_0$ a point in (state) space
 - we can calculate the derivitive of the state using <a name="dynamics">the non-linear dynamics</a> which is a vector in space.
-- we can simulate the motion of the aircraft by jumping discretely to the next state using a numerical integration technique such as but not limited to; Eular's method, Matlab's [ode45](https://uk.mathworks.com/help/matlab/ref/ode45.html), [RK4]( https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods)...
+- we can simulate the motion of the aircraft by jumping discretely to the next state
 
+![Eular Method](./artwork/330px-Euler_method.svg.png)
 
+This involves applying a numerical integration technique such as but not limited to; Eular's method, Matlab's [ode45](https://uk.mathworks.com/help/matlab/math/choose-an-ode-solver.html), [RK4]( https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods)...
