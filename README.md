@@ -1,5 +1,5 @@
 [![Join the team using Discord: https://discord.gg/6zMa4Tp](https://img.shields.io/badge/Discord-collaborate-brightgreen.svg)](https://discord.gg/6zMa4Tp)
-[![Build status](https://ci.appveyor.com/project/DavidMcCabe/simpleflightpathsimulator-ai1q6)](https://ci.appveyor.com/project/DavidMcCabe/simpleflightpathsimulator-ai1q6)
+[![Build status](https://ci.appveyor.com/api/projects/status/07276mey39n8kaob?svg=true)](https://ci.appveyor.com/project/DavidMcCabe/simpleflightpathsimulator)
 
 # Simple Flightpath Simulator
 
