@@ -22,4 +22,4 @@ Current project objectives...
 - [AppVeyor](https://www.youtube.com/watch?v=R8OrWVVf5CM) or Travis CI
 - Use of [Key-based](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh) authentication
 - https://www.appveyor.com/
-
+- Explore Unity as a visualisation tool for the front end of the simulator
