@@ -10,7 +10,9 @@ CACHE STRING "path to directory containing the Find<Module>.cmake modules"
 mark_as_advanced(FindModuleDir)
 
 list(APPEND CMAKE_MODULE_PATH ${FindModuleDir})
+find_package(BoostConfig REQUIRED MODULE)
 find_package(Catch2 REQUIRED MODULE)
+find_package(Odeint REQUIRED MODULE)
 find_package(RapidXML REQUIRED MODULE)
 
 #####################################
