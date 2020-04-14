@@ -23,3 +23,5 @@ Current project objectives...
 - Use of [Key-based](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh) authentication
 - https://www.appveyor.com/
 - Explore Unity as a visualisation tool for the front end of the simulator
+
+> **Note: This project currently requires [Boost 1.71.0](https://www.boost.org/users/history/version_1_71_0.html)**
