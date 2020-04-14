@@ -12,8 +12,6 @@ namespace
 
 SCENARIO( "RK4 works on a simple problem", "[odeint]" ) {
 
-	using Array2D = std::array<double, 2>;
-
 	// Small angle apporximation pendulum model
 	class Pendulum
 	{
@@ -27,7 +25,10 @@ SCENARIO( "RK4 works on a simple problem", "[odeint]" ) {
 		Pendulum() = delete;
 	};
 
-	// state vector representation of the pendulum
+	// 2D array for holding pendulum state vector
+	using Array2D = std::array<double, 2>;
+
+	// list of state variable for a pendulum
 	struct State
 	{
 		double theta; // arm's angular displacement [rad]
@@ -38,13 +39,17 @@ SCENARIO( "RK4 works on a simple problem", "[odeint]" ) {
 	};
 
     GIVEN( "A frictionless pendulum simulation" ) {
+
 		// Odeint state space model of a large pendulum system
 		const Pendulum p(0.8);
+
+		// System Dynamics
 		auto pendulumStateSpaceModel = [&p](const Array2D& x, Array2D& dxdt, double /*time invariant system*/) {
 			auto s = State::from_array(x);
 			dxdt = { s.thetaDot, p.angularAcceleration(s.theta) };
 		};
 		
+		// Numerical Solver
 		boost::numeric::odeint::runge_kutta4<Array2D> rk4;
 
         WHEN( "the simulation is run over a time interal equal to the period of the pendulum" ) {
@@ -60,8 +65,10 @@ SCENARIO( "RK4 works on a simple problem", "[odeint]" ) {
 			auto xFinal = State::from_array(x);
 
             THEN( "the pendulum should return to its initial state at the end of the simulation" ) {
+
                 REQUIRE(xFinal.theta == Approx(xInitial.theta).epsilon(0.01));
 				REQUIRE(xFinal.thetaDot == Approx(xInitial.thetaDot).epsilon(0.01).scale(0.1));
+
             }
         }
     }
