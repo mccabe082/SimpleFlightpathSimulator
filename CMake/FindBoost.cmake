@@ -3,6 +3,7 @@ NAMES
   boost/numeric/odeint.hpp
 PATHS
   ${CMAKE_SOURCE_DIR}/../boost_1_71_0
+  C:/Libraries/boost_1_71_0 #https://www.appveyor.com/docs/windows-images-software/#boost
 )
 
 set(Boost_VERSION "1.71.0")
