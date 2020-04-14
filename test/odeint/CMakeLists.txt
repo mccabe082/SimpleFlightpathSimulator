@@ -7,9 +7,8 @@ PRIVATE
 
 target_link_libraries(odeint-demo
 PRIVATE
-  ::BoostConfig
+  ::Boost
   ::Catch2
-  ::Odeint
 )
 
 add_test("odeint_learning_tests" ${CMAKE_BINARY_DIR}/test/odeint/Debug/odeint-demo.exe)
