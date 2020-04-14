@@ -8,6 +8,7 @@ namespace
 {
     const double pi = 3.14;
     const double g = 9.81; // acceleration due to gravity [m/s/s]
+	const double FIVE_PERCENT = 0.05;
 }
 
 SCENARIO( "RK4 works on a simple problem", "[odeint]" ) {
@@ -56,19 +57,19 @@ SCENARIO( "RK4 works on a simple problem", "[odeint]" ) {
 
 			const double tSimStart = 0.;
 			const double tSimEnd = p.getPeriod() + tSimStart;       // Simulate one complete swing
-			const double tSimStep = 0.001 * (tSimEnd - tSimStart);
+			const double tSimStep = 0.1 * (tSimEnd - tSimStart);
 
-			const State xInitial{ pi * 0.01, 0.01 };
+			const State xInitial{ pi * 0.002, 0.01 };
 
 			Array2D x = { xInitial.theta, xInitial.thetaDot };
 			boost::numeric::odeint::integrate_const(rk4, pendulumStateSpaceModel, x, tSimStart, tSimEnd, tSimStep);
 			auto xFinal = State::from_array(x);
 
             THEN( "the pendulum should return to its initial state at the end of the simulation" ) {
-
-                REQUIRE(xFinal.theta == Approx(xInitial.theta).epsilon(0.01));
-				REQUIRE(xFinal.thetaDot == Approx(xInitial.thetaDot).epsilon(0.01).scale(0.1));
-
+				
+				// https://github.com/catchorg/Catch2/blob/master/docs/assertions.md#top
+                REQUIRE(xFinal.theta == Approx(xInitial.theta).epsilon(FIVE_PERCENT));
+				REQUIRE(xFinal.thetaDot == Approx(xInitial.thetaDot).epsilon(FIVE_PERCENT));
             }
         }
     }
