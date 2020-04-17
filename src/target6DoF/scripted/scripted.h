@@ -11,6 +11,6 @@ namespace target6Dof
 {
     struct scripted : public Position, Orientation, Velocity, Rotation
     {
-        double altitude() const {return z();}
+        double altitude() const;
     };
 }

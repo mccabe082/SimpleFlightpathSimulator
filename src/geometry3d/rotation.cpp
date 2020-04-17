@@ -1,19 +1,19 @@
 
-#include "orientation3d.h"
+#include "rotation.h"
 
 namespace Geometry3D
 {
-double Rotation::pitch() const
+double Rotation::pitchRate() const
 {
     return data.at(0);
 }
 
-double Rotation::roll() const
+double Rotation::rollRate() const
 {
     return data.at(1);
 }
 
-double Rotation::yaw() const
+double Rotation::yawRate() const
 {
     return data.at(2);
 }

@@ -6,13 +6,14 @@ PUBLIC
 )
 
 target_sources(geometry3d
+PUBLIC
+  orientation.h
+  position.h
+  rotation.h
+  velocity.h
 PRIVATE
   orientation.cpp
-  orientation.h
   position.cpp
-  position.h
   rotation.cpp
-  rotation.h
   velocity.cpp
-  velocity.h
 )
