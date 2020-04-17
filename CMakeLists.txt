@@ -19,5 +19,6 @@ find_package(RapidXML REQUIRED MODULE)
 ### Testing #########################
 ENABLE_TESTING()
 include(CTest)
+add_subdirectory(src)
 add_subdirectory(test)
 #####################################
