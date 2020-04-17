@@ -7,8 +7,8 @@ PUBLIC
 
 target_sources(physics
 PRIVATE
-  ../../include/physics/environment.h
-  ../../include/physics/sealevel.h
+  environment.h
+  sealevel.h
   sealevel.cpp
   
 )
