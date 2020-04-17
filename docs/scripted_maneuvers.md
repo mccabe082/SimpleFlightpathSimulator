@@ -1,4 +1,4 @@
-# Simple Target Simulation Proposal
+# Simple Maneuvers Proposal
 
 ## Basic Outline
 The document outlines a simplified approach for simulating the motion of radar targets.  The *state* of a target is represented by a single point in a *state space*, $\bar{X}$ which efines the position and orientation of the target:
@@ -21,7 +21,7 @@ $\dot{\theta}, \dot{\phi}, \dot{\psi}$ | target's angular velocity
 
 The target motion is calculated over a series of discrete time intervals.  Given an initial state $\bar{X}_{start}$ the final state $\bar{X}_{end}$ over a short time interval $\Delta t$ at is calculated using a simple *update* function $\bar{X}_{end} = f(\bar{X}_{start},\Delta t)$.  Different update functions, $f$ correspondig to different basic manovers.
 
-## Basic Manouvers
+## Basic Maneuvers
 
 Update rules are used to calculate the future target state of the aircraft, $\bar{X}_{target}(t+\delta t)$. All manouvers use update rules which are depend on the specific manouver...  On entering a scripted manouver the aircraft motion converges to a steady state independently from the aircrafts motion. The proposed scheme synchronises these two things at a time to enter manouver.
 
