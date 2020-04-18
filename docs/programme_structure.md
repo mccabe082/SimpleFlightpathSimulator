@@ -14,10 +14,10 @@ Has been the main focus of the programme so far
   - *Colaborative development* through a [Github Organisation](https://github.com/RRA-Home-Team) and a [Trello Team](https://trello.com/simpleflightpathgeneratorteam/home)
 - Utilising thirdparty automation tools an ultra lean development process
   - *No documented protocall/process* - carte blanche unless physically constrained
+    - Disallow untested code through a code coverage tool
     - Disallow unreviewed commits through github
     - Prohibit failing unit tests through githooks
     - Writing [good C++ by default](https://www.youtube.com/watch?time_continue=21&v=hEx5DNLWGgA&feature=emb_logo) by using a C++ [Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines) "checker"
-  - *Feedback* - Peer review, Continuous Integration, Retrospectives, Code Coverage, Test Driven Development etc... Transparency->Introspection->Adaption
 
 |**Basic Target Simulation**|
 |---|
