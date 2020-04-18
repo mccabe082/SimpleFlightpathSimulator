@@ -11,4 +11,4 @@ PRIVATE
   ::Catch2
 )
 
-add_test("geometry3dTest" ${CMAKE_BINARY_DIR}/test/rapidxml/Debug/geometry3dTest.exe)
+add_test("geometry3dTest" ${CMAKE_BINARY_DIR}/src/geometry3d_test/Debug/geometry3dTest.exe)
