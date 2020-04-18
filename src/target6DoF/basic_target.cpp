@@ -1,10 +1,10 @@
 #pragma once
 
-#include "scripted.h"
+#include "basic_target.h"
 
 namespace target6Dof
 {
-    double scripted::altitude() const 
+    double BasicTarget::altitude() const 
     {
         return z();
     }
