@@ -13,6 +13,7 @@ list(APPEND CMAKE_MODULE_PATH ${FindModuleDir})
 find_package(Boost REQUIRED MODULE)
 find_package(Catch2 REQUIRED MODULE)
 find_package(RapidXML REQUIRED MODULE)
+find_package(Microsoft.GSL QUIET CONFIG PATHS ../GSL/build)
 
 #####################################
 
