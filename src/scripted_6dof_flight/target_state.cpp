@@ -8,6 +8,7 @@ TargetState::TargetState(Position p, Orientation o, Velocity v, Rotation r)
 }
 
 double TargetState::altitude() const { return _position.altitude(); }
+double TargetState::heading() const { return _velocity.heading(); }
 double TargetState::speed() const { return _velocity.speed(); }
 double TargetState::groundSpeed() const { return _velocity.groundSpeed(); }
 

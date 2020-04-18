@@ -15,6 +15,7 @@ namespace Scripted6DoFFlight
 		TargetState(Position p, Orientation o, Velocity v, Rotation r);
         
         double altitude() const;
+        double heading() const;
         double speed() const;
         double groundSpeed() const;
 

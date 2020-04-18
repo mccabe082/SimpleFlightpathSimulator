@@ -7,6 +7,8 @@ PUBLIC
 
 target_sources(scripted6DoFTarget
 PRIVATE
+  cruise.h
+  cruise.cpp
   maneuover.h
   target_state.cpp
   target_state.h

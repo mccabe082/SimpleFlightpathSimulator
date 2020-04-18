@@ -1,6 +1,13 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 #include <geometry3d/velocity.h>
+#include <cmath>
+
+namespace
+{
+	const double pi = std::acos(-1.);
+}
+
 
 TEST_CASE( "Speeds are calulated correctly", "[Speed]" ) {
 
@@ -11,12 +18,32 @@ TEST_CASE( "Speeds are calulated correctly", "[Speed]" ) {
         REQUIRE( target.Vy() == Approx(2.) );
         REQUIRE( target.Vz() == Approx(3.) );
     }
-    SECTION( "true air speed calculation is correct" ) {
+
+    SECTION( "fixed (earth) reference speed calculation is correct" ) {
         Geometry3D::Velocity targetV(1.,1.,1.);
         REQUIRE( targetV.speed() == Approx(std::sqrt(3)));
     }
+
     SECTION( "ground speed calulation is correct" ) {
         Geometry3D::Velocity triangle_3_4_5(3.,4.,1.);
         REQUIRE( triangle_3_4_5.groundSpeed() == Approx(5.) );
+    }
+
+    SECTION( "heading calulation is correct" ) {
+        const double bearingNE = 0.25 * pi;
+        Geometry3D::Velocity boundNorthEast(1.,1.,0.);
+        REQUIRE( boundNorthEast.heading() == Approx(bearingNE) );
+
+        const double bearingSE = 0.75 * pi;
+        Geometry3D::Velocity boundSouthEast(1.,-1.,0.);
+        REQUIRE( boundSouthEast.heading() == Approx(bearingSE) );
+
+        const double bearingSW = 1.25 * pi;
+        Geometry3D::Velocity boundSouthWest(-1.,-1.,0.);
+        REQUIRE(boundSouthWest.heading() == Approx(bearingSW) );
+
+        const double bearingNW = 1.75 * pi;
+        Geometry3D::Velocity boundNorthWest(-1.,1.,0.);
+        REQUIRE(boundNorthWest.heading() == Approx(bearingNW) );
     }
 }

@@ -1,6 +1,7 @@
 
 #include "geometry3d/velocity.h"
 #include <numeric>
+#include <cmath>
 
 namespace Geometry3D
 {
@@ -26,6 +27,11 @@ double Velocity::Vz() const
 void Velocity::set(const Velocity &v)
 {
     data = v.data;
+}
+
+double Velocity::heading() const
+{
+    return atan2(Vx(), Vy());
 }
 
 double Velocity::speed() const
