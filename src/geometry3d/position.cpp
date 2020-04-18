@@ -18,4 +18,9 @@ double Position::z() const
     return data.at(2);
 }
 
+void Position::set(const Position &p)
+{
+    data = p.data;
+}
+
 } // namespace Geometry3D

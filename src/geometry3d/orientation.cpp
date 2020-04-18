@@ -17,4 +17,10 @@ double Orientation::yaw() const
 {
     return data.at(2);
 }
+
+void Orientation::set(const Orientation& o)
+{
+    data=o.data;
+}
+
 } // namespace Geometry3D

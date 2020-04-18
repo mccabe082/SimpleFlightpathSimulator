@@ -17,4 +17,9 @@ double Rotation::yawRate() const
 {
     return data.at(2);
 }
+
+void Rotation::set(const Rotation& omega)
+{
+    data = omega.data;
+}
 } // namespace Geometry3D
