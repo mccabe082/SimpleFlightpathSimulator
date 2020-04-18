@@ -9,6 +9,11 @@
         "array": "cpp",
         "complex": "cpp",
         "valarray": "cpp",
-        "numeric": "cpp"
+        "numeric": "cpp",
+        "regex": "cpp",
+        "variant": "cpp",
+        "xlocmon": "cpp",
+        "xlocnum": "cpp",
+        "xloctime": "cpp"
     }
 }

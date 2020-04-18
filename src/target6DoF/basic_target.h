@@ -9,9 +9,17 @@ using namespace Geometry3D;
 
 namespace target6Dof
 {
-    struct BasicTarget : public Position, Orientation, Velocity, Rotation
+    struct BasicTarget 
     {
-
+        BasicTarget(Position p, Orientation o, Velocity v, Rotation r);
+        
         double altitude() const;
+        double speed() const;
+        double groundSpeed() const;
+
+        Position position;
+        Orientation orientation; 
+        Velocity velocity;
+        Rotation rotation;
     };
 }

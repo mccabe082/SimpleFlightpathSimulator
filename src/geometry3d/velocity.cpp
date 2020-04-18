@@ -28,7 +28,7 @@ void Velocity::set(const Velocity &v)
     data = v.data;
 }
 
-double Velocity::airspeed() const
+double Velocity::speed() const
 {
 	return std::sqrt(std::inner_product(data.begin(), data.end(), data.begin(), 0.0));
 }

@@ -13,7 +13,7 @@ TEST_CASE( "Speeds are calulated correctly", "[Speed]" ) {
     }
     SECTION( "true air speed calculation is correct" ) {
         Geometry3D::Velocity targetV(1.,1.,1.);
-        REQUIRE( targetV.airspeed() == Approx(std::sqrt(3)));
+        REQUIRE( targetV.speed() == Approx(std::sqrt(3)));
     }
     SECTION( "ground speed calulation is correct" ) {
         Geometry3D::Velocity triangle_3_4_5(3.,4.,1.);

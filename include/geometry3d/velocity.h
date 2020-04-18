@@ -11,7 +11,7 @@ public:
     double Vy() const;
     double Vz() const;
     void set(const Velocity &v);
-    double airspeed() const;
+    double speed() const;
     double groundSpeed() const;
 private:
     std::array<double, 3> data;
