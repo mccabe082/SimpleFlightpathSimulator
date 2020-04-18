@@ -19,5 +19,5 @@ PRIVATE
 
 target_link_libraries(geometry3d
 PRIVATE
- <?<?TARGET_EXISTS:Microsoft.GSL_DIR>:Microsoft.GSL::GSL>
+  $<$<BOOL:Microsoft.GSL_DIR>:Microsoft.GSL::GSL>
 )
