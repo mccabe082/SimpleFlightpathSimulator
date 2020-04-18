@@ -5,12 +5,15 @@ namespace Geometry3D
 {
 class Velocity
 {
-private:
+public:
+    Velocity(double x, double y, double z);
     double Vx() const;
     double Vy() const;
     double Vz() const;
-    void Velocity::set(const Velocity &v);
-public:
+    void set(const Velocity &v);
+    double airspeed() const;
+    double groundSpeed() const;
+private:
     std::array<double, 3> data;
 };
 } // namespace Geometry3D

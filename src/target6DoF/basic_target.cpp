@@ -5,8 +5,4 @@
 namespace target6Dof
 {
 
-    double BasicTarget::altitude() const 
-    {
-        return z();
-    }
 }

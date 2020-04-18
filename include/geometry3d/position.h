@@ -9,6 +9,7 @@ public:
     double x() const;
     double y() const;
     double z() const;
+    double altitude() const;
     void set(const Position& p);
 
 private:

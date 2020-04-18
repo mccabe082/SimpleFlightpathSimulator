@@ -18,6 +18,11 @@ double Position::z() const
     return data.at(2);
 }
 
+double Position::altitude() const 
+{
+    return z();
+}
+
 void Position::set(const Position &p)
 {
     data = p.data;
