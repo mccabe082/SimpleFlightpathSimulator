@@ -10,13 +10,16 @@ CACHE STRING "path to directory containing the Find<Module>.cmake modules"
 mark_as_advanced(FindModuleDir)
 
 list(APPEND CMAKE_MODULE_PATH ${FindModuleDir})
+find_package(Boost REQUIRED MODULE)
 find_package(Catch2 REQUIRED MODULE)
 find_package(RapidXML REQUIRED MODULE)
+find_package(Microsoft.GSL QUIET CONFIG PATHS ../GSL/build)
 
 #####################################
 
 ### Testing #########################
 ENABLE_TESTING()
 include(CTest)
+add_subdirectory(src)
 add_subdirectory(test)
 #####################################

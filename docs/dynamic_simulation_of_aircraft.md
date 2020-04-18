@@ -57,7 +57,7 @@ The aircraft can be simulated over time, $t$ by numerically integrating the ODEs
 
 ![Eular Method](./artwork/330px-Euler_method.svg.png)
 
-This involves applying a numerical integration technique such as but not limited to; Eular's method, Matlab's [ode45](https://uk.mathworks.com/help/matlab/math/choose-an-ode-solver.html), [RK4]( https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods), [odeint](https://www.boost.org/doc/libs/1_66_0/libs/numeric/odeint/doc/html/index.html)...
+This involves applying a numerical integration technique such as but not limited to; Eular's method, Matlab's [ode45](https://uk.mathworks.com/help/matlab/math/choose-an-ode-solver.html), [RK4]( https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods), [odeint](https://www.boost.org/doc/libs/1_66_0/libs/numeric/odeint/doc/html/index.html), [gnu scientific library](https://www.gnu.org/software/gsl/doc/html/ode-initval.html)
 
 ---
 ## Further Reading
