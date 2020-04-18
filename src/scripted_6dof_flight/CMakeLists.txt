@@ -8,8 +8,8 @@ PUBLIC
 target_sources(scripted6DoFTarget
 PRIVATE
   maneuover.h
-  scripted_target.cpp
-  scripted_target.h
+  target_state.cpp
+  target_state.h
 )
 
 target_link_libraries(scripted6DoFTarget

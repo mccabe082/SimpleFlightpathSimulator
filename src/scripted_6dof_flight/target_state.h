@@ -9,10 +9,10 @@ using namespace Geometry3D;
 
 namespace Scripted6DoFFlight
 {
-    class ScriptedTarget 
+    class TargetState
     {
     public:
-        ScriptedTarget(Position p, Orientation o, Velocity v, Rotation r);
+		TargetState(Position p, Orientation o, Velocity v, Rotation r);
         
         double altitude() const;
         double speed() const;
