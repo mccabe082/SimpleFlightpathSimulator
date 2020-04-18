@@ -38,11 +38,11 @@ TEST_CASE( "Speeds are calulated correctly", "[Speed]" ) {
         Geometry3D::Velocity boundSouthEast(1.,-1.,0.);
         REQUIRE( boundSouthEast.heading() == Approx(bearingSE) );
 
-        const double bearingSW = 1.25 * pi;
+        const double bearingSW = -0.75 * pi;
         Geometry3D::Velocity boundSouthWest(-1.,-1.,0.);
         REQUIRE(boundSouthWest.heading() == Approx(bearingSW) );
 
-        const double bearingNW = 1.75 * pi;
+        const double bearingNW = -0.25 * pi;
         Geometry3D::Velocity boundNorthWest(-1.,1.,0.);
         REQUIRE(boundNorthWest.heading() == Approx(bearingNW) );
     }
