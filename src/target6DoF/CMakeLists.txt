@@ -7,8 +7,8 @@ PUBLIC
 
 target_sources(scripted6DoFTarget
 PRIVATE
-  basic_target.cpp
-  basic_target.h
+  scripted_target.cpp
+  scripted_target.h
 )
 
 target_link_libraries(scripted6DoFTarget
