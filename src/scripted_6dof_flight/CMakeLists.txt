@@ -7,6 +7,7 @@ PUBLIC
 
 target_sources(scripted6DoFTarget
 PRIVATE
+  maneuover.h
   scripted_target.cpp
   scripted_target.h
 )

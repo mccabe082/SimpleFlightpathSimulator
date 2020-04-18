@@ -7,7 +7,7 @@
 
 using namespace Geometry3D;
 
-namespace target6Dof
+namespace Scripted6DoFTarget
 {
     class ScriptedTarget 
     {
