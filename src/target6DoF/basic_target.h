@@ -9,17 +9,32 @@ using namespace Geometry3D;
 
 namespace target6Dof
 {
-    struct BasicTarget 
+    struct ScriptedTarget 
     {
-        BasicTarget(Position p, Orientation o, Velocity v, Rotation r);
+        ScriptedTarget(Position p, Orientation o, Velocity v, Rotation r);
         
         double altitude() const;
         double speed() const;
         double groundSpeed() const;
 
         Position position;
-        Orientation orientation; 
+        double x() const;
+        double y() const;
+        double z() const;
+
+        Orientation orientation;
+        double roll() const;
+        double pitch() const;
+        double yaw() const;
+
         Velocity velocity;
+        double Vx() const;
+        double Vy() const;
+        double Vz() const;
+
         Rotation rotation;
+        double rollRate() const;
+        double pitchRate() const;
+        double yawRate() const;
     };
 }
