@@ -12,20 +12,27 @@ namespace Geometry3D
 		Quoternion inverse() const;
 		bool hasUnityNorm() const;
 		bool isPure() const;
+		friend bool operator==(const Quoternion&, const Quoternion&);
+		friend Quoternion operator+(const Quoternion&, const Quoternion&);
+		friend Quoternion operator*(const Quoternion&, const Quoternion&);
+        friend Quoternion operator*(const Quoternion& q, double v);
 
-		friend  bool operator==(Quoternion, Quoternion);
-		friend  Quoternion operator+(Quoternion, Quoternion);
-		friend  Quoternion operator*(Quoternion, Quoternion);
 	private:
-		double& real();
-		double& i();
-		double& j();
-		double& k();
+        enum class Component
+        {
+            real = 0,
+            i = 1,
+            j = 2,
+            k = 3,
+        };
+		double get(Component index) const;
+        void set(Component index, double value);
 		std::array<double, 4> data;
 	};
 
-	bool operator==(Quoternion a, Quoternion b);
-	Quoternion operator+(Quoternion a, Quoternion b);
-	Quoternion operator*(Quoternion a, Quoternion b);
+	bool operator==(const Quoternion& a, const Quoternion& b);
+	Quoternion operator+(const Quoternion& a, const Quoternion& b);
+	Quoternion operator*(const Quoternion& a, const Quoternion& b);
+    Quoternion operator*(const Quoternion& q, double v);
 
 } // namespace Geometry3D

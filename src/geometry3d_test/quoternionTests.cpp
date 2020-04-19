@@ -10,7 +10,41 @@ namespace
 }
 
 
-TEST_CASE("Quoternion basic arithmetic is correct", "[quoternion_basics]") {
+TEST_CASE("Quoternion arithmetic is correct", "[quoternion]") {
+
+    SECTION("equivalence check is correct") {
+		Quoternion q1(1., 2., 3., 4.);
+        Quoternion q2(4., 3., 2., 1.);
+	
+		REQUIRE(q1 == q1);
+        REQUIRE(!(q1 == q2));
+	}
+
+    SECTION("quoternian addition is correct") {
+		Quoternion q1(1., 2., 3., 4.);
+        Quoternion q2(4., 3., 2., 1.);
+        Quoternion q3(5., 5., 5., 5.);
+	
+		REQUIRE(q1+q2 == q3);
+	}
+	
+    SECTION("quoternian multiplication is correct") {
+        // https://uk.mathworks.com/help/aerotbx/ug/quatmultiply.html
+		Quoternion q1(1., 0., 1., 0.);
+        Quoternion q2(1., 0.5, 0.5, 0.75);
+        Quoternion q3(0.5, 1.25, 1.5, 0.25);
+	
+		REQUIRE(q1*q2 == q3);
+	}
+	
+    SECTION("quoternian scalar multiplication is correct") {
+        // https://uk.mathworks.com/help/aerotbx/ug/quatmultiply.html
+		Quoternion q1(1., 2., 3., 4.);
+        Quoternion q2(10., 20., 30., 40.);
+	
+		REQUIRE(q1*10. == q2);
+        REQUIRE(q2 == q1*10.);
+	}
 
 	SECTION("conjugate calculation is correct") {
 		Quoternion q(1., 2., 3., 4.);

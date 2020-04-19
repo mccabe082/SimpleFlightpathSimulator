@@ -20,9 +20,9 @@ namespace Geometry3D
 	Quoternion Quoternion::conjugate() const
 	{
 		Quoternion conj(*this);
-		conj.i() *= -1.;
-		conj.j() *= -1.;
-		conj.k() *= -1.;
+		conj.set(Component::i, -1. * get(Component::i));
+		conj.set(Component::j, -1. * get(Component::j));
+		conj.set(Component::k, -1. * get(Component::k));
 		return conj;
 	}
 
@@ -34,11 +34,10 @@ namespace Geometry3D
 	Quoternion Quoternion::inverse() const
 	{
 		Quoternion inv = conjugate();
-		double nSquared = 1./std::inner_product(data.begin(), data.end(), data.begin(), 0.0);
-		inv.real() *= nSquared;
-		inv.i() *= nSquared;
-		inv.j() *= nSquared;
-		inv.k() *= nSquared;
+		double nSquared = 1. / std::inner_product(data.begin(), data.end(), data.begin(), 0.0);
+		inv.set(Component::i, nSquared * inv.get(Component::i));
+		inv.set(Component::j, nSquared * inv.get(Component::j));
+		inv.set(Component::k, nSquared * inv.get(Component::k));
 		return inv;
 	}
 
@@ -49,45 +48,58 @@ namespace Geometry3D
 
 	bool Quoternion::isPure() const
 	{
-		return areEqual(0., data[0]/*real()*/);
+		return areEqual(0., get(Component::real));
 	}
 
-
-	double& Quoternion::real() { return data[0]; }
-	double& Quoternion::i() { return data[1]; }
-	double& Quoternion::j() { return data[2]; }
-	double& Quoternion::k() { return data[3]; }
-
-
-	bool operator==(Quoternion a, Quoternion b)
+	double Quoternion::get(Component index) const
 	{
-		return areEqual(a.real(), b.real()) &&
-			areEqual(a.i(), b.i()) &&
-			areEqual(a.j(), b.j()) &&
-			areEqual(a.k(), b.k());
+		return data[int(index)];
+	}
+	void Quoternion::set(Component index, double value)
+	{
+		data[int(index)] = value;
 	}
 
-	Quoternion operator+(Quoternion a, Quoternion b)
+	bool operator==(const Quoternion& a, const Quoternion& b)
 	{
-		Quoternion sum(0.,0.,0.,0.);
-		sum.real() = a.real() + b.real();
-		sum.i() = a.i() + b.i();
-		sum.j() = a.j() + b.j();
-		sum.k() = a.k() + b.k();
+		return std::equal(a.data.begin(), a.data.end(), b.data.begin(),
+			[](double a, double b) {return areEqual(a, b);});
+	}
+
+	Quoternion operator+(const Quoternion& a, const Quoternion& b)
+	{
+		Quoternion sum(0., 0., 0., 0.);
+		std::transform(a.data.begin(), a.data.end(), a.data.begin(),
+			sum.data.begin(), std::plus<double>());
 		return sum;
 	};
 
-	Quoternion operator*(Quoternion a, Quoternion b)
+	Quoternion operator*(const Quoternion& a, const Quoternion& b)
 	{
-		double ar = a.real(); double ai = a.i(); double aj = a.j(); double ak = a.k();
-		double br = b.real(); double bi = b.i(); double bj = b.j(); double bk = b.k();
+		double ar = a.get(Quoternion::Component::real);
+		double ai = a.get(Quoternion::Component::i);
+		double aj = a.get(Quoternion::Component::j);
+		double ak = a.get(Quoternion::Component::k);
+
+		double br = b.get(Quoternion::Component::real);
+		double bi = b.get(Quoternion::Component::i);
+		double bj = b.get(Quoternion::Component::j);
+		double bk = b.get(Quoternion::Component::k);
 
 		Quoternion product(0., 0., 0., 0.);
-		product.real() = ar * br - ai * bi - aj * bj - ak * bk;
-		product.i() = ar * bi + ai * br + aj * bk - ak * bj;
-		product.j() = ar * bj + aj * br - ai * bk + ak * bi;
-		product.k() = ar * bk + ak * br + ai * bj + aj * bi;
+		product.set(Quoternion::Component::real, ar * br - ai * bi - aj * bj - ak * bk);
+		product.set(Quoternion::Component::i, ar * bi + ai * br + aj * bk - ak * bj);
+		product.set(Quoternion::Component::j, ar * bj + aj * br - ai * bk + ak * bi);
+		product.set(Quoternion::Component::k, ar * bk + ak * br + ai * bj + aj * bi);
 		return product;
 	};
+
+	Quoternion operator*(const Quoternion& q, double v)
+	{
+		Quoternion result(0., 0., 0., 0.);
+		std::transform(q.data.begin(), q.data.end(), result.data.begin(),
+			[&v](double element) {return v * element; });
+		return result;
+	}
 
 } // namespace Geometry3D
