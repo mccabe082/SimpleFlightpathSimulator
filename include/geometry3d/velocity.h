@@ -10,7 +10,6 @@ public:
     double Vx() const;
     double Vy() const;
     double Vz() const;
-    void set(const Velocity &v);
     double heading() const;
     double speed() const;
     double groundSpeed() const;

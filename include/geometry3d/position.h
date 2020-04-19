@@ -10,8 +10,7 @@ public:
     double x() const; // northward [m]
     double y() const; // eastward [m]
     double z() const; // upwards [m]
-    double altitude() const; 
-    void set(const Position& p);
+    double altitude() const;
 
 private:
     std::array<double, 3> data;

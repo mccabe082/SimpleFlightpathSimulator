@@ -6,7 +6,13 @@ namespace Geometry3D
 	class Quoternion
 	{
 	public:
+		Quoternion(double pitch, double roll, double yaw);
 		Quoternion(double real, double i, double j, double k);
+
+		double pitch() const;
+		double roll() const;
+		double yaw() const;
+
 		Quoternion conjugate() const;
 		double norm() const;
 		Quoternion inverse() const;

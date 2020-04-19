@@ -11,8 +11,7 @@ namespace
 TEST_CASE( "Speeds are calulated correctly", "[velocity]" ) {
 
     SECTION( "velocity components can be set and accessed" ) {
-        Geometry3D::Velocity target(0.0,0.0,0.0);
-        target.set(Geometry3D::Velocity(1.,2.,3.));
+        Geometry3D::Velocity target(1.,2.0,3.0);
         REQUIRE( target.Vx() == Approx(1.) );
         REQUIRE( target.Vy() == Approx(2.) );
         REQUIRE( target.Vz() == Approx(3.) );

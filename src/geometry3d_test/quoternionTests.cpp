@@ -12,6 +12,19 @@ namespace
 
 TEST_CASE("Quoternion arithmetic is correct", "[quoternion]") {
 
+    SECTION("check quaternion eular angle transforms") {
+
+		double pitch = pi/5.;
+		double roll = pi/7.;
+		double yaw = pi/11.;
+
+		Quoternion q(pitch,roll,yaw);
+	
+		REQUIRE(q.pitch() == Approx(pitch));
+        REQUIRE(q.roll() == Approx(roll));
+		REQUIRE(q.yaw() == Approx(yaw));
+	}
+
     SECTION("equivalence check is correct") {
 		Quoternion q1(1., 2., 3., 4.);
         Quoternion q2(4., 3., 2., 1.);

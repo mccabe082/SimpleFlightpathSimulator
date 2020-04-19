@@ -24,11 +24,6 @@ double Velocity::Vz() const
     return data.at(2);
 }
 
-void Velocity::set(const Velocity &v)
-{
-    data = v.data;
-}
-
 double Velocity::heading() const
 {
     return atan2(Vx(), Vy());

@@ -8,14 +8,69 @@ namespace
 	{
 		return abs(a - b) <= std::numeric_limits<double>::epsilon();
 	}
+
+	double clamp(double& val, double min, double max)
+	{
+		return val<min ? min : val>max ? max : val;
+	}
 }
 
 namespace Geometry3D
 {
+	Quoternion::Quoternion(double pitch, double yaw, double roll)
+	{
+    	double pHalf = 0.5*roll;
+		double rHalf = 0.5*roll;
+    	double yHalf = 0.5*roll;
+
+    	set(Component::i, std::sin(rHalf) * std::cos(pHalf) * std::cos(yaw/2) - std::cos(rHalf) * std::sin(pHalf) * std::sin(yHalf));
+    	set(Component::j, std::cos(rHalf) * std::sin(pHalf) * std::cos(yaw/2) + std::sin(rHalf) * std::cos(pHalf) * std::sin(yHalf));
+    	set(Component::k, std::cos(rHalf) * std::cos(pHalf) * std::sin(yaw/2) - std::sin(rHalf) * std::sin(pHalf) * std::cos(yHalf));
+		set(Component::real, std::cos(rHalf) * std::cos(pHalf) * std::cos(yaw/2) + std::sin(rHalf) * std::sin(pHalf) * std::sin(yHalf));
+	}
 
 	Quoternion::Quoternion(double real, double i, double j, double k)
 		: data(std::array<double, 4>{real, i, j, k})
 	{}
+
+	double Quoternion::pitch() const
+	{
+		double w = get(Component::real);
+		double x = get(Component::i);
+		double y = get(Component::j);
+		double z = get(Component::real);
+
+		double t0 = 2. * (w * x + y * z);
+        double t1 = 1. - 2. * (x * x + y * y);
+        
+		return std::atan2(t0, t1);
+	}
+
+	double Quoternion::roll() const
+	{	
+		double w = get(Component::real);
+		double x = get(Component::i);
+		double y = get(Component::j);
+		double z = get(Component::real);
+
+        double t = 2. * (w * y - z * x);
+		clamp( t, -1., 1. );
+
+        return std::asin(t);
+	}
+
+	double Quoternion::yaw() const
+	{
+		double w = get(Component::real);
+		double x = get(Component::i);
+		double y = get(Component::j);
+		double z = get(Component::real);
+
+		double t1 = 2. * (w * z + x * y);
+        double t2 = 1. - 2. * (y * y + z * z);
+        
+		return std::atan2(t1, t2);
+	}
 
 	Quoternion Quoternion::conjugate() const
 	{

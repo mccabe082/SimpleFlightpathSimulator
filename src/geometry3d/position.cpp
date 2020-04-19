@@ -23,9 +23,5 @@ double Position::altitude() const
     return z();
 }
 
-void Position::set(const Position &p)
-{
-    data = p.data;
-}
 
 } // namespace Geometry3D
