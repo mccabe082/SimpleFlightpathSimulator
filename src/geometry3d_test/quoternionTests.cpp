@@ -33,7 +33,7 @@ TEST_CASE("Quoternion arithmetic is correct", "[quoternion]") {
 		Quoternion q1(1., 0., 1., 0.);
         Quoternion q2(1., 0.5, 0.5, 0.75);
         Quoternion q3(0.5, 1.25, 1.5, 0.25);
-	
+
 		REQUIRE(q1*q2 == q3);
 	}
 	

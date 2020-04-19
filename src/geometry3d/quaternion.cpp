@@ -20,9 +20,8 @@ namespace Geometry3D
 	Quoternion Quoternion::conjugate() const
 	{
 		Quoternion conj(*this);
-		conj.set(Component::i, -1. * get(Component::i));
-		conj.set(Component::j, -1. * get(Component::j));
-		conj.set(Component::k, -1. * get(Component::k));
+		std::transform(data.begin()+1, data.end(), conj.data.begin()+1,
+			[](double element) {return -1. * element; });
 		return conj;
 	}
 
@@ -34,10 +33,9 @@ namespace Geometry3D
 	Quoternion Quoternion::inverse() const
 	{
 		Quoternion inv = conjugate();
-		double nSquared = 1. / std::inner_product(data.begin(), data.end(), data.begin(), 0.0);
-		inv.set(Component::i, nSquared * inv.get(Component::i));
-		inv.set(Component::j, nSquared * inv.get(Component::j));
-		inv.set(Component::k, nSquared * inv.get(Component::k));
+		double denominator = 1. / std::inner_product(data.begin(), data.end(), data.begin(), 0.0);
+		std::transform(inv.data.begin() , inv.data.end(), inv.data.begin(),
+			[denominator](double element) {return denominator * element; });
 		return inv;
 	}
 
@@ -90,7 +88,7 @@ namespace Geometry3D
 		product.set(Quoternion::Component::real, ar * br - ai * bi - aj * bj - ak * bk);
 		product.set(Quoternion::Component::i, ar * bi + ai * br + aj * bk - ak * bj);
 		product.set(Quoternion::Component::j, ar * bj + aj * br - ai * bk + ak * bi);
-		product.set(Quoternion::Component::k, ar * bk + ak * br + ai * bj + aj * bi);
+		product.set(Quoternion::Component::k, ar * bk + ak * br + ai * bj - aj * bi);
 		return product;
 	};
 
