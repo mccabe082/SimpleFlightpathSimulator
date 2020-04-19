@@ -1,25 +1,25 @@
 #include "cruise.h"
+#include "target_state.h"
+#include <numeric>
+
+namespace
+{
+    inline double mean(double a, double b){return 0.5*(a+b);}
+}
 
 namespace Scripted6DoFFlight
 {
+    Cruise::Cruise(const TargetState& initialState)
+    : targetHeading(initialState.heading())
+    {}
 
- //   Position Cruise::updatePosition(double deltaTime, const TargetState& currentState) const
- //   {
- //       
- //   }
- //
- //   Orientation Cruise::updateOrientation(double deltaTime, const TargetState& currentState) const
- //   {
- //
- //   }
- //
- //   Velocity Cruise::updateVelocity(double deltaTime, const TargetState& currentState) const
- //   {
- //
- //   }
- //
- //   Rotation Cruise::updateRotation(double deltaTime, const TargetState& currentState) const
- //   {
- //
- //   }
+    // Todo: avoid creating new TargetState Objects evey call
+    TargetState Cruise::update(double deltaTime, const TargetState& currentState) const
+    {
+        TargetState nextState(currentState);
+        {
+            
+        }
+        return nextState;
+    }
 }

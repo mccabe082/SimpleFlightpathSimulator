@@ -13,9 +13,6 @@ namespace Scripted6DoFFlight
     class Maneuover 
     {
         public:
-        virtual Position updatePosition(double deltaTime, const TargetState& currentState) const = 0;
-        virtual Orientation updateOrientation(double deltaTime, const TargetState& currentState) const = 0;
-        virtual Velocity updateVelocity(double deltaTime, const TargetState& currentState) const = 0;
-        virtual Rotation updateRotation(double deltaTime, const TargetState& currentState) const = 0;
+        virtual TargetState update(double deltaTime, const TargetState& currentState) const = 0;
     };
 }
