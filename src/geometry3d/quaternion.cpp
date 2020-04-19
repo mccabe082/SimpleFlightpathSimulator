@@ -69,7 +69,7 @@ namespace Geometry3D
 	Quoternion operator+(const Quoternion& a, const Quoternion& b)
 	{
 		Quoternion sum(0., 0., 0., 0.);
-		std::transform(a.data.begin(), a.data.end(), a.data.begin(),
+		std::transform(a.data.begin(), a.data.end(), b.data.begin(),
 			sum.data.begin(), std::plus<double>());
 		return sum;
 	};
