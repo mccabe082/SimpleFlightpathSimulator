@@ -9,10 +9,12 @@ target_sources(geometry3d
 PRIVATE
   ../../include/geometry3d/orientation.h
   ../../include/geometry3d/position.h
+  ../../include/geometry3d/quaternion.h
   ../../include/geometry3d/rotation.h
   ../../include/geometry3d/velocity.h
   ./orientation.cpp
   ./position.cpp
+  ./quaternion.cpp
   ./rotation.cpp
   ./velocity.cpp
 )

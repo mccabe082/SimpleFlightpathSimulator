@@ -2,6 +2,7 @@ add_executable(geometry3dTest)
 
 target_sources(geometry3dTest
 PRIVATE
+  quoternionTests.cpp
   velocityTests.cpp
 )
 

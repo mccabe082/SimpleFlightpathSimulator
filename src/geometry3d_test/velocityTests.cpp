@@ -8,8 +8,7 @@ namespace
 	const double pi = std::acos(-1.);
 }
 
-
-TEST_CASE( "Speeds are calulated correctly", "[Speed]" ) {
+TEST_CASE( "Speeds are calulated correctly", "[velocity]" ) {
 
     SECTION( "velocity components can be set and accessed" ) {
         Geometry3D::Velocity target(0.0,0.0,0.0);
