@@ -13,8 +13,8 @@ namespace
 namespace Geometry3D
 {
 
-	Quoternion::Quoternion(double i, double j, double k, double real)
-		: data(std::array<double, 4>{i, j, k, real})
+	Quoternion::Quoternion(double real, double i, double j, double k)
+		: data(std::array<double, 4>{real, i, j, k})
 	{}
 
 	Quoternion Quoternion::conjugate() const
@@ -49,14 +49,14 @@ namespace Geometry3D
 
 	bool Quoternion::isPure() const
 	{
-		return areEqual(0., data[3]/*real()*/);
+		return areEqual(0., data[0]/*real()*/);
 	}
 
 
-	double& Quoternion::real() { return data[3]; }
-	double& Quoternion::i() { return data[0]; }
-	double& Quoternion::j() { return data[1]; }
-	double& Quoternion::k() { return data[2]; }
+	double& Quoternion::real() { return data[0]; }
+	double& Quoternion::i() { return data[1]; }
+	double& Quoternion::j() { return data[2]; }
+	double& Quoternion::k() { return data[3]; }
 
 
 	bool operator==(Quoternion a, Quoternion b)
@@ -69,7 +69,7 @@ namespace Geometry3D
 
 	Quoternion operator+(Quoternion a, Quoternion b)
 	{
-		Quoternion sum(0.,0.,0.);
+		Quoternion sum(0.,0.,0.,0.);
 		sum.real() = a.real() + b.real();
 		sum.i() = a.i() + b.i();
 		sum.j() = a.j() + b.j();
@@ -82,7 +82,7 @@ namespace Geometry3D
 		double ar = a.real(); double ai = a.i(); double aj = a.j(); double ak = a.k();
 		double br = b.real(); double bi = b.i(); double bj = b.j(); double bk = b.k();
 
-		Quoternion product(0., 0., 0.);
+		Quoternion product(0., 0., 0., 0.);
 		product.real() = ar * br - ai * bi - aj * bj - ak * bk;
 		product.i() = ar * bi + ai * br + aj * bk - ak * bj;
 		product.j() = ar * bj + aj * br - ai * bk + ak * bi;

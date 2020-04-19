@@ -6,7 +6,7 @@ namespace Geometry3D
 	class Quoternion
 	{
 	public:
-		Quoternion(double i, double j, double k, double real = 0.);
+		Quoternion(double real, double i, double j, double k);
 		Quoternion conjugate() const;
 		double norm() const;
 		Quoternion inverse() const;

@@ -14,7 +14,7 @@ TEST_CASE("Quoternion basic arithmetic is correct", "[quoternion_basics]") {
 
 	SECTION("conjugate calculation is correct") {
 		Quoternion q(1., 2., 3., 4.);
-		Quoternion qExpectedConj(-1., -2., -3., 4.);
+		Quoternion qExpectedConj(1., -2., -3., -4.);
 		REQUIRE(q.conjugate() == qExpectedConj);
 	}
 
@@ -25,8 +25,8 @@ TEST_CASE("Quoternion basic arithmetic is correct", "[quoternion_basics]") {
 
 	SECTION("inverse calculation is correct is correct") {
 		// https://uk.mathworks.com/help/aerotbx/ug/quatinv.html
-		Quoternion q(0., 1., 0., 1.);
-		Quoternion qExpectedInv(0., -0.5, 0., 0.5);
+		Quoternion q(1., 0., 1., 0.);
+		Quoternion qExpectedInv(0.5, 0., -0.5, 0.);
 		REQUIRE(q.inverse() == qExpectedInv);
 	}
 
@@ -40,10 +40,10 @@ TEST_CASE("Quoternion basic arithmetic is correct", "[quoternion_basics]") {
 	}
 
 	SECTION("is a pure quoternion") {
-		Quoternion qPure(1., 2., 3.);
+		Quoternion qPure(0., 1., 1., 1.);
 		REQUIRE(qPure.isPure());
 
-		Quoternion qNonPure(0.1, 1., 2., 3.);
+		Quoternion qNonPure(1., 0., 0., 0.);
 		REQUIRE(!qNonPure.isPure());
 	}
 
