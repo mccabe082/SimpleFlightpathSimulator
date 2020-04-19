@@ -18,7 +18,9 @@ namespace Scripted6DoFFlight
     {
         TargetState nextState(currentState);
         {
-            
+            //eular transform
+            //earth axes mention
+            //orientation follows trajectory - bank -max angle ratio
         }
         return nextState;
     }

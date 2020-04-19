@@ -3,13 +3,14 @@
 
 namespace Geometry3D
 {
+
 class Position
 {
 public:
-    double x() const; // northward
-    double y() const; // eastward
-    double z() const;
-    double altitude() const;
+    double x() const; // northward [m]
+    double y() const; // eastward [m]
+    double z() const; // upwards [m]
+    double altitude() const; 
     void set(const Position& p);
 
 private:

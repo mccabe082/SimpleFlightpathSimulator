@@ -3,6 +3,7 @@
 
 namespace Geometry3D
 {
+
 double Orientation::pitch() const
 {
     return data.at(0);

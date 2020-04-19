@@ -3,6 +3,7 @@
 
 namespace Geometry3D
 {
+    
 class Orientation
 {
 public:
@@ -10,6 +11,7 @@ public:
     double roll() const;
     double yaw() const;
     void set(const Orientation& o);
+
 private:
     std::array<double, 3> data;
 };
