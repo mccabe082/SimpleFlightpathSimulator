@@ -4,6 +4,8 @@
 
 namespace
 {
+	const double pi = std::acos(-1.);
+
 	bool areEqual(double a, double b)
 	{
 		return abs(a - b) <= std::numeric_limits<double>::epsilon();
@@ -17,16 +19,21 @@ namespace
 
 namespace Geometry3D
 {
-	Quoternion::Quoternion(double pitch, double yaw, double roll)
+	Quoternion::Quoternion(double pitch, double roll, double yaw)
 	{
-    	double pHalf = 0.5*roll;
-		double rHalf = 0.5*roll;
-    	double yHalf = 0.5*roll;
+		// https://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles#Source_Code
 
-    	set(Component::i, std::sin(rHalf) * std::cos(pHalf) * std::cos(yaw/2) - std::cos(rHalf) * std::sin(pHalf) * std::sin(yHalf));
-    	set(Component::j, std::cos(rHalf) * std::sin(pHalf) * std::cos(yaw/2) + std::sin(rHalf) * std::cos(pHalf) * std::sin(yHalf));
-    	set(Component::k, std::cos(rHalf) * std::cos(pHalf) * std::sin(yaw/2) - std::sin(rHalf) * std::sin(pHalf) * std::cos(yHalf));
-		set(Component::real, std::cos(rHalf) * std::cos(pHalf) * std::cos(yaw/2) + std::sin(rHalf) * std::sin(pHalf) * std::sin(yHalf));
+		double cy = cos(yaw * 0.5);
+		double sy = sin(yaw * 0.5);
+		double cp = cos(pitch * 0.5);
+		double sp = sin(pitch * 0.5);
+		double cr = cos(roll * 0.5);
+		double sr = sin(roll * 0.5);
+
+		set(Component::real, cr * cp * cy + sr * sp * sy);
+		set(Component::i, sr * cp * cy - cr * sp * sy);
+		set(Component::j, cr * sp * cy + sr * cp * sy);
+		set(Component::k, cr * cp * sy - sr * sp * cy);
 	}
 
 	Quoternion::Quoternion(double real, double i, double j, double k)
@@ -38,25 +45,24 @@ namespace Geometry3D
 		double w = get(Component::real);
 		double x = get(Component::i);
 		double y = get(Component::j);
-		double z = get(Component::real);
+		double z = get(Component::k);
 
-		double t0 = 2. * (w * x + y * z);
-        double t1 = 1. - 2. * (x * x + y * y);
-        
-		return std::atan2(t0, t1);
+		double sinp = 2. * (w * y - z * x);
+
+		return std::abs(sinp) >= 1. ? std::copysign(0.5 * pi, sinp) : std::asin(sinp);
 	}
 
 	double Quoternion::roll() const
-	{	
+	{
 		double w = get(Component::real);
 		double x = get(Component::i);
 		double y = get(Component::j);
-		double z = get(Component::real);
+		double z = get(Component::k);
 
-        double t = 2. * (w * y - z * x);
-		clamp( t, -1., 1. );
+		double sinr_cosp = 2. * (w * x + y * z);
+		double cosr_cosp = 1. - 2. * (x * x + y * y);
 
-        return std::asin(t);
+		return std::atan2(sinr_cosp, cosr_cosp);
 	}
 
 	double Quoternion::yaw() const
@@ -64,18 +70,17 @@ namespace Geometry3D
 		double w = get(Component::real);
 		double x = get(Component::i);
 		double y = get(Component::j);
-		double z = get(Component::real);
+		double z = get(Component::k);
 
-		double t1 = 2. * (w * z + x * y);
-        double t2 = 1. - 2. * (y * y + z * z);
-        
-		return std::atan2(t1, t2);
+		double siny_cosp = 2. * (w * z + x * y);
+		double cosy_cosp = 1. - 2. * (y * y + z * z);
+		return std::atan2(siny_cosp, cosy_cosp);
 	}
 
 	Quoternion Quoternion::conjugate() const
 	{
 		Quoternion conj(*this);
-		std::transform(data.begin()+1, data.end(), conj.data.begin()+1,
+		std::transform(data.begin() + 1, data.end(), conj.data.begin() + 1,
 			[](double element) {return -1. * element; });
 		return conj;
 	}
@@ -89,7 +94,7 @@ namespace Geometry3D
 	{
 		Quoternion inv = conjugate();
 		double denominator = 1. / std::inner_product(data.begin(), data.end(), data.begin(), 0.0);
-		std::transform(inv.data.begin() , inv.data.end(), inv.data.begin(),
+		std::transform(inv.data.begin(), inv.data.end(), inv.data.begin(),
 			[denominator](double element) {return denominator * element; });
 		return inv;
 	}
@@ -116,7 +121,7 @@ namespace Geometry3D
 	bool operator==(const Quoternion& a, const Quoternion& b)
 	{
 		return std::equal(a.data.begin(), a.data.end(), b.data.begin(),
-			[](double a, double b) {return areEqual(a, b);});
+			[](double a, double b) {return areEqual(a, b); });
 	}
 
 	Quoternion operator+(const Quoternion& a, const Quoternion& b)
