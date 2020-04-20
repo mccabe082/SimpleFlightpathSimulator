@@ -1,14 +1,20 @@
-add_executable(geometry3dTest)
+add_executable(geometry3dTest $<TARGET_OBJECTS:geometry3d>)
 
 target_sources(geometry3dTest
 PRIVATE
+  orientationTests.cpp
   quoternionTests.cpp
   velocityTests.cpp
 )
 
+target_include_directories(geometry3dTest
+PRIVATE
+  ${CMAKE_SOURCE_DIR}/include 
+  ${CMAKE_SOURCE_DIR}/src 
+)
+
 target_link_libraries(geometry3dTest
 PRIVATE
-  geometry3d
   ::Catch2
 )
 

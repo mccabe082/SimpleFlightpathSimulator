@@ -1,21 +1,23 @@
 #pragma once
 #include <array>
-#include <memory>
 
 namespace Geometry3D
 {
-class Quoternion;
+	class Orientation
+	{
+	public:
+		Orientation(double pitch, double roll, double yaw);
+		Orientation(const Orientation& other);
+		double pitch() const;
+		double roll() const;
+		double yaw() const;
 
-class Orientation
-{
-public:
-    Orientation(double pitch, double roll, double yaw);
-	Orientation(const Orientation& other);
-    double pitch() const;
-    double roll() const;
-    double yaw() const;
+		friend Orientation interpolate(const Orientation&, const Orientation&, double frac);
 
-private:
-    std::unique_ptr<Quoternion> pData;
-};
+	private:
+		std::array<double, 3> data;
+	};
+
+	Orientation interpolate(const Orientation&, const Orientation&, double frac);
+
 } // namespace Geometry3D

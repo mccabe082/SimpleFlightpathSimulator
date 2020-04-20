@@ -1,32 +1,36 @@
 
 #include "geometry3d/orientation.h"
-#include "geometry3d/quaternion.h"
+#include "quaternion.h"
 
 namespace Geometry3D
 {
-Orientation::Orientation(double pitch, double roll, double yaw)
-: pData(std::make_unique<Quoternion>(pitch,roll,yaw))
-{}
+	Orientation::Orientation(double pitch, double roll, double yaw)
+		: data{ pitch, yaw, roll }
+	{}
 
+	Orientation::Orientation(const Orientation& other)
+		: data(other.data)
+	{}
 
-Orientation::Orientation(const Orientation& other)
-: pData(std::make_unique<Quoternion>(other.pitch(), other.roll(), other.yaw()))
-{}
+	double Orientation::pitch() const
+	{
+		return data[0];
+	}
 
+	double Orientation::roll() const
+	{
+		return data[1];
+	}
 
-double Orientation::pitch() const
-{
-    return pData->pitch();
-}
+	double Orientation::yaw() const
+	{
+		return data[2];
+	}
 
-double Orientation::roll() const
-{
-    return pData->roll();
-}
-
-double Orientation::yaw() const
-{
-    return pData.get()->yaw();
-}
+	Orientation interpolate(const Orientation& start, const Orientation & final, double frac)
+	{
+		Quoternion q = slerp(Quoternion(start), Quoternion(final), frac);
+		return Orientation(q.pitch(), q.roll(), q.yaw());
+	}
 
 } // namespace Geometry3D

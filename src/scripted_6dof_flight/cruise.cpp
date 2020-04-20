@@ -1,8 +1,6 @@
 #include "cruise.h"
 #include "target_state.h"
 
-#include <geometry3d/quaternion.h> // WHY?!
-
 #include <numeric>
 
 namespace

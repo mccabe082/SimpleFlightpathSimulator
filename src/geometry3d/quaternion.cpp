@@ -1,6 +1,7 @@
-#include "geometry3d/quaternion.h"
+#include "geometry3d/orientation.h"
 #include <numeric>
 #include <limits>
+#include "quaternion.h"
 
 namespace
 {
@@ -15,6 +16,12 @@ namespace
 	{
 		return val<min ? min : val>max ? max : val;
 	}
+
+	Geometry3D::Quoternion normalise(const Geometry3D::Quoternion& q)
+	{
+		return q * (1. / q.norm());
+	}
+
 }
 
 namespace Geometry3D
@@ -38,6 +45,10 @@ namespace Geometry3D
 
 	Quoternion::Quoternion(double real, double i, double j, double k)
 		: data(std::array<double, 4>{real, i, j, k})
+	{}
+
+	Quoternion::Quoternion(const Orientation& o)
+		: Quoternion(o.pitch(), o.roll(), o.yaw())
 	{}
 
 	double Quoternion::pitch() const
@@ -113,6 +124,7 @@ namespace Geometry3D
 	{
 		return data[int(index)];
 	}
+
 	void Quoternion::set(Component index, double value)
 	{
 		data[int(index)] = value;
@@ -130,6 +142,14 @@ namespace Geometry3D
 		std::transform(a.data.begin(), a.data.end(), b.data.begin(),
 			sum.data.begin(), std::plus<double>());
 		return sum;
+	};
+
+	Quoternion operator-(const Quoternion& a, const Quoternion& b)
+	{
+		Quoternion difference(0., 0., 0., 0.);
+		std::transform(a.data.begin(), a.data.end(), b.data.begin(),
+			difference.data.begin(), std::minus<double>());
+		return difference;
 	};
 
 	Quoternion operator*(const Quoternion& a, const Quoternion& b)
@@ -158,6 +178,54 @@ namespace Geometry3D
 		std::transform(q.data.begin(), q.data.end(), result.data.begin(),
 			[&v](double element) {return v * element; });
 		return result;
+	}
+
+	Quoternion operator*(double v, const Quoternion& q)
+	{
+		return q * v;
+	}
+
+	Quoternion slerp(const Quoternion& qStart, const Quoternion& qEnd, double frac)
+	{
+		// https://en.wikipedia.org/wiki/Slerp
+
+		// Only unit quaternions are valid rotations.
+		// Normalize to avoid undefined behavior.
+		Quoternion q0 = normalise(qStart);
+		Quoternion q1 = normalise(qEnd);
+
+		// Compute the cosine of the angle between the two vectors.
+		double dot = std::sqrt(std::inner_product(q0.data.begin(), q0.data.end(), q1.data.begin(), 0.0));
+
+		// If the dot product is negative, slerp won't take
+		// the shorter path. Note that v1 and -v1 are equivalent when
+		// the negation is applied to all four components. Fix by 
+		// reversing one quaternion.
+		if (dot < 0.0f) {
+			q1 = q1 * -1.;
+			dot = -dot;
+		}
+
+		const double DOT_THRESHOLD = 0.9995;
+		if (dot > DOT_THRESHOLD) {
+			// If the inputs are too close for comfort, linearly interpolate
+			// and normalize the result.
+
+			Quoternion result = q0 + frac * (q1 - q0);
+			result = normalise(result);
+			return result;
+		}
+
+		// Since dot is in range [0, DOT_THRESHOLD], acos is safe
+		double theta_0 = acos(dot);        // theta_0 = angle between input vectors
+		double theta = theta_0 * frac;     // theta = angle between v0 and result
+		double sin_theta = sin(theta);     // compute this value only once
+		double sin_theta_0 = sin(theta_0); // compute this value only once
+
+		double s0 = cos(theta) - dot * sin_theta / sin_theta_0;  // == sin(theta_0 - theta) / sin(theta_0)
+		double s1 = sin_theta / sin_theta_0;
+
+		return (s0 * qStart) + (s1 * qEnd);
 	}
 
 } // namespace Geometry3D
