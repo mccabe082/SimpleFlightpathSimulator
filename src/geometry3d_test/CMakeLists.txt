@@ -1,4 +1,4 @@
-add_executable(geometry3dTest $<TARGET_OBJECTS:geometry3d>)
+add_executable(geometry3dTest)
 
 target_sources(geometry3dTest
 PRIVATE
@@ -15,6 +15,7 @@ PRIVATE
 
 target_link_libraries(geometry3dTest
 PRIVATE
+  $<TARGET_OBJECTS:geometry3d>
   ::Catch2
 )
 

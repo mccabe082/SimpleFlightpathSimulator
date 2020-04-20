@@ -1,5 +1,6 @@
 #include "catch.hpp"
 #include <geometry3d/quaternion.h>
+#include <geometry3d/orientation.h>
 #include <cmath>
 
 using namespace Geometry3D;
@@ -35,6 +36,19 @@ TEST_CASE("Quoternion arithmetic is correct", "[quoternion]") {
 		double yaw = pi / 11.;
 
 		Quoternion q(pitch, roll, yaw);
+
+		REQUIRE(q.pitch() == Approx(pitch));
+		REQUIRE(q.roll() == Approx(roll));
+		REQUIRE(q.yaw() == Approx(yaw));
+	}
+
+	SECTION("check quaternion from Orientation constructor") {
+
+		double pitch = pi / 5.;
+		double roll = pi / 7.;
+		double yaw = pi / 11.;
+
+		Quoternion q(Orientation(pitch, roll, yaw));
 
 		REQUIRE(q.pitch() == Approx(pitch));
 		REQUIRE(q.roll() == Approx(roll));

@@ -5,7 +5,7 @@
 namespace Geometry3D
 {
 	Orientation::Orientation(double pitch, double roll, double yaw)
-		: data{ pitch, yaw, roll }
+		: data{ pitch, roll, yaw }
 	{}
 
 	Orientation::Orientation(const Orientation& other)
