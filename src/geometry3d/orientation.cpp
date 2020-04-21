@@ -31,7 +31,7 @@ namespace Geometry3D
 	{
 		Quoternion qFrame(ref);
 		Quoternion q(*this);
-		Quoternion qPrime = q*(qPrime*q.inverse());
+		Quoternion qPrime = q * (qFrame * q.inverse());
 
 		return Orientation(qPrime.pitch(), qPrime.roll(), qPrime.yaw());
 	}
