@@ -8,6 +8,11 @@ namespace Geometry3D
 		: data(std::array<double, 3>{x, y, x})
 	{}
 
+	void Position::set(const Position& p)
+	{
+		data = p.data;
+	}
+
 	double Position::x() const
 	{
 		return data[0];

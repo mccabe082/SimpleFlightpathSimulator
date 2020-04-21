@@ -24,7 +24,7 @@ namespace
 namespace Scripted6DoFFlight
 {
 
-	Cruise::Cruise(
+	EnterCruise::EnterCruise(
 		const AircraftState& enteringCondition,
 		double transitionTime,
 		double targetSpeed,
@@ -47,19 +47,28 @@ namespace Scripted6DoFFlight
 	}
 
 	// Todo: avoid creating new TargetState Objects evey call
-	AircraftState Cruise::update(double timeStepOvermanueoverTimeRemaining, const AircraftState& currentState)
+	AircraftState EnterCruise::update(double tStep, double manueoverTimeRemaining, const AircraftState& currentState)
 	{
-		AircraftState nextState(currentState);
-		{
-			//nextState = Orientation::interpolate(currentState, targetOrient, timeStepOvermanueoverTimeRemaining);
-			//nextState = Velocity::interpolate(currentState, targetOrient, timeStepOvermanueoverTimeRemaining);
-			//nectstae = Position()
+		double fMmanueover = tStep / manueoverTimeRemaining;
 
-		}
-		return nextState;
+		// calculate updated orientation and velocity (these are controled to converge on target)
+		Orientation orientationNew = Orientation::interpolate(currentState, targetOrient, fMmanueover);
+		Velocity velocityNew = Velocity::interpolate(currentState, targetVel, fMmanueover);
+
+		// calculate updated position and rotation
+		Velocity V_tStep = Velocity::average(velocityNew, currentState);
+		Position positionNew = currentState.update(V_tStep, tStep);
+		Rotation rotationNew = Rotation(0., 0., 0.);
+
+		return AircraftState(
+			positionNew,
+			orientationNew,
+			velocityNew,
+			rotationNew
+		);
 	}
 
-	bool Cruise::completed() const
+	bool EnterCruise::completed() const
 	{
 		return areEqual(0., remainingTransitionTime);
 	}

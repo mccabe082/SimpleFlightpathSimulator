@@ -10,6 +10,7 @@ namespace Geometry3D
 	public:
 		Orientation(double pitch, double roll, double yaw);
 		Orientation(const Orientation& other);
+		void set(const Orientation& o);
 
 		double pitch() const;
 		double roll() const;

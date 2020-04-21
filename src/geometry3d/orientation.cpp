@@ -13,6 +13,11 @@ namespace Geometry3D
 		: data(other.data)
 	{}
 
+	void Orientation::set(const Orientation& o)
+	{
+		data = o.data;
+	}
+
 	double Orientation::pitch() const
 	{
 		return data[0];

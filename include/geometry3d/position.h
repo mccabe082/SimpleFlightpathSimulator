@@ -9,6 +9,8 @@ namespace Geometry3D
 	{
 	public:
 		Position(double x, double y, double z);
+		void set(const Position& p);
+
 		double x() const; // northward [m]
 		double y() const; // eastward [m]
 		double z() const; // upwards [m]

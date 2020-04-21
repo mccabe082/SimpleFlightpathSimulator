@@ -9,6 +9,8 @@ namespace Geometry3D
 	{
 	public:
 		Velocity(double x, double y, double z);
+		void set(const Velocity& v);
+
 		double Vx() const;
 		double Vy() const;
 		double Vz() const;
@@ -18,6 +20,7 @@ namespace Geometry3D
 		Velocity groundVector() const;
 		static Velocity interpolate(const Velocity& start, const Velocity & final, double frac);
 		static Velocity from(const Position& pStart, const Position& pFinal, double time);
+		static Velocity average(const Velocity& start, const Velocity & final);
 
 	private:
 		std::array<double, 3> data;
