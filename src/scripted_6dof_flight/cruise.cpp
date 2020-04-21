@@ -1,27 +1,27 @@
 #include "cruise.h"
-#include "target_state.h"
+#include "aircraft_state.h"
 
-#include <numeric>
-
-namespace
-{
-    inline double mean(double a, double b){return 0.5*(a+b);}
-}
+#include <geometry3d/position.h>
+#include <geometry3d/orientation.h>
+#include <geometry3d/velocity.h>
+#include <geometry3d/rotation.h>
+using namespace Geometry3D;
 
 namespace Scripted6DoFFlight
 {
-    Cruise::Cruise(const TargetState& initialState)
-    : targetHeading(initialState.heading())
-    {}
+
+    //Cruise::Cruise(const AircraftState& initialState, const Orientation& offset, double tTransition)
+	//: vTarget(Velocity(initialState.Vx, initialState.Vy, 0.))
+	//, oTarget(offset + Orientation(0.,0.,initialState.yaw()))
+    //{}
 
     // Todo: avoid creating new TargetState Objects evey call
-    TargetState Cruise::update(double deltaTime, const TargetState& currentState) const
+    AircraftState Cruise::update(double deltaTime, const AircraftState& currentState) const
     {
-        TargetState nextState(currentState);
+        AircraftState nextState(currentState);
         {
-            //eular transform
-            //earth axes mention
-            //orientation follows trajectory - bank -max angle ratio
+			//peek update
+			//nextState.x = interpolate;
         }
         return nextState;
     }

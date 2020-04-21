@@ -1,19 +1,19 @@
-add_library(scripted6DoFTarget STATIC)
+add_library(scripted6DoFEntity STATIC)
 
-target_include_directories(scripted6DoFTarget
+target_include_directories(scripted6DoFEntity
 PUBLIC
   ../../include
 )
 
-target_sources(scripted6DoFTarget
+target_sources(scripted6DoFEntity
 PRIVATE
   cruise.h
   cruise.cpp
   maneuover.h
-  target_state.cpp
-  target_state.h
+  aircraft_state.cpp
+  aircraft_state.h
 )
 
-target_link_libraries(scripted6DoFTarget
+target_link_libraries(scripted6DoFEntity
   geometry3d
 )

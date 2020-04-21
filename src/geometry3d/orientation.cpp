@@ -27,6 +27,15 @@ namespace Geometry3D
 		return data[2];
 	}
 
+	Orientation Orientation::inReferenceFrame(const Orientation& ref) const
+	{
+		Quoternion qFrame(ref);
+		Quoternion q(*this);
+		Quoternion qPrime = q*(qPrime*q.inverse());
+
+		return Orientation(qPrime.pitch(), qPrime.roll(), qPrime.yaw());
+	}
+
 	Orientation interpolate(const Orientation& start, const Orientation & final, double frac)
 	{
 		Quoternion q = slerp(Quoternion(start), Quoternion(final), frac);

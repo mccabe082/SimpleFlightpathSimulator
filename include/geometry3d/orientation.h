@@ -12,6 +12,7 @@ namespace Geometry3D
 		double roll() const;
 		double yaw() const;
 
+		Orientation inReferenceFrame(const Orientation& ref) const;
 		friend Orientation interpolate(const Orientation&, const Orientation&, double frac);
 
 	private:

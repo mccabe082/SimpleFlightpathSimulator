@@ -9,9 +9,9 @@ using namespace Geometry3D;
 
 namespace Scripted6DoFFlight
 {
-    class TargetState : public Position, public Orientation, public Velocity, public Rotation
+    class AircraftState : public Position, public Orientation, public Velocity, public Rotation
     {
     public:
-		  TargetState(Position p, Orientation o, Velocity v, Rotation r);
+        AircraftState(Position p, Orientation o, Velocity v, Rotation r);
     };
 }

@@ -5,17 +5,17 @@ namespace Geometry3D
 {
 double Position::x() const
 {
-    return data.at(0);
+    return data[0];
 }
 
 double Position::y() const
 {
-    return data.at(1);
+    return data[1];
 }
 
 double Position::z() const
 {
-    return data.at(2);
+    return data[2];
 }
 
 double Position::altitude() const 

@@ -4,15 +4,17 @@
 
 namespace Scripted6DoFFlight
 {
-    class TargetState;
+	class AircraftState;
 
-    class Cruise : Maneuover
-    {
-    public:
-        Cruise(const TargetState& initialState);
-        TargetState update(double deltaTime, const TargetState& currentState) const override;
-    private:
-        double targetHeading;
-        Cruise() = delete;
-    };
+	class Cruise : Maneuover
+	{
+	public:
+		//Cruise(const AircraftState& initialState, const Orientation& offset, double tTransition);
+		AircraftState update(double deltaTime, const AircraftState& currentState) const override;
+	private:
+	//	Velocity targetV;
+	//	Orientation targetO;
+		Cruise() = delete;
+		double transitionTimeRemaining;
+	};
 }
