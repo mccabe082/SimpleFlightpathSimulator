@@ -26,13 +26,10 @@ namespace Scripted6DoFFlight
 
 	EnterCruise::EnterCruise(
 		const AircraftState& enteringCondition,
-		double transitionTime,
 		double targetSpeed,
 		double targetAzimouth,
 		const Orientation& offsetDuringManueover
-	) :
-		remainingTransitionTime(transitionTime),
-		targetVel(
+	) : targetVel(
 			targetSpeed* std::cos(targetAzimouth),
 			targetSpeed* std::sin(targetAzimouth),
 			0. // no change in altitude
@@ -43,22 +40,27 @@ namespace Scripted6DoFFlight
 			targetAzimouth
 		)
 	{
+
+
 		targetOrient = offsetDuringManueover.inReferenceFrame(targetOrient);
 	}
 
-	// Todo: avoid creating new TargetState Objects evey call
 	AircraftState EnterCruise::update(double tStep, double manueoverTimeRemaining, const AircraftState& currentState)
 	{
-		double fMmanueover = tStep / manueoverTimeRemaining;
+		double fCompletion = tStep / manueoverTimeRemaining;
 
-		// calculate updated orientation and velocity (these are controled to converge on target)
-		Orientation orientationNew = Orientation::interpolate(currentState, targetOrient, fMmanueover);
-		Velocity velocityNew = Velocity::interpolate(currentState, targetVel, fMmanueover);
+		auto orientationNew = Orientation::interpolate(currentState, targetOrient, fCompletion);
 
-		// calculate updated position and rotation
-		Velocity V_tStep = Velocity::average(velocityNew, currentState);
-		Position positionNew = currentState.Position::update(V_tStep, tStep);
-		Rotation rotationNew = Rotation(0., 0., 0.);
+
+		auto velocityNew = Velocity::interpolate(currentState, targetVel, fCompletion);
+
+
+		auto V_tStep = Velocity::average(velocityNew, currentState);
+		auto positionNew = currentState.Position::update(V_tStep, tStep);
+
+
+		auto rotationNew = Rotation::from(currentState, orientationNew, tStep);
+
 
 		return AircraftState(
 			positionNew,

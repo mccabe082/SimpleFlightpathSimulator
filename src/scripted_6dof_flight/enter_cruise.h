@@ -11,7 +11,6 @@ namespace Scripted6DoFFlight
 	public:
 		EnterCruise(
 			const AircraftState& enteringCondition, 
-			double transitionTime,
 			double targetSpeed,
 			double targetAzimouth,
 			const Orientation& offsetDuringManueover = Orientation(0.,0.,0.)
