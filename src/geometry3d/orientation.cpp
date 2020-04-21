@@ -13,11 +13,6 @@ namespace Geometry3D
 		: data(other.data)
 	{}
 
-	void Orientation::set(const Orientation& o)
-	{
-		data = o.data;
-	}
-
 	double Orientation::pitch() const
 	{
 		return data[0];
@@ -48,7 +43,7 @@ namespace Geometry3D
 		return Orientation(q.pitch(), q.roll(), q.yaw());
 	}
 
-	Orientation Orientation::update(const Rotation& Vr, double time)
+	Orientation Orientation::update(const Rotation& Vr, double time) const
 	{
 		return Orientation(
 			Vr.pitchRate() * time + pitch(),

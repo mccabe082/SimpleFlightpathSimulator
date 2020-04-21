@@ -57,7 +57,7 @@ namespace Scripted6DoFFlight
 
 		// calculate updated position and rotation
 		Velocity V_tStep = Velocity::average(velocityNew, currentState);
-		Position positionNew = currentState.update(V_tStep, tStep);
+		Position positionNew = currentState.Position::update(V_tStep, tStep);
 		Rotation rotationNew = Rotation(0., 0., 0.);
 
 		return AircraftState(

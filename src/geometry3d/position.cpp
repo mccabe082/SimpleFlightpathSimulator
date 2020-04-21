@@ -8,11 +8,6 @@ namespace Geometry3D
 		: data(std::array<double, 3>{x, y, x})
 	{}
 
-	void Position::set(const Position& p)
-	{
-		data = p.data;
-	}
-
 	double Position::x() const
 	{
 		return data[0];
@@ -42,7 +37,7 @@ namespace Geometry3D
 		);
 	}
 
-	Position Position::update(const Velocity& v, double time)
+	Position Position::update(const Velocity& v, double time) const
 	{
 		return Position(
 			v.Vx() * time + x(),

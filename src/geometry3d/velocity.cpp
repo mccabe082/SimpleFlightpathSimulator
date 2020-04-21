@@ -10,11 +10,6 @@ namespace Geometry3D
 		: data{ x,y,z }
 	{}
 
-	void Velocity::set(const Velocity& v)
-	{
-		data = v.data;
-	}
-
 	double Velocity::Vx() const
 	{
 		return data.at(0);

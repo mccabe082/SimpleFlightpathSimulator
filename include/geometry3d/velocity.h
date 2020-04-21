@@ -9,7 +9,6 @@ namespace Geometry3D
 	{
 	public:
 		Velocity(double x, double y, double z);
-		void set(const Velocity& v);
 
 		double Vx() const;
 		double Vy() const;

@@ -4,10 +4,6 @@
 
 namespace Geometry3D
 {
-	void Rotation::set(const Rotation& p)
-	{
-		data = p.data;
-	}
 
 	double Rotation::pitchRate() const
 	{

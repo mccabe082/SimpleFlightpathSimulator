@@ -10,7 +10,6 @@ namespace Geometry3D
 	public:
 		Orientation(double pitch, double roll, double yaw);
 		Orientation(const Orientation& other);
-		void set(const Orientation& o);
 
 		double pitch() const;
 		double roll() const;
@@ -18,7 +17,7 @@ namespace Geometry3D
 
 		Orientation inReferenceFrame(const Orientation& ref) const;
 		static Orientation interpolate(const Orientation& start, const Orientation & final, double frac);
-		Orientation update(const Rotation& Vr, double time);
+		Orientation update(const Rotation& Vr, double time) const;
 
 	private:
 		std::array<double, 3> data;
