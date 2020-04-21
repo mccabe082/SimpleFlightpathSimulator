@@ -1,5 +1,6 @@
 
 #include "geometry3d/orientation.h"
+#include "geometry3d/rotation.h"
 #include "quaternion.h"
 
 namespace Geometry3D
@@ -40,6 +41,15 @@ namespace Geometry3D
 	{
 		Quoternion q = Quoternion::slerp(Quoternion(start), Quoternion(final), frac);
 		return Orientation(q.pitch(), q.roll(), q.yaw());
+	}
+
+	Orientation Orientation::update(const Rotation& Vr, double time)
+	{
+		return Orientation(
+			Vr.pitchRate() * time + pitch(),
+			Vr.rollRate() * time + roll(),
+			Vr.yawRate() * time + yaw()
+		);
 	}
 
 } // namespace Geometry3D

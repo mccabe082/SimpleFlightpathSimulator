@@ -58,7 +58,7 @@ namespace Geometry3D
 	{
 		double tRecip = 1. / time;
 		return Velocity(
-			tRecip*(pFinal.x() - pStart.x()),
+			tRecip * (pFinal.x() - pStart.x()),
 			tRecip * (pFinal.y() - pStart.y()),
 			tRecip * (pFinal.z() - pStart.z())
 		);

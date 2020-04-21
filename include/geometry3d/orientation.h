@@ -3,6 +3,8 @@
 
 namespace Geometry3D
 {
+	class Rotation;
+
 	class Orientation
 	{
 	public:
@@ -15,6 +17,7 @@ namespace Geometry3D
 
 		Orientation inReferenceFrame(const Orientation& ref) const;
 		static Orientation interpolate(const Orientation& start, const Orientation & final, double frac);
+		Orientation update(const Rotation& Vr, double time);
 
 	private:
 		std::array<double, 3> data;

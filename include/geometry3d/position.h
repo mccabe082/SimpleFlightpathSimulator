@@ -14,7 +14,7 @@ namespace Geometry3D
 		double z() const; // upwards [m]
 		double altitude() const;
 		static Position interpolate(const Position& start, const Position & final, double frac);
-		static Position from(const Velocity& v, double time);
+		Position update(const Velocity& v, double time);
 	private:
 		std::array<double, 3> data;
 	};

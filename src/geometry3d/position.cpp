@@ -37,12 +37,12 @@ namespace Geometry3D
 		);
 	}
 
-	Position Position::from(const Velocity& v, double time)
+	Position Position::update(const Velocity& v, double time)
 	{
 		return Position(
-			v.Vx() * time,
-			v.Vy() * time,
-			v.Vz() * time
+			v.Vx() * time + x(),
+			v.Vy() * time + y(),
+			v.Vz() * time + z()
 		);
 	}
 
