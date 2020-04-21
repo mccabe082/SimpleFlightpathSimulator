@@ -6,18 +6,18 @@ namespace Scripted6DoFFlight
 {
 	class AircraftState;
 
-	class EnterCruise : Maneuover
+	class Cruise : Maneuover
 	{
 	public:
-		EnterCruise(
+		Cruise(
 			const AircraftState& enteringCondition, 
 			double transitionTime,
 			double targetSpeed,
 			double targetAzimouth,
 			const Orientation& offsetDuringManueover = Orientation(0.,0.,0.)
 		);
-		AircraftState update(double deltaT, const AircraftState& currentState) override;
-		bool EnterCruise::hasTransitioned() const;
+		AircraftState update(double timeStepOvermanueoverTimeRemaining, const AircraftState& currentState) override;
+		bool Cruise::completed() const;
 
 	private:
 		
@@ -25,6 +25,6 @@ namespace Scripted6DoFFlight
 		Velocity targetVel;	
 
 		double remainingTransitionTime;
-		EnterCruise() = delete;
+		Cruise() = delete;
 	};
 }

@@ -3,16 +3,20 @@
 
 namespace Geometry3D
 {
+	class Velocity;
 
-class Position
-{
-public:
-    double x() const; // northward [m]
-    double y() const; // eastward [m]
-    double z() const; // upwards [m]
-    double altitude() const;
+	class Position
+	{
+	public:
+		Position(double x, double y, double z);
+		double x() const; // northward [m]
+		double y() const; // eastward [m]
+		double z() const; // upwards [m]
+		double altitude() const;
+		static Position interpolate(const Position& start, const Position & final, double frac);
+		static Position from(const Velocity& v, double time);
+	private:
+		std::array<double, 3> data;
+	};
 
-private:
-    std::array<double, 3> data;
-};
 } // namespace Geometry3D

@@ -1,4 +1,5 @@
 #include "geometry3d/orientation.h"
+#include "geometry3d/rotation.h"
 #include <numeric>
 #include <limits>
 #include "quaternion.h"
@@ -10,11 +11,6 @@ namespace
 	bool areEqual(double a, double b)
 	{
 		return abs(a - b) <= std::numeric_limits<double>::epsilon();
-	}
-
-	double clamp(double& val, double min, double max)
-	{
-		return val<min ? min : val>max ? max : val;
 	}
 
 	Geometry3D::Quoternion normalise(const Geometry3D::Quoternion& q)
@@ -49,6 +45,10 @@ namespace Geometry3D
 
 	Quoternion::Quoternion(const Orientation& o)
 		: Quoternion(o.pitch(), o.roll(), o.yaw())
+	{}
+
+	Quoternion::Quoternion(const Rotation& r)
+		: Quoternion(r.pitchRate(), r.rollRate(), r.yawRate())
 	{}
 
 	double Quoternion::pitch() const
@@ -185,7 +185,7 @@ namespace Geometry3D
 		return q * v;
 	}
 
-	Quoternion slerp(const Quoternion& qStart, const Quoternion& qEnd, double frac)
+	Quoternion Quoternion::slerp(const Quoternion& qStart, const Quoternion& qEnd, double frac)
 	{
 		// https://en.wikipedia.org/wiki/Slerp
 

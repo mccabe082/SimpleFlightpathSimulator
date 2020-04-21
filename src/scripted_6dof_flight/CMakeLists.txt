@@ -7,8 +7,8 @@ PUBLIC
 
 target_sources(scripted6DoFEntity
 PRIVATE
-  cruise.h
-  cruise.cpp
+  enter_cruise.h
+  enter_cruise.cpp
   maneuover.h
   aircraft_state.cpp
   aircraft_state.h

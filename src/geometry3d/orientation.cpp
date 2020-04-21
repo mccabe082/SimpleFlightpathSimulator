@@ -36,9 +36,9 @@ namespace Geometry3D
 		return Orientation(qPrime.pitch(), qPrime.roll(), qPrime.yaw());
 	}
 
-	Orientation interpolate(const Orientation& start, const Orientation & final, double frac)
+	Orientation Orientation::interpolate(const Orientation& start, const Orientation & final, double frac)
 	{
-		Quoternion q = slerp(Quoternion(start), Quoternion(final), frac);
+		Quoternion q = Quoternion::slerp(Quoternion(start), Quoternion(final), frac);
 		return Orientation(q.pitch(), q.roll(), q.yaw());
 	}
 

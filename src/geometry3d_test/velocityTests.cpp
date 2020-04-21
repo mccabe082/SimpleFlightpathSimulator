@@ -44,4 +44,14 @@ TEST_CASE( "Speeds are calulated correctly", "[velocity]" ) {
         Geometry3D::Velocity boundNorthWest(-1.,1.,0.);
         REQUIRE(boundNorthWest.heading() == Approx(bearingNW) );
     }
+
+	SECTION("ground vector calulation is correct") {
+		Geometry3D::Velocity v(1., 1., 1.);
+		Geometry3D::Velocity vGroundExpected(1., 1., 0.);
+		Geometry3D::Velocity vGroundEActual = v.groundVector();
+
+		REQUIRE(v.Vx() == Approx(v.Vx()));
+		REQUIRE(v.Vy() == Approx(v.Vy()));
+		REQUIRE(v.Vz() == Approx(v.Vz()));
+	}
 }

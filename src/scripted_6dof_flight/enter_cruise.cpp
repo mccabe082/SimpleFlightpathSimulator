@@ -1,4 +1,4 @@
-#include "cruise.h"
+#include "enter_cruise.h"
 #include "aircraft_state.h"
 
 #include <geometry3d/position.h>
@@ -24,7 +24,7 @@ namespace
 namespace Scripted6DoFFlight
 {
 
-	EnterCruise::EnterCruise(
+	Cruise::Cruise(
 		const AircraftState& enteringCondition,
 		double transitionTime,
 		double targetSpeed,
@@ -47,20 +47,21 @@ namespace Scripted6DoFFlight
 	}
 
 	// Todo: avoid creating new TargetState Objects evey call
-	AircraftState EnterCruise::update(double deltaT, const AircraftState& currentState)
+	AircraftState Cruise::update(double timeStepOvermanueoverTimeRemaining, const AircraftState& currentState)
 	{
 		AircraftState nextState(currentState);
 		{
-			//peek update
-			//nextState.x = interpolate;
+			//nextState = Orientation::interpolate(currentState, targetOrient, timeStepOvermanueoverTimeRemaining);
+			//nextState = Velocity::interpolate(currentState, targetOrient, timeStepOvermanueoverTimeRemaining);
+			//nectstae = Position()
+
 		}
-		remainingTransitionTime 
 		return nextState;
 	}
 
-	bool EnterCruise::hasTransitioned() const
+	bool Cruise::completed() const
 	{
-		return areEqual(0., remainingTransitionTime)
+		return areEqual(0., remainingTransitionTime);
 	}
 
 }
