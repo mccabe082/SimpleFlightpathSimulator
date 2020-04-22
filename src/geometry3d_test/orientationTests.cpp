@@ -1,5 +1,6 @@
 #include "catch.hpp"
 #include <geometry3d/orientation.h>
+#include <geometry3d/rotation.h>
 #include <cmath>
 
 namespace
@@ -36,4 +37,18 @@ TEST_CASE("Orientation interpolation is calulated correctly", "[orientation]") {
 		REQUIRE(middleActual.roll() == Approx(middleExpected.roll()));
 		REQUIRE(middleActual.yaw() == Approx(middleExpected.yaw()));
 	}
+
+	SECTION("rotational velocity calculation is correct") {
+
+		Orientation before(0., 0., 0.);
+		Rotation omega(0., pi, 0.);
+		Orientation afterExpected(0., pi/2., 0.);
+		Orientation afterActual = before.update(omega, 1.0);
+
+		REQUIRE(before.pitch() == Approx(afterActual.pitch()));
+		REQUIRE(before.roll() == Approx(afterActual.roll()));
+		REQUIRE(before.yaw() == Approx(afterActual.yaw()));
+	}
+
+	Orientation  const;
 }

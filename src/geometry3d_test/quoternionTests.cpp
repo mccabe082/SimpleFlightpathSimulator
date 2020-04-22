@@ -13,20 +13,18 @@ namespace
 TEST_CASE("Quoternion arithmetic is correct", "[quoternion]") {
 
 	SECTION("check eular angle to quaternion transform") {
+		
+		double pitch = 0.;
+		double roll = 0.;
+		double yaw = 0.;
 
-		{
-			double pitch = 0.;
-			double roll = 0.;
-			double yaw = 0.;
+		//orientation vector points equally in all positive x,y,z directions [1/|q|, 1/|q|, 1/|q|]
+		Quoternion qOrientation(pitch, roll, yaw);
 
-			//orientation vector points equally in all positive x,y,z directions [1/|q|, 1/|q|, 1/|q|]
-			Quoternion qOrientation(pitch, roll, yaw);
+		//associated quoternion is orthogonal so must point in the "extra" orthogonal direction
+		Quoternion qExpected(1., 0., 0., 0.);
 
-			//associated quoternion is orthogonal so must point in the "extra" orthogonal direction
-			Quoternion qExpected(1., 0., 0., 0.);
-
-			REQUIRE(qOrientation == qExpected);
-		}
+		REQUIRE(qOrientation == qExpected);
 	}
 
 	SECTION("check quaternion to eular angle transform") {

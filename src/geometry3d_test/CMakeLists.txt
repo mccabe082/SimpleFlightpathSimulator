@@ -4,6 +4,7 @@ target_sources(geometry3dTest
 PRIVATE
   orientationTests.cpp
   quoternionTests.cpp
+  rotationTests.cpp
   velocityTests.cpp
 )
 
