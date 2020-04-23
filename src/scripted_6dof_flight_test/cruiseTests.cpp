@@ -1,5 +1,6 @@
+#define CATCH_CONFIG_MAIN
 #include "catch.hpp"
-#include <geometry3d/orientation.h>
+#include "scripted_6dof_flight/enter_cruise.h"
 #include <cmath>
 
 namespace
@@ -8,10 +9,21 @@ namespace
 }
 
 using namespace Geometry3D;
+using namespace Scripted6DoFFlight;
 
-TEST_CASE( "Orientation interpolation is calulated correctly", "[orientation]" ) {
+TEST_CASE("aircraft smoothly enters a cruise", "[enter_cruise]" ) {
 
-    SECTION( "orientation components are correctly interpolated" ) {
+    SECTION( "transition from climb to level flight" ) {
         
     }
+
+    SECTION( "transition from turn to level flight" ) {
+        
+    }
+
+    SECTION( "forward to backward cruise" ) {
+        
+    }
+
+    
 }

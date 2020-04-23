@@ -54,9 +54,7 @@ namespace Scripted6DoFFlight
 		auto V_tStep = Velocity::average(velocityNew, currentState);
 		auto positionNew = currentState.Position::update(V_tStep, tStep);
 
-
 		auto rotationNew = Rotation::from(currentState, orientationNew, tStep);
-
 
 		return AircraftState(
 			positionNew,
