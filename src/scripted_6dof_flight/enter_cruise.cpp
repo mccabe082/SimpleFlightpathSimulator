@@ -40,8 +40,6 @@ namespace Scripted6DoFFlight
 			targetAzimouth
 		)
 	{
-
-
 		targetOrient = offsetDuringManueover.inReferenceFrame(targetOrient);
 	}
 
@@ -51,9 +49,7 @@ namespace Scripted6DoFFlight
 
 		auto orientationNew = Orientation::interpolate(currentState, targetOrient, fCompletion);
 
-
 		auto velocityNew = Velocity::interpolate(currentState, targetVel, fCompletion);
-
 
 		auto V_tStep = Velocity::average(velocityNew, currentState);
 		auto positionNew = currentState.Position::update(V_tStep, tStep);

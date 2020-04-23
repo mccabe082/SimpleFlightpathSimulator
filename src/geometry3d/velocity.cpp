@@ -12,17 +12,17 @@ namespace Geometry3D
 
 	double Velocity::Vx() const
 	{
-		return data.at(0);
+		return data[0];
 	}
 
 	double Velocity::Vy() const
 	{
-		return data.at(1);
+		return data[1];
 	}
 
 	double Velocity::Vz() const
 	{
-		return data.at(2);
+		return data[2];
 	}
 
 	double Velocity::heading() const

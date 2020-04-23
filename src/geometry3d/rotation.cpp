@@ -11,17 +11,17 @@ namespace Geometry3D
 
 	double Rotation::pitchRate() const
 	{
-		return data.at(0);
+		return data[0];
 	}
 
 	double Rotation::rollRate() const
 	{
-		return data.at(1);
+		return data[1];
 	}
 
 	double Rotation::yawRate() const
 	{
-		return data.at(2);
+		return data[2];
 	}
 
 	Rotation Rotation::interpolate(const Rotation& start, const Rotation & final, double frac)
