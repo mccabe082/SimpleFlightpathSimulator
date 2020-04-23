@@ -1,2 +1,2 @@
-add_subdirectory(odeintTests)
-add_subdirectory(rapidxmlTests)
+add_subdirectory(odeint_test)
+add_subdirectory(rapidxml_test)

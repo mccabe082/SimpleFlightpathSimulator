@@ -1,13 +1,13 @@
-add_executable(simpleFlightPathSimulatorTests)
+add_executable(simpleFlightPathSimulatorTest)
 
-target_sources(simpleFlightPathSimulatorTests
+target_sources(simpleFlightPathSimulatorTest
 PRIVATE
   placeholder.cpp
 )
 
-target_link_libraries(simpleFlightPathSimulatorTests
+target_link_libraries(simpleFlightPathSimulatorTest
 PRIVATE
   ::Catch2
 )
 
-add_test("odeint_learning_tests" ${CMAKE_BINARY_DIR}/test/simpleFlightPathSimulatorTests.exe)
+add_test("odeint_learning_tests" ${CMAKE_BINARY_DIR}/test/simpleFlightPathSimulatorTest.exe)
