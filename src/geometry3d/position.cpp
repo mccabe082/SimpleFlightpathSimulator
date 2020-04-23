@@ -5,7 +5,7 @@
 namespace Geometry3D
 {
 	Position::Position(double x, double y, double z)
-		: data(std::array<double, 3>{x, y, x})
+		: data(std::array<double, 3>{x, y, z})
 	{}
 
 	double Position::x() const
