@@ -6,7 +6,7 @@
 
 namespace
 {
-    const double pi = 3.14;
+    const double pi = acos(-1.);
     const double g = 9.81; // acceleration due to gravity [m/s/s]
 	const double FIVE_PERCENT = 0.05;
 }

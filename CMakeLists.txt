@@ -21,5 +21,6 @@ find_package(Microsoft.GSL QUIET CONFIG PATHS ../GSL/build)
 ENABLE_TESTING()
 include(CTest)
 add_subdirectory(src)
+add_subdirectory(external)
 add_subdirectory(test)
 #####################################

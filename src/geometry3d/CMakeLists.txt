@@ -13,6 +13,8 @@ PRIVATE
   ../../include/geometry3d/velocity.h
   ./orientation.cpp
   ./position.cpp
+  ./quaternion.cpp
+  ./quaternion.h
   ./rotation.cpp
   ./velocity.cpp
 )
