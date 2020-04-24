@@ -13,6 +13,7 @@ namespace Geometry3D
 		double x() const; // northward [m]
 		double y() const; // eastward [m]
 		double z() const; // upwards [m]
+
 		double altitude() const;
 		static Position interpolate(const Position& start, const Position & final, double frac);
 		Position update(const Velocity& v, double time) const;

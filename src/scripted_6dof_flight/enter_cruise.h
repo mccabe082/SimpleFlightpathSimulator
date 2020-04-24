@@ -16,7 +16,7 @@ namespace Scripted6DoFFlight
 			const Orientation& offsetDuringManueover = Orientation(0.,0.,0.)
 		);
 		AircraftState update(double tStep, double manueoverTimeRemaining, const AircraftState& currentState) override;
-		bool EnterCruise::completed() const;
+		bool completed() const;
 
 	private:
 		

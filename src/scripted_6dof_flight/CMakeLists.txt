@@ -7,11 +7,15 @@ PUBLIC
 
 target_sources(scripted6DoFEntity
 PRIVATE
-  enter_cruise.h
-  enter_cruise.cpp
-  maneuover.h
   aircraft_state.cpp
   aircraft_state.h
+  enter_cruise.h
+  enter_cruise.cpp
+  follow_waypoints.cpp
+  follow_waypoints.h
+  maneuover.h
+  waypoint.cpp
+  waypoint.h
 )
 
 target_link_libraries(scripted6DoFEntity
