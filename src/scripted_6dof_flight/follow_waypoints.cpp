@@ -9,7 +9,7 @@ namespace Scripted6DoFFlight
 		: flightpath(qWaypints)
 	{}
 
-	AircraftState FollowWaypoints::update(double tStep, double manueoverTimeRemaining, const AircraftState& currentState)
+	AircraftState FollowWaypoints::update(double tStep, double& manueoverTimeRemaining, const AircraftState& currentState)
 	{
 		return currentState;
 	}
