@@ -2,13 +2,12 @@
 
 #include "maneuover.h"
 #include "waypoint.h"
-#include <queue>
+#include "waypoint_queue.h"
 
 namespace Scripted6DoFFlight
 {
 	class AircraftState;
 	class Waypoint;
-	using WaypointQueue = std::queue<Waypoint>;
 
 	class FollowWaypoints : Maneuover
 	{

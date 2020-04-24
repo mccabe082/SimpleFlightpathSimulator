@@ -10,17 +10,25 @@ namespace Scripted6DoFFlight
 	class Velocity;
 
 	class Waypoint
-	{};
-
-	class VelocityWaypoint : Waypoint
 	{
 	public:
-		VelocityWaypoint(const Position& p, const Orientation& o, double timeToArrival);
+		Waypoint(double arrivalTime);
+		Waypoint(const Waypoint&) = default;
+		virtual ~Waypoint() = default;
+	private:
+		double timeToArrival;
+		Waypoint() = delete;
+	};
+
+	class FranksWaypoint : Waypoint
+	{
+	public:
+		FranksWaypoint(const Position& p, double timeToArrival, const Orientation& o);
 	private:
 		Position targetPos;
 		Orientation targetOrient;
-		double timeToArrival;
-		VelocityWaypoint() = delete;
+		FranksWaypoint() = delete;
+
 	};
 
 	// https://www.skybrary.aero/index.php/Waypoint

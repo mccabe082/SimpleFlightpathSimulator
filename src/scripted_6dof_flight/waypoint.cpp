@@ -2,7 +2,11 @@
 
 namespace Scripted6DoFFlight
 {
-	VelocityWaypoint::VelocityWaypoint(const Position& p, const Orientation& o, double arrivalTime)
-	: targetPos(p), targetOrient(o), timeToArrival(arrivalTime)
+
+	Waypoint::Waypoint(double arrivalTime) : timeToArrival(arrivalTime)
+	{}
+
+	FranksWaypoint::FranksWaypoint(const Position& p, double arrivalTime, const Orientation& o)
+	: targetPos(p), Waypoint(arrivalTime), targetOrient(o)
 	{}
 }

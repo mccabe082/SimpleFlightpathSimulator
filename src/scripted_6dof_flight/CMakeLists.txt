@@ -16,8 +16,15 @@ PRIVATE
   maneuover.h
   waypoint.cpp
   waypoint.h
+  waypoint_queue.cpp
+  waypoint_queue.h
 )
 
 target_link_libraries(scripted6DoFEntity
   geometry3d
+)
+
+message(AUTHOR_WARNING "Need to reconsider - look at target_compile_features and target_compile_options")
+set_target_properties(scripted6DoFEntity PROPERTIES
+  CXX_STANDARD 17
 )
