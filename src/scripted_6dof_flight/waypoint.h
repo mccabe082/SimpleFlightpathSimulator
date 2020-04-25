@@ -12,7 +12,7 @@ namespace Scripted6DoFFlight
 	class Waypoint
 	{
 	public:
-		Waypoint(const Position& p, double timeToArrival, const Orientation& o);;
+		Waypoint(const Position& p, double arrivalTime, const Orientation& o);;
 		Waypoint(const Waypoint&) = default;
 		virtual ~Waypoint() = default;
 		double arrivalTime() const;
@@ -23,7 +23,7 @@ namespace Scripted6DoFFlight
 	private:
 		Position flythroughPosition;
 		Orientation flythroughOrientation;
-		double timeToArrival;
+		double timeOnArrival;
 		Waypoint() = delete;
 	};
 

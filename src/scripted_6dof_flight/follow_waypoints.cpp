@@ -12,28 +12,32 @@ namespace Scripted6DoFFlight
 		: course(qWaypints)
 	{}
 
-	AircraftState FollowWaypoints::update(double tStep, const AircraftState& currentState) const
+	AircraftState FollowWaypoints::update(double tStep, double t0, const AircraftState& currentState) const
 	{
 
-		if (course.waypointsRemaining())
+		if (course.waypointsRemaining(t0))
 		{
-			Waypoint wp = course.currentWaypoint().value();
+			auto nextWaypoint = course.nextWaypoint(t0).value();
 
-			double tWaypoint = wp.arrivalTime();
-
-			if (tWaypoint < tStep)
+			if (nextWaypoint.arrivalTime() > tStep+t0)
 			{
-				Position newPos = currentState.approach(wp.position(), tStep);
-				Geometry3D::Velocity newVel = Geometry3D::Velocity::from(currentState, newPos, tStep);
-			}
+				Position newX = currentState.approach(nextWaypoint.position(), tStep);
+				Geometry3D::Velocity newXDot = Geometry3D::Velocity::from(currentState, newX, tStep);
 
-			return currentState;
+				Orientation newTheta = currentState.approach(nextWaypoint.orientation(), tStep);
+				Geometry3D::Rotation newThetaDot = Geometry3D::Rotation::from(currentState, newTheta, tStep);
+
+				return AircraftState(newX, newTheta, newXDot, newThetaDot);
+			}
+			else
+			{
+				// 
+				AircraftState atWaypoint = FollowWaypoints::update(nextWaypoint.arrivalTime()-t0, t0, currentState); //don't think we can just jump?!
+				return FollowWaypoints::update(tStep-nextWaypoint.arrivalTime(), nextWaypoint.arrivalTime(), atWaypoint);
+			}
 		}
-		else
-		{
-			//AircraftState update(double tStep, /*double manueoverTimeRemaining,*/ const AircraftState & currentState) const override;
-			return currentState;
-		}
+
+		return currentState;
 	}
 
 	bool FollowWaypoints::completed() const

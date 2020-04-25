@@ -8,7 +8,7 @@ A desktop application for scripting aircraft motion in three dimensions.
 ## The Waypoint
 ![Waypoint Illustration 1](./docs/artwork/Waypoint-Illustrations/Waypoint-Illustration1.PNG)
 A **Waypoint** has;
-- a **Fly-through Time**
+- a **Fly-through Time** (time at which the aircraft flies through the waypoint)
 - a **3D Position**
   - x, North (Relative)
   - y, East (Relative)

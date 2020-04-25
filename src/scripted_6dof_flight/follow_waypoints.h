@@ -16,7 +16,7 @@ namespace Scripted6DoFFlight
 			const AircraftState& enteringCondition,
 			const WaypointQueue& qWaypints
 		);
-		AircraftState update(double tStep, const AircraftState& currentState) const override;
+		AircraftState update(double tStep, double t0, const AircraftState& currentState) const override;
 		bool completed() const;
 
 	private:

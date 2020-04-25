@@ -6,23 +6,23 @@ namespace Scripted6DoFFlight
 
 	Waypoint::Waypoint(const Position& p, double arrivalTime, const Orientation& o) :
 		flythroughPosition(p),
-		timeToArrival(arrivalTime),
+		timeOnArrival(arrivalTime),
 		flythroughOrientation(o)
 	{}
 
 	double Waypoint::arrivalTime() const
 	{
-		return timeToArrival;
+		return timeOnArrival;
 	}
 
 	void Waypoint::updateArrivalTime(double tNew)
 	{
-		timeToArrival = tNew;
+		timeOnArrival = tNew;
 	}
 
 	bool Waypoint::passed() const
 	{
-		return timeToArrival < std::numeric_limits<double>::epsilon();
+		return timeOnArrival < std::numeric_limits<double>::epsilon();
 	}
 
 	Position Waypoint::position() const

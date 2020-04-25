@@ -1,5 +1,5 @@
 #pragma once
-#include <queue>
+#include <vector>
 #include <optional>
 #include "waypoint.h"
 
@@ -10,13 +10,12 @@ namespace Scripted6DoFFlight
 	public:
 		void addWaypoint(const Waypoint& newWP);
 
-		std::optional<Waypoint> currentWaypoint() const;
-		//std::optional<Waypoint> nextWaypoint();
-		//std::optional<Waypoint> getWaypoint(unsigned i);
-		unsigned waypointsRemaining() const;
+		std::optional<Waypoint> nextWaypoint(double simTime) const;
+
+		unsigned waypointsRemaining(double simTime) const;
 
 	private:
-		std::queue<Waypoint> _data;
+		std::vector<Waypoint> _data;
 	};
 
 }
