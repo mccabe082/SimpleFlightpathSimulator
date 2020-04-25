@@ -19,21 +19,23 @@ namespace Scripted6DoFFlight
 		{
 			auto nextWaypoint = course.nextWaypoint(t0).value();
 
-			if (nextWaypoint.arrivalTime() >= tStep+t0)
+			if (nextWaypoint.arrivalTime() >= tStep + t0)
 			{
-				Position newX = currentState.approach(nextWaypoint.position(), tStep);
-				Geometry3D::Velocity newXDot = Geometry3D::Velocity::from(currentState, newX, tStep);
+				double ratio = tStep / (nextWaypoint.arrivalTime() - t0);
 
-				Orientation newTheta = currentState.approach(nextWaypoint.orientation(), tStep);
-				Geometry3D::Rotation newThetaDot = Geometry3D::Rotation::from(currentState, newTheta, tStep);
+				Position newX = currentState.approach(nextWaypoint.position(), ratio);
+				Geometry3D::Velocity newXDot = Geometry3D::Velocity::from(currentState, newX, ratio);
+
+				Orientation newTheta = currentState.approach(nextWaypoint.orientation(), ratio);
+				Geometry3D::Rotation newThetaDot = Geometry3D::Rotation::from(currentState, newTheta, ratio);
 
 				return AircraftState(newX, newTheta, newXDot, newThetaDot);
 			}
 			else
 			{
 				// 
-				AircraftState atWaypoint = FollowWaypoints::update(nextWaypoint.arrivalTime()-t0, t0, currentState); //don't think we can just jump?!
-				return FollowWaypoints::update(tStep-nextWaypoint.arrivalTime(), nextWaypoint.arrivalTime(), atWaypoint);
+				AircraftState atWaypoint = FollowWaypoints::update(nextWaypoint.arrivalTime() - t0, t0, currentState); //don't think we can just jump?!
+				return FollowWaypoints::update(tStep - nextWaypoint.arrivalTime(), nextWaypoint.arrivalTime(), atWaypoint);
 			}
 		}
 

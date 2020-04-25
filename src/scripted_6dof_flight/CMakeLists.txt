@@ -34,6 +34,8 @@ PUBLIC
 target_compile_options(scripted6DoFFlight
 PUBLIC
   "-std:c++17"
+  "-fp:strict"
+  "-fp:except"
 )
 
 set_target_properties(scripted6DoFFlight PROPERTIES
