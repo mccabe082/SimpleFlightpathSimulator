@@ -12,12 +12,10 @@ namespace Scripted6DoFFlight
 	class Waypoint
 	{
 	public:
-		Waypoint(const Position& p, double arrivalTime, const Orientation& o);;
+		Waypoint(const Position& p, const Orientation& o, double arrivalTime);
 		Waypoint(const Waypoint&) = default;
 		virtual ~Waypoint() = default;
 		double arrivalTime() const;
-		void updateArrivalTime(double tNew);
-		bool passed() const;
 		Position position() const;
 		Orientation orientation() const;
 	private:

@@ -17,7 +17,7 @@ namespace Scripted6DoFFlight
 		const auto& next = std::find_if(_data.begin(), _data.end(), [simTime](const Waypoint& wp) {
 			return wp.arrivalTime() > simTime + std::numeric_limits<double>::epsilon();
 			});
-		return next == _data.end() ? std::optional<Waypoint>(*next) : std::nullopt;
+		return next != _data.end() ? std::optional<Waypoint>(*next) : std::nullopt;
 	}
 
 	unsigned WaypointQueue::waypointsRemaining(double simTime) const
