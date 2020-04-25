@@ -26,13 +26,14 @@ namespace Scripted6DoFFlight
 				Position newPos = currentState.approach(wp.position(), tStep);
 				Geometry3D::Velocity newVel = Geometry3D::Velocity::from(currentState, newPos, tStep);
 			}
+
+			return currentState;
 		}
 		else
 		{
-
+			//AircraftState update(double tStep, /*double manueoverTimeRemaining,*/ const AircraftState & currentState) const override;
+			return currentState;
 		}
-
-		return currentState;
 	}
 
 	bool FollowWaypoints::completed() const
