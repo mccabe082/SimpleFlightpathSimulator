@@ -15,8 +15,8 @@ namespace Scripted6DoFFlight
 			double targetAzimouth,
 			const Orientation& offsetDuringManueover = Orientation(0.,0.,0.)
 		);
-		AircraftState update(double tStep, double manueoverTimeRemaining, const AircraftState& currentState) override;
-		bool EnterCruise::completed() const;
+		AircraftState update(double tStep, double t0, const AircraftState& currentState) const override;
+		bool completed() const;
 
 	private:
 		

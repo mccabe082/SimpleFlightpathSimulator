@@ -50,5 +50,4 @@ TEST_CASE("Orientation interpolation is calulated correctly", "[orientation]") {
 		REQUIRE(afterExpected.yaw() == Approx(afterActual.yaw()));
 	}
 
-	Orientation  const;
 }

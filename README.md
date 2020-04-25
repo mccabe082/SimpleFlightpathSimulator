@@ -3,7 +3,32 @@
 
 # Simple Flightpath Simulator
 
-A desktop application for simulating aircraft in three dimensions.
+A desktop application for scripting aircraft motion in three dimensions.
+
+## The Waypoint
+![Waypoint Illustration 1](./docs/artwork/Waypoint-Illustrations/Waypoint-Illustration1.PNG)
+A **Waypoint** has;
+- a **Fly-through Time** (time at which the aircraft flies through the waypoint)
+- a **3D Position**
+  - x, North (Relative)
+  - y, East (Relative)
+  - z, Altitude (Relative)
+
+- a **3D Orientation**
+  - Roll (Rotation about x)
+  - Pitch (Rotation about y)
+  - Yaw (Rotation about z)
+
+## Waypoint Queue
+![Waypoint Illustration 2](./docs/artwork/Waypoint-Illustrations/Waypoint-Illustration2.PNG)
+The course of the aircraft is defined by a sequence of waypoints.  These are read in using 
+> Need to add file format details
+
+## Flightpath Calculation
+![Waypoint Illustration 3](./docs/artwork/Waypoint-Illustrations/Waypoint-Illustration3.PNG)
+This tool simply interpolates between waypoints so values for Position, Orientation, Velocity and Rotation are known at any instant of time. 
+
+# Old stuff
 
 - **[Team Objectives](./docs/programme_goals.md)...**
 - **[Programme Structure](./docs/programme_structure.md)...**

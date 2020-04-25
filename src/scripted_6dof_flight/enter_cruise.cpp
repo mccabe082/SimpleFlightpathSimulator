@@ -43,8 +43,11 @@ namespace Scripted6DoFFlight
 		targetOrient = offsetDuringManueover.inReferenceFrame(targetOrient);
 	}
 
-	AircraftState EnterCruise::update(double tStep, double manueoverTimeRemaining, const AircraftState& currentState)
+	AircraftState EnterCruise::update(double tStep, double t0, const AircraftState& currentState) const
 	{
+		double manueoverTimeRemaining = 1.;
+
+
 		double fCompletion = tStep / manueoverTimeRemaining;
 
 		auto orientationNew = Orientation::interpolate(currentState, targetOrient, fCompletion);
