@@ -16,11 +16,11 @@ namespace Scripted6DoFFlight
 			const AircraftState& enteringCondition,
 			const WaypointQueue& qWaypints
 		);
-		AircraftState update(double tStep, double& manueoverTimeRemaining, const AircraftState& currentState) const override;
+		AircraftState update(double tStep, const AircraftState& currentState) const override;
 		bool completed() const;
 
 	private:
-		WaypointQueue flightpath;
+		WaypointQueue course;
 		FollowWaypoints() = delete;
 	};
 }

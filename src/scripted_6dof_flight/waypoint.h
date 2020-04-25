@@ -12,42 +12,19 @@ namespace Scripted6DoFFlight
 	class Waypoint
 	{
 	public:
-		Waypoint(double arrivalTime);
+		Waypoint(const Position& p, double timeToArrival, const Orientation& o);;
 		Waypoint(const Waypoint&) = default;
 		virtual ~Waypoint() = default;
+		double arrivalTime() const;
+		void updateArrivalTime(double tNew);
+		bool passed() const;
+		Position position() const;
+		Orientation orientation() const;
 	private:
+		Position flythroughPosition;
+		Orientation flythroughOrientation;
 		double timeToArrival;
 		Waypoint() = delete;
 	};
 
-	class FranksWaypoint : Waypoint
-	{
-	public:
-		FranksWaypoint(const Position& p, double timeToArrival, const Orientation& o);
-	private:
-		Position targetPos;
-		Orientation targetOrient;
-		FranksWaypoint() = delete;
-
-	};
-
-	// https://www.skybrary.aero/index.php/Waypoint
-
-	/*class Flyby : Waypoint
-	{
-	public:
-		Flyby(const Position& p, const Orientation& o);
-	private:
-		Position p;
-		Flyby() = delete;
-	};
-
-	class Flyover : Waypoint
-	{
-	public:
-		Flyover(const Position& p, const Orientation& o);
-	private:
-		Position p;
-		Flyover() = delete;
-	};*/
 }

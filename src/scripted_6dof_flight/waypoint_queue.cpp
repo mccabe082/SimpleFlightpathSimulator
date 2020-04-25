@@ -9,12 +9,12 @@ namespace Scripted6DoFFlight
 		_data.push(newWP);
 	}
 
-	std::optional<Waypoint> WaypointQueue::currentWaypoint()
+	std::optional<Waypoint> WaypointQueue::currentWaypoint() const
 	{
 		return !_data.empty() ? std::optional<Waypoint>(_data.front()) : std::nullopt;
 	}
 
-	unsigned WaypointQueue::waypointsRemaining()
+	unsigned WaypointQueue::waypointsRemaining() const
 	{
 		return (unsigned) _data.size();
 	}

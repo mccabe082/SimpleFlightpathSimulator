@@ -13,5 +13,9 @@ namespace Scripted6DoFFlight
     {
     public:
         AircraftState(Position p, Orientation o, Velocity v, Rotation r);
+		Position approach(const Position& target, double relaxationRatio) const;
+		Orientation approach(const Orientation& target, double relaxationRatio) const;
+		Velocity approach(const Velocity& target, double relaxationRatio) const;
+		Rotation approach(const Rotation& target, double relaxationRatio) const;
     };
 }
