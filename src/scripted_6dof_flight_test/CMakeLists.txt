@@ -3,6 +3,7 @@ add_executable(scripted6DoFFlightTest)
 target_sources(scripted6DoFFlightTest
 PRIVATE
   cruiseTests.cpp
+  follow_waypointsTest.cpp
   waypointTests.cpp
   waypointQueueTests.cpp
 )

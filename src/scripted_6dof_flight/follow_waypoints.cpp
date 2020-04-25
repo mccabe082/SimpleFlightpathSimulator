@@ -19,7 +19,7 @@ namespace Scripted6DoFFlight
 		{
 			auto nextWaypoint = course.nextWaypoint(t0).value();
 
-			if (nextWaypoint.arrivalTime() > tStep+t0)
+			if (nextWaypoint.arrivalTime() >= tStep+t0)
 			{
 				Position newX = currentState.approach(nextWaypoint.position(), tStep);
 				Geometry3D::Velocity newXDot = Geometry3D::Velocity::from(currentState, newX, tStep);
