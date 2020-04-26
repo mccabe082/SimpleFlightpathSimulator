@@ -42,7 +42,7 @@ TEST_CASE("Testing Follow Waypoint code", "[follow waypoints]") {
 
 	FollowWaypoints barrelRoll(aircraft, CorkScrew);
 
-	SECTION("Test midpoint between firs two waypoints") {
+	SECTION("Test midpoint between first two waypoints") {
 
 		aircraft = barrelRoll.update(1.5, 0., aircraft);
 

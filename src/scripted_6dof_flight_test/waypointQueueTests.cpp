@@ -3,11 +3,6 @@
 #include "scripted_6dof_flight/waypoint.h"
 #include <cmath>
 #include <array>
-/*
-	void addWaypoint(const Waypoint& newWP);
-	std::optional<Waypoint> nextWaypoint(double simTime) const;
-	unsigned waypointsRemaining(double simTime) const;
-*/
 
 namespace
 {
