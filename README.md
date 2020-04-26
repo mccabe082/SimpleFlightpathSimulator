@@ -21,8 +21,23 @@ A **Waypoint** has;
 
 ## Waypoint Queue
 ![Waypoint Illustration 2](./docs/artwork/Waypoint-Illustrations/Waypoint-Illustration2.PNG)
-The course of the aircraft is defined by a sequence of waypoints.  These are read in using 
-> Need to add file format details
+The course of the aircraft is defined by a sequence of waypoints.  These are read in using .xml
+```xml
+<WaypointQueuw>
+  <Waypoint time=0.0>
+    <Position x=0.0,y=0.0,z=0.0>
+    <Orientation pitch=0.0,roll=0.0,yaw=0.0>
+  </Wappoint>
+  <Waypoint time=0.0>
+    <Position x=0.0,y=0.0,z=0.0>
+    <Orientation pitch=0.0,roll=0.0,yaw=0.0>
+  </Wappoint>
+  <Waypoint time=0.0>
+    <Position x=0.0,y=0.0,z=0.0>
+    <Orientation pitch=0.0,roll=0.0,yaw=0.0>
+  </Wappoint>
+</WaypointQueue>
+```
 
 ## Flightpath Calculation
 ![Waypoint Illustration 3](./docs/artwork/Waypoint-Illustrations/Waypoint-Illustration3.PNG)

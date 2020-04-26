@@ -94,8 +94,8 @@ TEST_CASE("Orientation interpolation is calulated correctly", "[orientation]") {
 	SECTION("orientation components are correctly interpolated") {
 
 		Orientation start(0., 0., 0.);
-		Orientation middleExpected(0., pi / 2., 0.);
-		Orientation end(0., pi, 0.);
+		Orientation middleExpected(0., pi / 4., 0.);
+		Orientation end(0., pi / 2., 0.);
 		Orientation middleActual = Orientation::interpolate(start, end, 0.5);
 
 		REQUIRE(middleActual.pitch() == Approx(middleExpected.pitch()));
