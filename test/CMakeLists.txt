@@ -7,6 +7,7 @@ PRIVATE
 
 target_link_libraries(simpleFlightPathSimulatorTest
 PRIVATE
+  scripted6DoFFlight
   ::Catch2
 )
 

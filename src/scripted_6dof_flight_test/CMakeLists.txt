@@ -9,6 +9,8 @@ PRIVATE
 )
 
 target_include_directories(scripted6DoFFlightTest
+INTERFACE
+  ${CMAKE_SOURCE_DIR}/include 
 PRIVATE
   ${CMAKE_SOURCE_DIR}/include 
   ${CMAKE_SOURCE_DIR}/src
