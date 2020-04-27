@@ -66,6 +66,7 @@ TEST_CASE("Orientations are always valid", "[attitude constraints]") {
 	}
 
 	SECTION("yaw constraint") {
+
 		double expected = deg45;
 		double input = deg45 + deg180;
 		Orientation attitude(0., 0., 0.);
@@ -91,18 +92,6 @@ TEST_CASE("Orientation interpolation is calulated correctly", "[orientation]") {
 		REQUIRE(qInF2Actual.yaw() == Approx(qInF2Expected.yaw()));
 	}
 
-	SECTION("orientation components are correctly interpolated") {
-
-		Orientation start(0., 0., 0.);
-		Orientation middleExpected(0., pi / 4., 0.);
-		Orientation end(0., pi / 2., 0.);
-		Orientation middleActual = Orientation::interpolate(start, end, 0.5);
-
-		REQUIRE(middleActual.pitch() == Approx(middleExpected.pitch()));
-		REQUIRE(middleActual.roll() == Approx(middleExpected.roll()));
-		REQUIRE(middleActual.yaw() == Approx(middleExpected.yaw()));
-	}
-
 	SECTION("rotational velocity calculation is correct") {
 
 		Orientation before(0., 0., 0.);
@@ -115,4 +104,47 @@ TEST_CASE("Orientation interpolation is calulated correctly", "[orientation]") {
 		REQUIRE(afterExpected.yaw() == Approx(afterActual.yaw()));
 	}
 
+}
+
+TEST_CASE("Orientation components are correctly interpolated", "[orientation]") {
+
+	Orientation start(0., 0., 0.);
+	Orientation middle(0., pi / 8., 0.);
+	Orientation end(0., pi / 4., 0.);
+
+	SECTION("interpolate mid-point") {
+
+		Orientation middleActual = Orientation::interpolate(start, end, 0.5);
+
+		REQUIRE(middleActual.pitch() == Approx(middle.pitch()).margin(pi / 100.));
+		REQUIRE(middleActual.roll() == Approx(middle.roll()).margin(pi / 100.));
+		REQUIRE(middleActual.yaw() == Approx(middle.yaw()).margin(pi / 100.));
+	}
+
+	SECTION("interpolate start-point") {
+
+		Orientation startActual = Orientation::interpolate(start, end, 0.);
+
+		REQUIRE(startActual.pitch() == Approx(start.pitch()).margin(pi / 100.));
+		REQUIRE(startActual.roll() == Approx(start.roll()).margin(pi / 100.));
+		REQUIRE(startActual.yaw() == Approx(start.yaw()).margin(pi / 100.));
+	}
+
+	SECTION("interpolate end-point") {
+
+		Orientation endActual = Orientation::interpolate(start, end, 1.);
+
+		REQUIRE(endActual.pitch() == Approx(end.pitch()).margin(pi / 100.));
+		REQUIRE(endActual.roll() == Approx(end.roll()).margin(pi / 100.));
+		REQUIRE(endActual.yaw() == Approx(end.yaw()).margin(pi / 100.));
+	}
+
+	SECTION("(bonus test) extrapolate") {
+
+		Orientation middleActual = Orientation::interpolate(start, end, 1.5);
+
+		REQUIRE(middleActual.pitch() == Approx(middle.pitch()).margin(pi / 100.));
+		REQUIRE(middleActual.roll() == Approx(3. * pi / 8.).margin(pi / 80.));
+		REQUIRE(middleActual.yaw() == Approx(middle.yaw()).margin(pi / 100.));
+	}
 }

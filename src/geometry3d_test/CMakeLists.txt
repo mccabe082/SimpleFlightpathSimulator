@@ -20,4 +20,12 @@ PRIVATE
   ::Catch2
 )
 
+
+target_compile_options(geometry3dTest
+PUBLIC
+  $<$<CXX_COMPILER_ID:MSVC>:-fp:strict>
+  $<$<CXX_COMPILER_ID:MSVC>:-fp:except>
+)
+
+
 add_test("geometry3dTest" ${CMAKE_BINARY_DIR}/src/geometry3d_test/Debug/geometry3dTest.exe)
