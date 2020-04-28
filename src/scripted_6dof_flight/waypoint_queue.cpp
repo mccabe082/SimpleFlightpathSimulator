@@ -6,10 +6,15 @@
 namespace Scripted6DoFFlight
 {
 
-	void WaypointQueue::addWaypoint(const Waypoint& newWP)
+	bool WaypointQueue::addWaypoint(const Waypoint& newWP)
 	{
-		// time needs to be monotonically increasing
+		if (!_data.empty())
+		{
+			if (_data.back().arrivalTime() > newWP.arrivalTime()) return false;
+		}
+
 		_data.push_back(newWP);
+		return true;
 	}
 
 	std::optional<Waypoint> WaypointQueue::nextWaypoint(double simTime) const

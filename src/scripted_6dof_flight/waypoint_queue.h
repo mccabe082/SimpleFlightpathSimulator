@@ -8,7 +8,7 @@ namespace Scripted6DoFFlight
 	class WaypointQueue
 	{
 	public:
-		void addWaypoint(const Waypoint& newWP);
+		bool addWaypoint(const Waypoint& newWP);
 
 		std::optional<Waypoint> nextWaypoint(double simTime) const;
 

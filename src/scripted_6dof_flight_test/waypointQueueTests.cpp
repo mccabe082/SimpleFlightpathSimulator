@@ -12,7 +12,39 @@ namespace
 using namespace Geometry3D;
 using namespace Scripted6DoFFlight;
 
+
 TEST_CASE("Testing Waypoint_queue code", "[waypoint_queue]") {
+
+	SECTION("Testing adding waypoints") {
+
+
+		double x = 1.;
+
+		double t1 = 10.;
+		double t0 = 5.; // 5 needs to be added b4 10
+
+		Position p(x, x, x);
+		Orientation o(x, x, x);
+		Waypoint wp1(p, o, t1);
+		Waypoint wp0(p, o, t0);
+
+		// Add the waypoints in the correct order
+		{
+			WaypointQueue wpq;
+
+			REQUIRE(wpq.addWaypoint(wp0));
+			REQUIRE(wpq.addWaypoint(wp1));
+		}
+
+		// Add the waypoints in the wrong order
+		{
+			WaypointQueue wpq;
+
+			REQUIRE(wpq.addWaypoint(wp1));
+			REQUIRE(!wpq.addWaypoint(wp0));
+		}
+
+	}
 
 	SECTION("Testing nominal cases") {
 
