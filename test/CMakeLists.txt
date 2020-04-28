@@ -21,8 +21,8 @@ find_package(SimpleFlightpathSim REQUIRED CONFIG PATHS ${CMAKE_SOURCE_DIR}/../bi
 
 ### Testing #########################
 
-#ENABLE_TESTING()
-#include(CTest)
+ENABLE_TESTING()
+include(CTest)
 
 ### Main Body #######################
 
@@ -39,8 +39,8 @@ PRIVATE
   ::Catch2
 )
 
-#add_test("Simple flightpath sim - end to end testing" ${CMAKE_BINARY_DIR}/test/SimpleFlightpathSimTest.exe)
-
 install(TARGETS SimpleFlightpathSimTest
     RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}
 )
+
+add_test("Simple flightpath sim - end to end testing" ${CMAKE_INSTALL_PREFIX}/SimpleFlightpathSimTest.exe)
