@@ -2,6 +2,12 @@ cmake_minimum_required(VERSION 3.5)
 enable_language(CXX)
 project(simple-flightpath-simulator)
 
+### Installation ####################
+
+if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+  set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/bin CACHE PATH "..." FORCE)
+endif()
+
 ### External Libraries ##############
 
 set(FindModuleDir ${CMAKE_SOURCE_DIR}/cmake
@@ -15,15 +21,10 @@ find_package(Catch2 REQUIRED MODULE)
 find_package(RapidXML REQUIRED MODULE)
 find_package(Microsoft.GSL QUIET CONFIG PATHS ../GSL/build)
 
-#####################################
-
-if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-  set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/bin CACHE PATH "..." FORCE)
-endif()
-
 ### Testing #########################
 ENABLE_TESTING()
 include(CTest)
+
+### Main Body #######################
 add_subdirectory(src)
 add_subdirectory(external)
-#####################################
