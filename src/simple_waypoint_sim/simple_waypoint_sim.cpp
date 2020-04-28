@@ -4,7 +4,7 @@
 
 namespace SimpleWaypointSim
 {
-    void* loadWaypoints(const char* waypointQueueFile)
+    void* loadWaypointSim(const char* waypointQueueFile)
     {
 	try
 	{

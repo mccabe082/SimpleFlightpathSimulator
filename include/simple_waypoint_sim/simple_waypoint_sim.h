@@ -2,7 +2,7 @@
 
 namespace SimpleWaypointSim
 {
-    void* loadWaypoints(const char* waypointQueueFile);
+    void* loadWaypointSim(const char* waypointQueueFile);
     
-    bool __cdecl loadFlightpath(void* handle);
+    bool loadFlightpath(void* handle);
 }

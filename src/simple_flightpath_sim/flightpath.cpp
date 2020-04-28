@@ -1,24 +1,12 @@
 #include "simple_flightpath_sim/flightpath.h"
-#include <string>
+#include "simple_waypoint_sim/simple_waypoint_sim.h"
 
-SIMPLEFLIGHTPATHSIM_EXPORT void* __cdecl loadFlightpath(const char* waypointQueueFile)
+SIMPLEFLIGHTPATHSIM_EXPORT void* __cdecl loadFlightpathSim(const char* waypointQueueFile)
 {
-	try
-	{
-		std::string fStr = waypointQueueFile;
-		//SimpleWaypointSim::WaypointQueue waypoints;
-		//bool ok = SimpleWaypointSim::WaypointQueue::readFromXML(waypoints, fStr);
-		static int test = 12345;
-		return &test;
-	}
-	catch (...)
-	{
-
-	}
+	return SimpleWaypointSim::loadWaypointSim(waypointQueueFile);
 }
 
 SIMPLEFLIGHTPATHSIM_EXPORT bool __cdecl loadFlightpath(void* handle)
 {
-	int* i = static_cast<int*>(handle);
-	return *i = 12345;
+	return true;
 }
