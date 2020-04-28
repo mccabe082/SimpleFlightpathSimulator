@@ -14,6 +14,8 @@ PRIVATE
   follow_waypoints.cpp
   follow_waypoints.h
   maneuover.h
+  simple_waypoint_sim.cpp
+  ../../include/scripted_6dof_flight/simple_waypoint_sim.h
   waypoint.cpp
   waypoint.h
   waypoint_queue.cpp
