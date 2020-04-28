@@ -22,12 +22,15 @@ PRIVATE
 )
 
 install(TARGETS SimpleFlightpathSim
-    RUNTIME SimpleFlightpathSimConfig
+    EXPORT SimpleFlightpathSimConfig
+    RUNTIME DESTINATION ${CMAKE_SOURCE_DIR}/bin
     ARCHIVE DESTINATION ${CMAKE_SOURCE_DIR}/bin
     LIBRARY DESTINATION ${CMAKE_SOURCE_DIR}/bin
     PUBLIC_HEADER DESTINATION ${CMAKE_SOURCE_DIR}/bin
 )
 install(EXPORT SimpleFlightpathSimConfig
+  FILE
+    SimpleFlightpathSimConfig.cmake
   NAMESPACE
     RRA::
   DESTINATION

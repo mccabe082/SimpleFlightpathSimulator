@@ -1,5 +1,13 @@
+cmake_minimum_required(VERSION 3.5)
+enable_language(CXX)
+project(simple-flightpath-simulator-testing)
+
+set(FindModuleDir ${CMAKE_SOURCE_DIR}/../bin/cmake
+CACHE STRING "path to directory containing the Find<Module>.cmake modules"
+)
+mark_as_advanced(FindModuleDir)
 add_executable(SimpleFlightpathSimTest)
-find_package(SimpleFlightpathSim 1.0 REQUIRED)
+find_package(SimpleFlightpathSim REQUIRED)
 
 target_sources(SimpleFlightpathSimTest
 PRIVATE
