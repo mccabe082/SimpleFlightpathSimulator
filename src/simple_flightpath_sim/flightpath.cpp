@@ -6,8 +6,8 @@ SIMPLEFLIGHTPATHSIM_EXPORT void* __cdecl loadFlightpath(const char* waypointQueu
 	try
 	{
 		std::string fStr = waypointQueueFile;
-		//Scripted6DoFFlight::WaypointQueue waypoints;
-		//bool ok = Scripted6DoFFlight::WaypointQueue::readFromXML(waypoints, fStr);
+		//SimpleWaypointSim::WaypointQueue waypoints;
+		//bool ok = SimpleWaypointSim::WaypointQueue::readFromXML(waypoints, fStr);
 		static int test = 12345;
 		return &test;
 	}

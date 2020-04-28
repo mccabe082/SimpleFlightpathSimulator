@@ -4,7 +4,7 @@
 #include "waypoint.h"
 #include "waypoint_queue.h"
 
-namespace Scripted6DoFFlight
+namespace SimpleWaypointSim
 {
 	class AircraftState;
 	class Waypoint;

@@ -2,7 +2,7 @@
 
 #include "maneuover.h"
 
-namespace Scripted6DoFFlight
+namespace SimpleWaypointSim
 {
 	class AircraftState;
 

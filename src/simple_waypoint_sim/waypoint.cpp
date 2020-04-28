@@ -1,6 +1,6 @@
 #include "waypoint.h"
 
-namespace Scripted6DoFFlight
+namespace SimpleWaypointSim
 {
 
 	Waypoint::Waypoint(const Position& p, const Orientation& o, double arrivalTime) :

@@ -1,6 +1,6 @@
 #include "catch.hpp"
-#include "scripted_6dof_flight/waypoint_queue.h"
-#include "scripted_6dof_flight/waypoint.h"
+#include "simple_waypoint_sim/waypoint_queue.h"
+#include "simple_waypoint_sim/waypoint.h"
 #include <cmath>
 #include <array>
 
@@ -10,7 +10,7 @@ namespace
 }
 
 using namespace Geometry3D;
-using namespace Scripted6DoFFlight;
+using namespace SimpleWaypointSim;
 
 
 TEST_CASE("Testing Waypoint_queue code", "[waypoint_queue]") {

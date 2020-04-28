@@ -28,7 +28,7 @@ generate_export_header(SimpleFlightpathSim)
 
 target_link_libraries(SimpleFlightpathSim
 PRIVATE
-   scripted6DoFFlight
+   SimpleWaypointSim
 )
 
 install(TARGETS SimpleFlightpathSim

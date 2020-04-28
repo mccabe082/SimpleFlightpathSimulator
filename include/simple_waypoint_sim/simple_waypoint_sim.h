@@ -1,6 +1,6 @@
 #pragma once         
 
-namespace Scripted6DoFFlight
+namespace SimpleWaypointSim
 {
     void* loadWaypoints(const char* waypointQueueFile);
     

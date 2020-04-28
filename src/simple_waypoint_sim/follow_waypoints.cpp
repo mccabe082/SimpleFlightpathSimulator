@@ -4,7 +4,7 @@
 #include <geometry3d/position.h>
 #include <geometry3d/velocity.h>
 
-namespace Scripted6DoFFlight
+namespace SimpleWaypointSim
 {
 	FollowWaypoints::FollowWaypoints(
 		const AircraftState& enteringCondition,

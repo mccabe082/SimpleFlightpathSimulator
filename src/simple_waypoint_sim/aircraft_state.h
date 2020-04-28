@@ -7,7 +7,7 @@
 
 using namespace Geometry3D;
 
-namespace Scripted6DoFFlight
+namespace SimpleWaypointSim
 {
     class AircraftState : public Position, public Orientation, public Velocity, public Rotation
     {

@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
-#include "scripted_6dof_flight/enter_cruise.h"
+#include "simple_waypoint_sim/enter_cruise.h"
 #include <cmath>
 
 namespace
@@ -9,7 +9,7 @@ namespace
 }
 
 using namespace Geometry3D;
-using namespace Scripted6DoFFlight;
+using namespace SimpleWaypointSim;
 
 TEST_CASE("aircraft smoothly enters a cruise", "[enter_cruise]" ) {
 

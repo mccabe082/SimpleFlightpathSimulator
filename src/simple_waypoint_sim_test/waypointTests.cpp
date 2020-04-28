@@ -1,5 +1,5 @@
 #include "catch.hpp"
-#include "scripted_6dof_flight/waypoint.h"
+#include "simple_waypoint_sim/waypoint.h"
 #include <cmath>
 #include <geometry3d/position.h>
 #include <geometry3d/velocity.h>
@@ -11,7 +11,7 @@ namespace
 }
 
 using namespace Geometry3D;
-using namespace Scripted6DoFFlight;
+using namespace SimpleWaypointSim;
 
 TEST_CASE("Testing Waypoint code", "[waypoint]") {
 

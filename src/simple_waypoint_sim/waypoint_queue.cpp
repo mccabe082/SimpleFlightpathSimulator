@@ -5,7 +5,7 @@
 #include <fstream>
 #include "rapidxml.hpp"
 
-namespace Scripted6DoFFlight
+namespace SimpleWaypointSim
 {
 
 	bool WaypointQueue::readFromXML(WaypointQueue& waypoints, const std::string& fileName)

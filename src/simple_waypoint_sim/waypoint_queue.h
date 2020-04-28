@@ -4,7 +4,7 @@
 #include <string_view>
 #include "waypoint.h"
 
-namespace Scripted6DoFFlight
+namespace SimpleWaypointSim
 {
 	class WaypointQueue
 	{

@@ -21,7 +21,7 @@ namespace
 	}
 }
 
-namespace Scripted6DoFFlight
+namespace SimpleWaypointSim
 {
 
 	EnterCruise::EnterCruise(
