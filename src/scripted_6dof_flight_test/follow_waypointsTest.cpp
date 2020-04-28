@@ -50,7 +50,7 @@ TEST_CASE("Testing Follow Waypoint code", "[follow waypoints]") {
 		REQUIRE(aircraft.y() == Approx(0.));
 		REQUIRE(aircraft.z() == Approx(0.));
 
-		REQUIRE(aircraft.roll() == Approx(pi / 8. * 1.5));
+		REQUIRE(aircraft.roll() == Approx(pi / 8. * 1.5).epsilon(0.1));
 		REQUIRE(aircraft.pitch() == Approx(0.));
 		REQUIRE(aircraft.yaw() == Approx(0.));
 	}
@@ -59,11 +59,11 @@ TEST_CASE("Testing Follow Waypoint code", "[follow waypoints]") {
 
 		aircraft = barrelRoll.update(3.*15., 0., aircraft);
 
-		REQUIRE(aircraft.x() == Approx(40. * 3. * 15.));
+		REQUIRE(aircraft.x() == Approx(40. * 15.));
 		REQUIRE(aircraft.y() == Approx(0.));
 		REQUIRE(aircraft.z() == Approx(0.));
 
-		REQUIRE(aircraft.roll() == Approx(pi / 8. * 3. * 15.));
+		REQUIRE(aircraft.roll() == Approx(pi / 8. * 15.));
 		REQUIRE(aircraft.pitch() == Approx(0.));
 		REQUIRE(aircraft.yaw() == Approx(0.));
 	}
