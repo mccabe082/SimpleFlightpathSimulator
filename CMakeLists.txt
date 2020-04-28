@@ -17,10 +17,13 @@ find_package(Microsoft.GSL QUIET CONFIG PATHS ../GSL/build)
 
 #####################################
 
+if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+  set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/bin CACHE PATH "..." FORCE)
+endif()
+
 ### Testing #########################
 ENABLE_TESTING()
 include(CTest)
 add_subdirectory(src)
 add_subdirectory(external)
-#add_subdirectory(test)
 #####################################
