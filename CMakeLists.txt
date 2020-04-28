@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.5)
 enable_language(CXX)
 project(simple-flightpath-simulator)
 
+set(CMAKE_CXX_VISIBILITY_PRESET hidden)
+set(CMAKE_VISIBIITY_INLINES_HIDDEN YES)
+
 ### Installation ####################
 
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)

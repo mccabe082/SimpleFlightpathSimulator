@@ -1,7 +1,7 @@
 #include "simple_flightpath_sim/flightpath.h"
 #include <string_view>
 
-__declspec(dllexport) void* __cdecl loadFlightpath(const char* waypointQueueFile)
+SIMPLEFLIGHTPATHSIM_EXPORT void* __cdecl loadFlightpath(const char* waypointQueueFile)
 {
 	try
 	{
@@ -15,7 +15,7 @@ __declspec(dllexport) void* __cdecl loadFlightpath(const char* waypointQueueFile
 	}
 }
 
-__declspec(dllexport) bool __cdecl loadFlightpath(void* handle)
+SIMPLEFLIGHTPATHSIM_EXPORT bool __cdecl loadFlightpath(void* handle)
 {
 	int* i = static_cast<int*>(handle);
 	return *i = 12345;

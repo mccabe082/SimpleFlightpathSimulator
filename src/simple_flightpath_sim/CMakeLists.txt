@@ -17,6 +17,15 @@ PROPERTIES PUBLIC_HEADER
   ../../include/simple_flightpath_sim/flightpath.h
 )
 
+### EXPERIMENT #################
+target_include_directories(SimpleFlightpathSim
+PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
+)
+include(GenerateExportHeader)
+generate_export_header(SimpleFlightpathSim)
+################################
+
 target_link_libraries(SimpleFlightpathSim
 PRIVATE
    scripted6DoFFlight
@@ -29,6 +38,9 @@ install(TARGETS SimpleFlightpathSim
     LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_PREFIX}
 )
+#install(FILES
+#$<INSTALL_INTERFACE:${PROJECT_BINARY_DIR}/simpleflightpathsim_export.h DESTINATION ${CMAKE_INSTALL_PREFIX}>
+#)
 install(EXPORT SimpleFlightpathSimConfig
   FILE
     SimpleFlightpathSimConfig.cmake
