@@ -1,5 +1,4 @@
-#include "scripted_6dof_flight/flightpath.h"
-
+#include "simple_flightpath_sim/flightpath.h"
 #include <string_view>
 
 __declspec(dllexport) void* __cdecl loadFlightpath(const char* waypointQueueFile)

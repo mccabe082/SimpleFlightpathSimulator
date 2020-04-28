@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
-#include <scripted_6dof_flight/flightpath.h>
+#include <simple_flightpath_sim/flightpath.h>
 
 TEST_CASE("Provisional end-to-end tests", "[placeholder]" ) {
 

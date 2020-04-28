@@ -1,4 +1,4 @@
-add_library(scripted6DoFFlight SHARED)
+add_library(scripted6DoFFlight STATIC)
 
 target_include_directories(scripted6DoFFlight
 PUBLIC
@@ -7,7 +7,6 @@ PUBLIC
 
 target_sources(scripted6DoFFlight
 PRIVATE
-  ../../include/scripted_6dof_flight/flightpath.h
   aircraft_state.cpp
   aircraft_state.h
   enter_cruise.h
@@ -19,7 +18,6 @@ PRIVATE
   waypoint.h
   waypoint_queue.cpp
   waypoint_queue.h
-  flightpath.cpp
 )
 
 target_link_libraries(scripted6DoFFlight
