@@ -2,7 +2,7 @@ find_path(RapidXML_INCLUDE_DIR
 NAMES
   rapidxml.hpp
 PATHS
-  ${CMAKE_SOURCE_DIR}/external/rapidxml-1.13
+  ${CMAKE_CURRENT_SOURCE_DIR}/../external/rapidxml-1.13
 )
 
 set(RapidXML_VERSION "1.13")

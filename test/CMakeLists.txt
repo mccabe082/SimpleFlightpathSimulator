@@ -3,10 +3,16 @@ enable_language(CXX)
 project(simple-flightpath-simulator-testing)
 
 ### External Libraries ##############
-find_package(SimpleFlightpathSim REQUIRED CONFIG
-PATHS
-  ${CMAKE_SOURCE_DIR}/../bin/cmake
+
+set(FindModuleDir ${CMAKE_SOURCE_DIR}/../CMake
+CACHE STRING "path to directory containing the Find<Module>.cmake modules"
 )
+mark_as_advanced(FindModuleDir)
+
+list(APPEND CMAKE_MODULE_PATH ${FindModuleDir})
+find_package(Catch2 REQUIRED MODULE)
+find_package(SimpleFlightpathSim REQUIRED CONFIG PATHS ${CMAKE_SOURCE_DIR}/../bin/cmake)
+
 #####################################
 
 add_executable(SimpleFlightpathSimTest)
