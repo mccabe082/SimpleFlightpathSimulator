@@ -14,6 +14,7 @@ namespace
 		using namespace SimpleWaypointSim;
 		using namespace rapidxml;
 
+		WaypointQueue wpBuffer;
 		try
 		{
 			rapidxml::file<> xmlFile(fileName.c_str()); // Default template is char
@@ -26,28 +27,30 @@ namespace
 				xml_node<>* waypointNode = waypointQueueNode->first_node("Waypoint");
 				while (waypointNode)
 				{
-					xml_node<>* positionNode = waypointNode->first_node("Position");
-					xml_node<>* orientationNode = waypointNode->first_node("Orentation");
+					double flyThroughTime = atof(waypointNode->first_attribute("time")->value());
 
-					//Position pos; Orientation orient; double arrivalTime;
-					//Waypoint waypoint();
-					//waypoints.addWaypoint(waypoint);
+					xml_node<>* positionNode = waypointNode->first_node("Position");
+					double x = atof(positionNode->first_attribute("x")->value());
+					double y = atof(positionNode->first_attribute("y")->value());
+					double z = atof(positionNode->first_attribute("z")->value());
+
+					xml_node<>* orientationNode = waypointNode->first_node("Orientation");
+					double pitch = atof(orientationNode->first_attribute("pitch")->value());
+					double roll = atof(orientationNode->first_attribute("roll")->value());
+					double yaw = atof(orientationNode->first_attribute("yaw")->value());
+					
+					wpBuffer.addWaypoint(Waypoint(Position(x,y,z), Orientation(pitch,roll,yaw), flyThroughTime));
+
 					waypointNode = waypointNode->next_sibling("Waypoint");
 				}
 			}
 		}
 		catch (...)
 		{
-
+			//too bad
 		}
 
-		//cout << "Node foobar has value " << node->value() << "\n";
-		/*for (xml_attribute<>* attr = node->first_attribute();
-			attr; attr = attr->next_attribute())
-		{
-			cout << "Node foobar has attribute " << attr->name() << " ";
-			cout << "with value " << attr->value() << "\n";
-		}*/
+		waypoints = std::move(wpBuffer);
 	}
 }
 

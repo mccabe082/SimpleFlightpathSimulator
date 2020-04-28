@@ -3,6 +3,7 @@
 #include "simple_waypoint_sim/waypoint.h"
 #include <cmath>
 #include <array>
+#include <filesystem>
 
 namespace
 {
@@ -49,6 +50,7 @@ TEST_CASE("Testing Waypoint_queue code", "[waypoint_queue]") {
 	SECTION("Reading waypoints from XML") {
 
 		WaypointQueue wpq;
+		std::filesystem::path temp = std::filesystem::current_path();
 
 		WaypointQueue::readFromXML(wpq, "D:\\simple-flightpath-simulator\\src\\simple_waypoint_sim_test\\sample_waypoint_queue.xml");
 	}
