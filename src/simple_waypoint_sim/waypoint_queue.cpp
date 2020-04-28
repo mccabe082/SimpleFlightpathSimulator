@@ -4,6 +4,53 @@
 #include <iterator>
 #include <fstream>
 #include "rapidxml.hpp"
+#include "rapidxml_utils.hpp"
+
+namespace
+{
+
+	void dirtyWaypointQueueReading(SimpleWaypointSim::WaypointQueue& waypoints, const std::string& fileName)
+	{
+		using namespace SimpleWaypointSim;
+		using namespace rapidxml;
+
+		try
+		{
+			rapidxml::file<> xmlFile(fileName.c_str()); // Default template is char
+			rapidxml::xml_document<> doc;
+			doc.parse<0>(xmlFile.data());
+
+			xml_node<>* waypointQueueNode = doc.first_node("WaypointQueue");
+			if (waypointQueueNode)
+			{
+				xml_node<>* waypointNode = waypointQueueNode->first_node("Waypoint");
+				while (waypointNode)
+				{
+					xml_node<>* positionNode = waypointNode->first_node("Position");
+					xml_node<>* orientationNode = waypointNode->first_node("Orentation");
+
+					//Position pos; Orientation orient; double arrivalTime;
+					//Waypoint waypoint();
+					//waypoints.addWaypoint(waypoint);
+					waypointNode = waypointNode->next_sibling("Waypoint");
+				}
+			}
+		}
+		catch (...)
+		{
+
+		}
+
+		//cout << "Node foobar has value " << node->value() << "\n";
+		/*for (xml_attribute<>* attr = node->first_attribute();
+			attr; attr = attr->next_attribute())
+		{
+			cout << "Node foobar has attribute " << attr->name() << " ";
+			cout << "with value " << attr->value() << "\n";
+		}*/
+	}
+}
+
 
 namespace SimpleWaypointSim
 {
@@ -11,10 +58,9 @@ namespace SimpleWaypointSim
 	bool WaypointQueue::readFromXML(WaypointQueue& waypoints, const std::string& fileName)
 	{
 		try {
-			std::ifstream theFile(fileName.c_str());
-			std::vector<char> buffer((std::istreambuf_iterator<char>(theFile)), std::istreambuf_iterator<char>());
+			dirtyWaypointQueueReading(waypoints, fileName);
 		}
-		catch(...){
+		catch (...) {
 			return false;
 		}
 		return true;

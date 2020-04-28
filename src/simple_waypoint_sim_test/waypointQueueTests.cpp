@@ -46,6 +46,13 @@ TEST_CASE("Testing Waypoint_queue code", "[waypoint_queue]") {
 
 	}
 
+	SECTION("Reading waypoints from XML") {
+
+		WaypointQueue wpq;
+
+		WaypointQueue::readFromXML(wpq, "D:\\simple-flightpath-simulator\\src\\simple_waypoint_sim_test\\sample_waypoint_queue.xml");
+	}
+
 	SECTION("Testing nominal cases") {
 
 		WaypointQueue wpq;
