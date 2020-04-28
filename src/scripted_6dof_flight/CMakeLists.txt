@@ -21,7 +21,9 @@ PRIVATE
 )
 
 target_link_libraries(scripted6DoFFlight
+PRIVATE
   geometry3d
+  ::RapidXML
 )
 
 # https://stackoverflow.com/questions/41308933/how-to-enable-c17-compiling-in-visual-studio

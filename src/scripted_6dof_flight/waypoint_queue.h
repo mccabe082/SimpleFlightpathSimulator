@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <optional>
+#include <string_view>
 #include "waypoint.h"
 
 namespace Scripted6DoFFlight
@@ -8,6 +9,10 @@ namespace Scripted6DoFFlight
 	class WaypointQueue
 	{
 	public:
+
+
+		static bool readFromXML(WaypointQueue& waypoints, const std::string_view& fileName);
+
 		bool addWaypoint(const Waypoint& newWP);
 
 		std::optional<Waypoint> nextWaypoint(double simTime) const;

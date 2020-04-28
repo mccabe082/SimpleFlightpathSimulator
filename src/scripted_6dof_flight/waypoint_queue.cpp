@@ -2,9 +2,21 @@
 #include "waypoint.h"
 #include <limits>
 #include <iterator>
+#include "rapidxml.hpp"
 
 namespace Scripted6DoFFlight
 {
+
+	bool WaypointQueue::readFromXML(WaypointQueue& waypoints, const std::string_view& fileName)
+	{
+		try {
+
+		}
+		catch(...){
+			return false;
+		}
+		return true;
+	}
 
 	bool WaypointQueue::addWaypoint(const Waypoint& newWP)
 	{
