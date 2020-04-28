@@ -1,12 +1,15 @@
 #include "simple_flightpath_sim/flightpath.h"
-#include <string_view>
+#include <scripted_6dof_flight/waypoint_queue.h>
+#include <string>
 
 SIMPLEFLIGHTPATHSIM_EXPORT void* __cdecl loadFlightpath(const char* waypointQueueFile)
 {
 	try
 	{
-		std::string_view waypointQueueFileStr = waypointQueueFile;
-		int test = 12345;
+		std::string fStr = waypointQueueFile;
+		Scripted6DoFFlight::WaypointQueue waypoints;
+		bool ok = Scripted6DoFFlight::WaypointQueue::readFromXML(waypoints, fStr);
+		static int test = 12345;
 		return &test;
 	}
 	catch (...)

@@ -24,7 +24,7 @@ A **Waypoint** has;
 ![Waypoint Illustration 2](./docs/artwork/Waypoint-Illustrations/Waypoint-Illustration2.PNG)
 The course of the aircraft is defined by a sequence of waypoints.  These are read in using .xml
 ```xml
-<WaypointQueuw>
+<WaypointQueue>
   <Waypoint time=0.0>
     <Position x=0.5, y=1.5, z=0.0>
     <Orientation pitch=0.0, roll=0.1, yaw=0.0>

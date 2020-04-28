@@ -1,16 +1,18 @@
-#include "waypoint_queue.h"
-#include "waypoint.h"
+#include "scripted_6dof_flight/waypoint_queue.h"
+#include "scripted_6dof_flight/waypoint.h"
 #include <limits>
 #include <iterator>
+#include <fstream>
 #include "rapidxml.hpp"
 
 namespace Scripted6DoFFlight
 {
 
-	bool WaypointQueue::readFromXML(WaypointQueue& waypoints, const std::string_view& fileName)
+	bool WaypointQueue::readFromXML(WaypointQueue& waypoints, const std::string& fileName)
 	{
 		try {
-
+			std::ifstream theFile(fileName.c_str());
+			std::vector<char> buffer((std::istreambuf_iterator<char>(theFile)), std::istreambuf_iterator<char>());
 		}
 		catch(...){
 			return false;

@@ -15,9 +15,9 @@ PRIVATE
   follow_waypoints.h
   maneuover.h
   waypoint.cpp
-  waypoint.h
+  ../../include/scripted_6dof_flight/waypoint.h
   waypoint_queue.cpp
-  waypoint_queue.h
+  ../../include/scripted_6dof_flight/waypoint_queue.h
 )
 
 target_link_libraries(scripted6DoFFlight

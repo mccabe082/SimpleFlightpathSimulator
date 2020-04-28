@@ -11,7 +11,7 @@ namespace Scripted6DoFFlight
 	public:
 
 
-		static bool readFromXML(WaypointQueue& waypoints, const std::string_view& fileName);
+		static bool readFromXML(WaypointQueue& waypoints, const std::string& fileName);
 
 		bool addWaypoint(const Waypoint& newWP);
 

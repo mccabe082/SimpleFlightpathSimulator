@@ -1,8 +1,8 @@
 #pragma once
 
 #include "maneuover.h"
-#include "waypoint.h"
-#include "waypoint_queue.h"
+#include "scripted_6dof_flight/waypoint.h"
+#include "scripted_6dof_flight/waypoint_queue.h"
 
 namespace Scripted6DoFFlight
 {
