@@ -1,9 +1,10 @@
 add_library(SimpleFlightpathSim SHARED)
 
 target_include_directories(SimpleFlightpathSim
+PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../../include>
 PRIVATE
   $<INSTALL_INTERFACE:${CMAKE_SOURCE_DIR}/bin>    
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../../include>
 )
 
 target_sources(SimpleFlightpathSim
