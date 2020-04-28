@@ -1,5 +1,5 @@
-#include "scripted_6dof_flight/waypoint_queue.h"
-#include "scripted_6dof_flight/waypoint.h"
+#include "waypoint_queue.h"
+#include "waypoint.h"
 #include <limits>
 #include <iterator>
 #include <fstream>

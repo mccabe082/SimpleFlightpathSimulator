@@ -1,6 +1,6 @@
 #include "follow_waypoints.h"
-#include "scripted_6dof_flight/waypoint.h"
-#include "scripted_6dof_flight/waypoint_queue.h"
+#include "waypoint.h"
+#include "waypoint_queue.h"
 #include <geometry3d/position.h>
 #include <geometry3d/velocity.h>
 

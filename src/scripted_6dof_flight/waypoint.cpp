@@ -1,4 +1,4 @@
-#include "scripted_6dof_flight/waypoint.h"
+#include "waypoint.h"
 
 namespace Scripted6DoFFlight
 {
