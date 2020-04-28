@@ -34,5 +34,5 @@ install(EXPORT SimpleFlightpathSimConfig
   NAMESPACE
     RRA::
   DESTINATION
-    ${CMAKE_SOURCE_DIR}/bin/cmake/SimpleFlightpathSim
+    ${CMAKE_SOURCE_DIR}/bin/cmake
 )
