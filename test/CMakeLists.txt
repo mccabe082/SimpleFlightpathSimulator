@@ -30,7 +30,7 @@ add_executable(SimpleFlightpathSimTest)
 
 target_sources(SimpleFlightpathSimTest
 PRIVATE
-  placeholder.cpp
+  flightpath.test.cpp
 )
 
 target_link_libraries(SimpleFlightpathSimTest
