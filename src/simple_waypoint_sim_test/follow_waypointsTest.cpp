@@ -1,3 +1,4 @@
+#define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 #include "simple_waypoint_sim/follow_waypoints.h"
 #include "simple_waypoint_sim/waypoint_queue.h"
