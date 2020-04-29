@@ -23,18 +23,16 @@ namespace SimpleWaypointSim
 				double ratio = tStep / (nextWaypoint.arrivalTime() - t0);
 
 				Position newX = currentState.approach(nextWaypoint.position(), ratio);
-				Geometry3D::Velocity newXDot = Geometry3D::Velocity::from(currentState, newX, ratio);
+				Geometry3D::Velocity newXDot = Geometry3D::Velocity::from(currentState, newX, tStep);
 
 				Orientation newTheta = currentState.approach(nextWaypoint.orientation(), ratio);
-				Geometry3D::Rotation newThetaDot = Geometry3D::Rotation::from(currentState, newTheta, ratio);
+				Geometry3D::Rotation newThetaDot = Geometry3D::Rotation::from(currentState, newTheta, tStep);
 
 				return AircraftState(newX, newTheta, newXDot, newThetaDot);
 			}
 			else
 			{
-				// 
-				AircraftState atWaypoint = FollowWaypoints::update(nextWaypoint.arrivalTime() - t0, t0, currentState); //don't think we can just jump?!
-				return FollowWaypoints::update(tStep - nextWaypoint.arrivalTime(), nextWaypoint.arrivalTime(), atWaypoint);
+				return FollowWaypoints::update(tStep - (nextWaypoint.arrivalTime() - t0), nextWaypoint.arrivalTime(), currentState);
 			}
 		}
 
