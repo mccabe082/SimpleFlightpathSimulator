@@ -2,9 +2,9 @@ add_executable(SimpleWaypointSimTest)
 
 target_sources(SimpleWaypointSimTest
 PRIVATE
-  follow_waypointsTest.cpp
-  waypointTests.cpp
-  waypointQueueTests.cpp
+  follow_waypoints.test.cpp
+  waypoint.test.cpp
+  waypoint_queue.test.cpp
 )
 
 target_include_directories(SimpleWaypointSimTest
