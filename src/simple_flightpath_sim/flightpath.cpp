@@ -5,12 +5,13 @@
 
 SIMPLEFLIGHTPATHSIM_EXPORT void* __cdecl loadFlightpathSim(const char* waypointQueueFile)
 {
-
 	return SimpleWaypointSim::loadWaypointSim(waypointQueueFile);
 }
 
-SIMPLEFLIGHTPATHSIM_EXPORT bool __cdecl loadFlightpath(void* handle)
+SIMPLEFLIGHTPATHSIM_EXPORT bool __cdecl advanceWaypointSim(void* handleSimData, double tStep,
+	double& x, double& y, double& z,
+	double& pitch, double& roll, double& yaw)
 {
-	//AircraftState update(double tStep, double t0, const AircraftState & currentState) const override;
-	return true;
+	return SimpleWaypointSim::advanceWaypointSim(handleSimData, tStep, x, y, z, pitch, roll, yaw);
 }
+
