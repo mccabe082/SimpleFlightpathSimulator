@@ -40,7 +40,7 @@ TEST_CASE("Testing Follow Waypoint code", "[follow waypoints]") {
 		}
 	}
 
-	FollowWaypoints barrelRoll(aircraft, CorkScrew);
+	FollowWaypoints barrelRoll(CorkScrew);
 
 	SECTION("Test midpoint between first two waypoints") {
 

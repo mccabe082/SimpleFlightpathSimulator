@@ -13,8 +13,7 @@ namespace SimpleWaypointSim
 	{
 	public:
 		FollowWaypoints(
-			const AircraftState& enteringCondition,
-			const WaypointQueue& qWaypints
+			const WaypointQueue& qWaypoints
 		);
 		AircraftState update(double tStep, double t0, const AircraftState& currentState) const override;
 		bool completed() const;

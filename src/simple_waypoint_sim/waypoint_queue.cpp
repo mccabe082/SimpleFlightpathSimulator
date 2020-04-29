@@ -88,11 +88,21 @@ namespace SimpleWaypointSim
 		return next != _data.end() ? std::optional<Waypoint>(*next) : std::nullopt;
 	}
 
+	std::optional<Waypoint> WaypointQueue::operator[](unsigned int iWaypoint) const
+	{
+		return _data.size()>=iWaypoint ? std::optional<Waypoint>(_data[iWaypoint]) : std::nullopt;
+	}
+
 	unsigned WaypointQueue::waypointsRemaining(double simTime) const
 	{
 		const auto& next = std::find_if(_data.begin(), _data.end(), [simTime](const Waypoint& wp) {
 			return wp.arrivalTime() > simTime + std::numeric_limits<double>::epsilon();
 			});
 		return (unsigned)std::distance(next, _data.end());
+	}
+
+	bool WaypointQueue::empty() const
+	{
+		return _data.empty();
 	}
 }

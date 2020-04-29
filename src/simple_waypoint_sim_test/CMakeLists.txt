@@ -2,7 +2,6 @@ add_executable(SimpleWaypointSimTest)
 
 target_sources(SimpleWaypointSimTest
 PRIVATE
-  cruiseTests.cpp
   follow_waypointsTest.cpp
   waypointTests.cpp
   waypointQueueTests.cpp

@@ -9,11 +9,8 @@ target_sources(SimpleWaypointSim
 PRIVATE
   aircraft_state.cpp
   aircraft_state.h
-  enter_cruise.h
-  enter_cruise.cpp
   follow_waypoints.cpp
   follow_waypoints.h
-  maneuover.h
   simple_waypoint_sim.cpp
   ../../include/simple_waypoint_sim/simple_waypoint_sim.h
   waypoint.cpp

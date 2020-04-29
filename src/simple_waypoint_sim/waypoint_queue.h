@@ -17,7 +17,11 @@ namespace SimpleWaypointSim
 
 		std::optional<Waypoint> nextWaypoint(double simTime) const;
 
+		std::optional<Waypoint> operator[](unsigned int iWaypoint) const;
+
 		unsigned waypointsRemaining(double simTime) const;
+
+		bool empty() const;
 
 	private:
 		std::vector<Waypoint> _data;

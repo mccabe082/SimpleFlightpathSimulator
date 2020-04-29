@@ -7,7 +7,6 @@
 namespace SimpleWaypointSim
 {
 	FollowWaypoints::FollowWaypoints(
-		const AircraftState& enteringCondition,
 		const WaypointQueue& qWaypints)
 		: course(qWaypints)
 	{}
