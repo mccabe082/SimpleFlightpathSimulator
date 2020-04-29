@@ -1,5 +1,5 @@
 add_subdirectory(geometry3d)
 add_subdirectory(geometry3d_test)
-add_subdirectory(physics)
-add_subdirectory(scripted_6dof_flight)
-#add_subdirectory(scripted_6dof_flight_test)
+add_subdirectory(simple_waypoint_sim)
+add_subdirectory(simple_waypoint_sim_test)
+add_subdirectory(simple_flightpath_sim)

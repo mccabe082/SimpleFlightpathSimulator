@@ -4,7 +4,7 @@
 #include "waypoint.h"
 #include "waypoint_queue.h"
 
-namespace Scripted6DoFFlight
+namespace SimpleWaypointSim
 {
 	class AircraftState;
 	class Waypoint;
@@ -13,8 +13,7 @@ namespace Scripted6DoFFlight
 	{
 	public:
 		FollowWaypoints(
-			const AircraftState& enteringCondition,
-			const WaypointQueue& qWaypints
+			const WaypointQueue& qWaypoints
 		);
 		AircraftState update(double tStep, double t0, const AircraftState& currentState) const override;
 		bool completed() const;
