@@ -2,10 +2,10 @@ add_executable(geometry3dTest)
 
 target_sources(geometry3dTest
 PRIVATE
-  orientationTests.cpp
-  quoternionTests.cpp
-  rotationTests.cpp
-  velocityTests.cpp
+  orientation.test.cpp
+  quoternion.test.cpp
+  rotation.test.cpp
+  velocity.test.cpp
 )
 
 target_include_directories(geometry3dTest
