@@ -7,50 +7,20 @@ namespace
 {
 	const double pi = std::acos(-1.);
 
-	double normalisePlusOrMinus180Degrees(double alpha)
+	double clampBetweenPlusOrMinus180Degrees(double alpha)
 	{
-		// reduce range to (-360, 360)
 		alpha = fmod(alpha, 2. * pi);
-
-		// reduce range to (0, 360)  
-		alpha = fmod(alpha + 2. * pi, 2. * pi);
-
-		// change range to between (-180,180)  
-		return alpha >= pi ? alpha - 2. * pi : alpha;
-	}
-
-	void normalisePitchPlusOrMinus90Degrees(double& pitch, double& roll, double& yaw)
-	{
-		// change range to between (-180,180)  
-		pitch = normalisePlusOrMinus180Degrees(pitch);
-
-		// change range to between (-90,90)
-		if (abs(pitch) > pi / 2.)
-		{
-			if (pitch > 0.)
-			{
-				// +ve obtuse
-				roll += pi;
-				yaw += pi;
-				pitch = pi - pitch;
-			}
-			else
-			{
-				// -ve obtuse
-				roll += pi;
-				yaw += pi;
-				pitch = -pi - pitch;
-			}
-			yaw = normalisePlusOrMinus180Degrees(yaw);
-			roll = normalisePlusOrMinus180Degrees(roll);
-		}
+		if (alpha > pi) alpha -= 2.*pi;
+		if (alpha < -pi) alpha += 2.*pi;
+		return alpha;
 	}
 
 	void fixAttitude(double& pitch, double& roll, double& yaw)
 	{
-		yaw = normalisePlusOrMinus180Degrees(yaw);
-		roll = normalisePlusOrMinus180Degrees(roll);
-		normalisePitchPlusOrMinus90Degrees(pitch, roll, yaw);
+		yaw = clampBetweenPlusOrMinus180Degrees(yaw);
+		roll = clampBetweenPlusOrMinus180Degrees(roll);
+		pitch = clampBetweenPlusOrMinus180Degrees(pitch);
+
 	}
 }
 

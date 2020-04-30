@@ -4,7 +4,7 @@
 
 TEST_CASE("Provisional end-to-end tests", "[end-to-end]" ) {
 
-	void* iSim = loadFlightpathSim("D:/simple-flightpath-simulator/test/example_waypoint_queue.xml");
+	void* iSim = loadFlightpathSim("D:/simple-flightpath-simulator/test/basic/example_waypoint_queue.xml");
 
     SECTION( "basic check to ensure library runs end-to-end" ) {
 
