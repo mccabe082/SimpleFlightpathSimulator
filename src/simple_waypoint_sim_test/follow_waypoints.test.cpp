@@ -97,17 +97,8 @@ TEST_CASE("Testing Follow Waypoint code", "[follow waypoints]") {
 
 	SECTION("Testing aircraft reaching final waypoint waypoints") {
 
-		//Waypoint wp(p, o, t);
-		//
-		//REQUIRE(p.x() == Approx(wp.position().x()));
-		//REQUIRE(p.y() == Approx(wp.position().y()));
-		//REQUIRE(p.z() == Approx(wp.position().z()));
-		//
-		//REQUIRE(o.pitch() == Approx(wp.orientation().pitch()));
-		//REQUIRE(o.roll() == Approx(wp.orientation().roll()));
-		//REQUIRE(o.yaw() == Approx(wp.orientation().yaw()));
-		//
-		//REQUIRE(t == Approx(wp.arrivalTime()));
+		// TODO
+		REQUIRE(false);
 	}
 
 

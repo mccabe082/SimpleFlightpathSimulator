@@ -1,39 +1,41 @@
-<WaypointQueue>
+<!-- x and y mixed up -->
+<!-- all angles in degrees -->
+
+<WaypointQueue pitch_value="inverted" pitch_units="deg" roll_value="inverted" roll_units="deg" yaw_units="deg">
   <Waypoint time="0.0">
-    <Position x="0." y="280.99" z="105.05"/>
+    <Position x="0." z="280.99" y="105.05"/>
     <Orientation pitch="64.70" yaw="0.1" roll="0.0"/>
   </Waypoint>
   <Waypoint time="1.0">
-    <Position x="2.87" y="196.62" z="170.10"/>
+    <Position x="2.87" z="196.62" y="170.10"/>
     <Orientation pitch="53.73" yaw="3.34" roll="2.75"/>
   </Waypoint>
   <Waypoint time="2.0">
-    <Position x="10.77" y="120.13" z="258.72"/>
+    <Position x="10.77" z="120.13" y="258.72"/>
     <Orientation pitch="25.16" yaw="8.02" roll="5.10"/>
   </Waypoint>
     <Waypoint time="3.0">
-    <Position x="145.6" y="64.7" z="542.7"/>
+    <Position x="145.6" z="64.7" y="542.7"/>
     <Orientation pitch="-0.06" yaw="23.43" roll="-33.61"/>
   </Waypoint>
-  <Waypoint time="4.0">
-    <Position x="1.5" y="1.5" z="0.0"/>
+  <!--Waypoint time="4.0">
+    <Position x="1.5" z="1.5" y="0.0"/>
     <Orientation pitch="0.0" yaw="0.2" roll="0.0"/>
-  </Waypoint>
+  </Waypoint-->
    <Waypoint time="5.0">
-    <Position x="209.52" y="70.37" z="648.43"/>
+    <Position x="209.52" z="70.37" y="648.43"/>
     <Orientation pitch="-5.85" yaw="42.26" roll="-50.39"/>
   </Waypoint>
    <Waypoint time="5.5">
-    <Position x="327.54" y="75.77" z="717.66"/>
+    <Position x="327.54" z="75.77" y="717.66"/>
     <Orientation pitch="-3.22" yaw="110.22" roll="-86.18"/>
   </Waypoint>
    <Waypoint time="6.0">
-    <Position x="360.1" y="60.7" z="568.5"/>
+    <Position x="360.1" z="60.7" y="568.5"/>
     <Orientation pitch="-13.22" yaw="189.03" roll="-17.46"/>
   </Waypoint>
-    </Waypoint>
    <Waypoint time="8.0">
-    <Position x="159.98" y="285.03" z="93.30"/>
+    <Position x="159.98" z="285.03" y="93.30"/>
     <Orientation pitch="-41.28" yaw="203.80" roll="-7.15"/>
   </Waypoint>
 </WaypointQueue>
