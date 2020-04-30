@@ -5,7 +5,7 @@ namespace
 {
 	const double pi = std::acos(-1.);
 
-	const char* waypoint_filename = "D:/simple-flightpath-simulator/test/example_waypoint_queue.xml";
+	const char* waypoint_filename = "D:/simple-flightpath-simulator/example/output_csv/example_waypoint_queue.xml";
 	const char* csv_filename = "interpolated_example_waypoint_queue.csv";
 	int nSamples = 200;
 	double tMin = 0.;
