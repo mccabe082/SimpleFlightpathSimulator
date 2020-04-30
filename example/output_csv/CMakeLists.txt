@@ -10,13 +10,6 @@ endif()
 
 ### External Libraries ##############
 
-set(FindModuleDir ${CMAKE_SOURCE_DIR}/CMake
-CACHE STRING "path to directory containing the Find<Module>.cmake modules"
-)
-mark_as_advanced(FindModuleDir)
-
-list(APPEND CMAKE_MODULE_PATH ${FindModuleDir})
-find_package(Catch2 REQUIRED MODULE)
 find_package(SimpleFlightpathSim REQUIRED CONFIG PATHS ${CMAKE_SOURCE_DIR}/../../bin/cmake)
 
 ### Main Body #######################
@@ -31,7 +24,6 @@ PRIVATE
 target_link_libraries(SimpleFlightpathSimOutputCSVExample
 PRIVATE
   RRA::SimpleFlightpathSim
-  ::Catch2
 )
 
 install(TARGETS SimpleFlightpathSimOutputCSVExample

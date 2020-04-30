@@ -1,47 +1,47 @@
-#define CATCH_CONFIG_MAIN
-#include "catch.hpp"
 #include <flightpath.h>
+#include <fstream>
 
-TEST_CASE("Provisional end-to-end tests", "[end-to-end]" ) {
+namespace
+{
+	const double pi = std::acos(-1.);
 
-	void* iSim = loadFlightpathSim("D:/simple-flightpath-simulator/test/example_waypoint_queue.xml");
+	const char* filename = "D:/simple-flightpath-simulator/test/example_waypoint_queue.xml";
+	int nSamples = 200;
+	double tMin = 0.;
+	double tMax = 3.;
+	double tStep = (tMax - tMin) / double(nSamples);
+}
 
-    SECTION( "basic check to ensure library runs end-to-end" ) {
+int main(int argc, char** argv)
+{
+	double t;
+	double x, y, z;
+	double pitch, roll, yaw;
+	bool status_ok = true;
 
-        REQUIRE(iSim);
+	std::ofstream f;
+	f.open(filename);
+	f << "t,x,y,z,yaw,pitch,roll\n";
 
-    	double x, y, z;
-	    double pitch, roll, yaw;
+	void* iSim = loadFlightpathSim(filename);
 
-		bool status_ok = true;
-		
-		status_ok = advanceWaypointSim(iSim, 0.5, x, y, z, pitch, roll, yaw);
+	if (iSim)
+	{
+		for (int i = 0; i < nSamples; ++i)
+		{
+			t = double(i) * tStep + tMin;
 
-		REQUIRE(x == Approx(1.));
-		REQUIRE(y == Approx(1.5));
-		REQUIRE(z == Approx(.0));
-		REQUIRE(roll == Approx(.15).epsilon(.001));
-		REQUIRE(pitch == Approx(.0).epsilon(.001));
-		REQUIRE(yaw == Approx(.0).epsilon(.001));
+			status_ok = advanceWaypointSim(iSim, t, x, y, z, pitch, roll, yaw);
 
-		status_ok = advanceWaypointSim(iSim, 0.5, x, y, z, pitch, roll, yaw);
+			if (!status_ok) return false;
 
-		REQUIRE(x == Approx(1.5));
-		REQUIRE(y == Approx(1.5));
-		REQUIRE(z == Approx(.0));
-		REQUIRE(roll == Approx(.2).epsilon(.001));
-		REQUIRE(pitch == Approx(.0).epsilon(.001));
-		REQUIRE(yaw == Approx(.0).epsilon(.001));
+			f << t << ",";
+			f << x << "," << y << "," << z << ",";
+			f << yaw << "," << pitch << "," << roll << ",\n";
+		}
+	}
 
-		status_ok = advanceWaypointSim(iSim, 0.5, x, y, z, pitch, roll, yaw);
-
-		REQUIRE(x == Approx(2.));
-		REQUIRE(y == Approx(1.5));
-		REQUIRE(z == Approx(.0));
-		REQUIRE(roll == Approx(.25).epsilon(.001));
-		REQUIRE(pitch == Approx(.0).epsilon(.001));
-		REQUIRE(yaw == Approx(.0).epsilon(.001));
-
-    }
+	f.close();
+	return 0;
 
 }
