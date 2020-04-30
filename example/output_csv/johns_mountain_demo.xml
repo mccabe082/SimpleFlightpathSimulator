@@ -18,10 +18,10 @@
     <Position x="145.6" z="64.7" y="542.7"/>
     <Orientation pitch="-0.06" yaw="23.43" roll="-33.61"/>
   </Waypoint>
-  <Waypoint time="4.0">
+  <!--Waypoint time="4.0">
     <Position x="1.5" z="1.5" y="0.0"/>
     <Orientation pitch="0.0" yaw="0.2" roll="0.0"/>
-  </Waypoint>
+  </Waypoint-->
    <Waypoint time="5.0">
     <Position x="209.52" z="70.37" y="648.43"/>
     <Orientation pitch="-5.85" yaw="42.26" roll="-50.39"/>

@@ -7,9 +7,9 @@ namespace
 
 	const char* waypoint_filename = "johns_mountain_demo.xml";
 	const char* csv_filename = "johns_mountain_demo.csv";
-	int nSamples = 200;
+	int nSamples = 2000;
 	double tMin = 0.;
-	double tMax = 3.;
+	double tMax = 9.;
 	double tStep = (tMax - tMin) / double(nSamples);
 }
 
