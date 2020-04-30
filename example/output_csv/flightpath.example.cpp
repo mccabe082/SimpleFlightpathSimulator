@@ -13,6 +13,11 @@ namespace
 	double tStep = (tMax - tMin) / double(nSamples);
 }
 
+double rad2deg(double alpha)
+{
+	return alpha * 180. / pi;
+}
+
 int main(int argc, char** argv)
 {
 	double t;
@@ -32,13 +37,13 @@ int main(int argc, char** argv)
 		{
 			t = double(i) * tStep + tMin;
 
-			status_ok = advanceWaypointSim(iSim, t, x, y, z, pitch, roll, yaw);
+			status_ok = advanceWaypointSim(iSim, tStep, x, y, z, pitch, roll, yaw);
 
 			if (!status_ok) return false;
 
 			f << t << ",";
 			f << x << "," << y << "," << z << ",";
-			f << yaw << "," << pitch << "," << roll << ",\n";
+			f << rad2deg(yaw) << "," << rad2deg(pitch) << "," << rad2deg(roll) << ",\n";
 		}
 	}
 
