@@ -23,3 +23,19 @@ target_link_libraries(geometry3d
 PRIVATE
   $<$<TARGET_EXISTS:Microsoft.GSL::GSL>:Microsoft.GSL::GSL>
 )
+
+target_compile_features(geometry3d
+PUBLIC
+  cxx_std_17
+)
+
+target_compile_options(geometry3d
+PUBLIC
+  "-std:c++17"
+  "-fp:strict"
+  "-fp:except"
+)
+
+set_target_properties(geometry3d PROPERTIES
+  CXX_STANDARD 17
+)

@@ -12,6 +12,18 @@
 namespace
 {
 	const double pi = std::acos(-1.);
+
+	double clampBetweenPlusOrMinus180Degrees(double alpha)
+	{
+		alpha = fmod(alpha, 2. * pi);
+		if (alpha > pi) alpha -= pi;
+		return alpha;
+	}
+
+	double rad2deg(double alpha)
+	{
+		return 180. * alpha / pi;
+	}
 }
 
 using namespace Geometry3D;
@@ -19,8 +31,11 @@ using namespace SimpleWaypointSim;
 
 TEST_CASE("Testing Follow Waypoint code", "[follow waypoints]") {
 
-	Geometry3D::Velocity vel(40., 0., 0.);
-	Geometry3D::Rotation rot(0., pi / 8., 0.);
+	double xVelocity = 40.;
+	double rollRate = pi / 8.;
+
+	Geometry3D::Velocity vel(xVelocity, 0., 0.);
+	Geometry3D::Rotation rot(0., rollRate, 0.);
 	Geometry3D::Position pos(0., 0., 0.);
 	Geometry3D::Orientation ori(0., 0., 0.);
 
@@ -45,26 +60,37 @@ TEST_CASE("Testing Follow Waypoint code", "[follow waypoints]") {
 
 	SECTION("Test midpoint between first two waypoints") {
 
-		aircraft = barrelRoll.update(1.5, 0., aircraft);
+		double time = 1.5;
+		aircraft = barrelRoll.update(time, 0., aircraft);
 
-		REQUIRE(aircraft.x() == Approx(40. * 1.5));
+		double xDist = xVelocity * time;
+		double rollDist = clampBetweenPlusOrMinus180Degrees(rollRate * time);
+
+		REQUIRE(aircraft.rollRate() == Approx(rollRate));
+
+		REQUIRE(aircraft.x() == Approx(xDist));
 		REQUIRE(aircraft.y() == Approx(0.));
 		REQUIRE(aircraft.z() == Approx(0.));
 
-		REQUIRE(aircraft.roll() == Approx(pi / 8. * 1.5).epsilon(0.1));
+		REQUIRE(aircraft.roll() == Approx(rollDist));
 		REQUIRE(aircraft.pitch() == Approx(0.));
 		REQUIRE(aircraft.yaw() == Approx(0.));
 	}
 
 	SECTION("Test going through a bunch of waypoints") {
 
-		aircraft = barrelRoll.update(3.*15., 0., aircraft);
+		double time = 45.;
+		aircraft = barrelRoll.update(time, 0., aircraft);
 
-		REQUIRE(aircraft.x() == Approx(40. * 15.));
+		double xDist = xVelocity * time;
+		double rollDist = clampBetweenPlusOrMinus180Degrees(rollRate * time);
+
+
+		REQUIRE(aircraft.x() == Approx(xDist));
 		REQUIRE(aircraft.y() == Approx(0.));
 		REQUIRE(aircraft.z() == Approx(0.));
 
-		REQUIRE(aircraft.roll() == Approx(pi / 8. * 15.));
+		REQUIRE(aircraft.roll() == Approx(rollDist));
 		REQUIRE(aircraft.pitch() == Approx(0.));
 		REQUIRE(aircraft.yaw() == Approx(0.));
 	}
