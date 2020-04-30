@@ -26,6 +26,17 @@ PRIVATE
   RRA::SimpleFlightpathSim
 )
 
-install(TARGETS SimpleFlightpathSimOutputCSVExample
-    RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}
+### Install #########################
+
+install(
+FILES 
+  ${CMAKE_CURRENT_SOURCE_DIR}/johns_mountain_demo.xml
+DESTINATION
+  ${CMAKE_INSTALL_PREFIX}
+)
+install(
+TARGETS
+SimpleFlightpathSimOutputCSVExample
+RUNTIME DESTINATION
+${CMAKE_INSTALL_PREFIX}
 )
