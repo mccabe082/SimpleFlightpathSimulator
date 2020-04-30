@@ -5,7 +5,8 @@ namespace
 {
 	const double pi = std::acos(-1.);
 
-	const char* filename = "D:/simple-flightpath-simulator/test/example_waypoint_queue.xml";
+	const char* waypoint_filename = "D:/simple-flightpath-simulator/test/example_waypoint_queue.xml";
+	const char* csv_filename = "interpolated_example_waypoint_queue.csv";
 	int nSamples = 200;
 	double tMin = 0.;
 	double tMax = 3.;
@@ -20,10 +21,10 @@ int main(int argc, char** argv)
 	bool status_ok = true;
 
 	std::ofstream f;
-	f.open(filename);
+	f.open(csv_filename);
 	f << "t,x,y,z,yaw,pitch,roll\n";
 
-	void* iSim = loadFlightpathSim(filename);
+	void* iSim = loadFlightpathSim(waypoint_filename);
 
 	if (iSim)
 	{
