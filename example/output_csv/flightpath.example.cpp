@@ -6,7 +6,7 @@ namespace
 	const double pi = std::acos(-1.);
 
 	const char* waypoint_filename = "johns_mountain_demo.xml";
-	const char* csv_filename = "interpolated_example_waypoint_queue.csv";
+	const char* csv_filename = "johns_mountain_demo.csv";
 	int nSamples = 200;
 	double tMin = 0.;
 	double tMax = 3.;
