@@ -113,6 +113,7 @@ TEST_CASE("Quoternion arithmetic is correct", "[quoternion]") {
 	}
 
 	SECTION("quoternian multiplication is correct") {
+		// Example taken from Mathworks:
 		// https://uk.mathworks.com/help/aerotbx/ug/quatmultiply.html
 		Quoternion q1(1., 0., 1., 0.);
 		Quoternion q2(1., 0.5, 0.5, 0.75);
@@ -122,6 +123,7 @@ TEST_CASE("Quoternion arithmetic is correct", "[quoternion]") {
 	}
 
 	SECTION("quoternian scalar multiplication is correct") {
+		// Example taken from Mathworks:
 		// https://uk.mathworks.com/help/aerotbx/ug/quatmultiply.html
 		Quoternion q1(1., 2., 3., 4.);
 		Quoternion q2(10., 20., 30., 40.);

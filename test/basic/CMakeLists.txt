@@ -39,8 +39,22 @@ PRIVATE
   ::Catch2
 )
 
-install(TARGETS SimpleFlightpathSimBasicTest
-    RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}
+### Install #########################
+
+install(
+FILES 
+  ${CMAKE_CURRENT_SOURCE_DIR}/example_waypoint_queue.xml
+DESTINATION
+  ${CMAKE_INSTALL_PREFIX}
 )
+
+install(
+TARGETS 
+  SimpleFlightpathSimBasicTest
+RUNTIME DESTINATION
+  ${CMAKE_INSTALL_PREFIX}
+)
+
+### Test ############################
 
 add_test("Simple flightpath sim - end to end testing" ${CMAKE_INSTALL_PREFIX}/SimpleFlightpathSimBasicTest.exe)
