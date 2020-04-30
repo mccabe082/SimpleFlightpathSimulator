@@ -3,6 +3,7 @@
 #include <limits>
 #include <iterator>
 #include <fstream>
+#include <string>
 #include "rapidxml.hpp"
 #include "rapidxml_utils.hpp"
 
@@ -20,9 +21,9 @@ namespace
 		return node->first_attribute(attr);
 	}
 
-	const char* getAttribute(rapidxml::xml_node<>* node, const char* attr)
+	std::string getAttribute(rapidxml::xml_node<>* node, const char* attr)
 	{
-		return hasAttribute(node, attr) ? node->first_attribute(attr)->value() : nullptr;
+		return hasAttribute(node, attr) ? std::string(node->first_attribute(attr)->value()) : std::string();
 	}
 
 	void dirtyWaypointQueueReading(SimpleWaypointSim::WaypointQueue& waypoints, const std::string& fileName)
@@ -51,15 +52,15 @@ namespace
 			if (waypointQueueNode)
 			{
 				{
-					pitchInverted = getAttribute(waypointQueueNode, "");
-					rollInverted = getAttribute(waypointQueueNode, "");
-					yawInverted = getAttribute(waypointQueueNode, "");
-					pitchDegrees = getAttribute(waypointQueueNode, "");
-					rollDegrees = getAttribute(waypointQueueNode, "");
-					yawDegrees = getAttribute(waypointQueueNode, "");
-					xInverted = getAttribute(waypointQueueNode, "");
-					yInverted = getAttribute(waypointQueueNode, "");
-					zInverted = getAttribute(waypointQueueNode, "");
+					pitchInverted = getAttribute(waypointQueueNode, "pitch_value") == std::string("inverted");
+					rollInverted = getAttribute(waypointQueueNode, "roll_value") == std::string("inverted");
+					yawInverted = getAttribute(waypointQueueNode, "yaw_value") == std::string("inverted");
+					pitchDegrees = getAttribute(waypointQueueNode, "pitch_units") == std::string("deg");
+					rollDegrees = getAttribute(waypointQueueNode, "roll_units") == std::string("deg");
+					yawDegrees = getAttribute(waypointQueueNode, "yaw_units") == std::string("deg");
+					xInverted = getAttribute(waypointQueueNode, "x_value") == std::string("inverted");
+					yInverted = getAttribute(waypointQueueNode, "y_value") == std::string("inverted");
+					zInverted = getAttribute(waypointQueueNode, "z_value") == std::string("inverted");
 				}
 
 				xml_node<>* waypointNode = waypointQueueNode->first_node("Waypoint");
@@ -81,9 +82,9 @@ namespace
 					double roll = atof(orientationNode->first_attribute("roll")->value());
 					double yaw = atof(orientationNode->first_attribute("yaw")->value());
 
-					if (pitchDegrees) x = deg2red(pitch);
-					if (rollDegrees) x = deg2red(roll);
-					if (yawDegrees) x = deg2red(yaw);
+					if (pitchDegrees) pitch = deg2red(pitch);
+					if (rollDegrees) roll = deg2red(roll);
+					if (yawDegrees) yaw = deg2red(yaw);
 
 					if (pitchInverted) pitch *= -1.;
 					if (rollInverted)  roll *= -1.;

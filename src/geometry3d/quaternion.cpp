@@ -195,12 +195,13 @@ namespace Geometry3D
 		Quoternion q1 = normalise(qEnd);
 
 		// Compute the cosine of the angle between the two vectors.
-		double dot = std::sqrt(std::inner_product(q0.data.begin(), q0.data.end(), q1.data.begin(), 0.0));
+		double dot = std::inner_product(q0.data.begin(), q0.data.end(), q1.data.begin(), 0.0);
 
 		// If the dot product is negative, slerp won't take
 		// the shorter path. Note that v1 and -v1 are equivalent when
 		// the negation is applied to all four components. Fix by 
 		// reversing one quaternion.
+		// https://stackoverflow.com/questions/2886606/flipping-issue-when-interpolating-rotations-using-quaternions
 		if (dot < 0.0f) {
 			q1 = q1 * -1.;
 			dot = -dot;
