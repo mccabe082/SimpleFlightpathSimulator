@@ -18,7 +18,7 @@ where the symbols correspond to:
 - Yaw angle, $\psi$
 - $\ldots$ any other vars to characterise the state
 
-<a name="aircraft_rota">![yaw, pitch and roll](./artwork/Ruchy_katowe.svg.png)</a>
+<a name="aircraft_rota">![yaw, pitch and roll](./artwork/Eular_Angles/Eular_Angles.png)</a>
 
 ---
 ## **Representing the <a href="#dynamics">Dynamics</a> of an Aircraft**
