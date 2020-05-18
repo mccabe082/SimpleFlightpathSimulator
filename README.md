@@ -1,11 +1,6 @@
 [![Join the team using Discord: https://discord.gg/6zMa4Tp](https://img.shields.io/badge/Discord-collaborate-brightgreen.svg)](https://discord.gg/6zMa4Tp)
 [![Build status](https://ci.appveyor.com/api/projects/status/07276mey39n8kaob?svg=true)](https://ci.appveyor.com/project/DavidMcCabe/simpleflightpathsimulator)
 
-
-### An Off-site Coronavirus Programme
-
-- **[Team Objectives](./docs/programme_goals.md)...**
-- **[Programme Structure](./docs/programme_structure.md)...**
 # Simple Flightpath Simulator
 
 A desktop application for scripting aircraft motion in three dimensions.
