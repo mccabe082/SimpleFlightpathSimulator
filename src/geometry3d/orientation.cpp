@@ -7,19 +7,22 @@ namespace
 {
 	const double pi = std::acos(-1.);
 
+	double clampBetweenPlusOrMinus90Degrees(double alpha)
+	{
+		return fmod(alpha + .25 * pi, .5 * pi) - .25 * pi;
+	}
+
 	double clampBetweenPlusOrMinus180Degrees(double alpha)
 	{
-		alpha = fmod(alpha, 2. * pi);
-		if (alpha > pi) alpha -= 2.*pi;
-		if (alpha < -pi) alpha += 2.*pi;
-		return alpha;
+		return fmod(alpha + .5 * pi, pi) - .5 * pi;
 	}
+
 
 	void fixAttitude(double& pitch, double& roll, double& yaw)
 	{
 		yaw = clampBetweenPlusOrMinus180Degrees(yaw);
 		roll = clampBetweenPlusOrMinus180Degrees(roll);
-		pitch = clampBetweenPlusOrMinus180Degrees(pitch);
+		pitch = clampBetweenPlusOrMinus90Degrees(pitch);
 
 	}
 }
@@ -63,7 +66,10 @@ namespace Geometry3D
 	Orientation Orientation::interpolate(const Orientation& start, const Orientation & final, double frac)
 	{
 		Quoternion q = Quoternion::slerp(Quoternion(start), Quoternion(final), frac);
-		return Orientation(q.pitch(), q.roll(), q.yaw());
+		double pitch = clampBetweenPlusOrMinus90Degrees(q.pitch());
+		double roll = clampBetweenPlusOrMinus180Degrees(q.roll());
+		double yaw = clampBetweenPlusOrMinus180Degrees(q.yaw());
+		return Orientation(pitch, roll, yaw);
 	}
 
 	Orientation Orientation::update(const Rotation& Vr, double time) const

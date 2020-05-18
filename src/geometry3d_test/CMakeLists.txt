@@ -18,6 +18,7 @@ target_link_libraries(geometry3dTest
 PRIVATE
   $<TARGET_OBJECTS:geometry3d>
   ::Catch2
+  TestUtilities
 )
 
 add_test("geometry3dTest" ${CMAKE_BINARY_DIR}/src/geometry3d_test/Debug/geometry3dTest.exe)

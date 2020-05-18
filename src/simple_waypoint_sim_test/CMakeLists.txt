@@ -22,6 +22,13 @@ PRIVATE
   ::Catch2
 )
 
+#file(
+#COPY
+#  sample_waypoint_queue.xml
+#DESTINATION
+#  sample_waypoint_queue.xml
+#)
+
 add_test("SimpleWaypointSimTest" ${CMAKE_BINARY_DIR}/src/scripted_6dof_flight_test/Debug/SimpleWaypointSimTest.exe)
 
 target_compile_features(SimpleWaypointSimTest
