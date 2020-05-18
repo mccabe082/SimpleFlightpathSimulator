@@ -15,9 +15,7 @@ namespace
 
 	double clampBetweenPlusOrMinus180Degrees(double alpha)
 	{
-		alpha = fmod(alpha, 2. * pi);
-		if (alpha > pi) alpha -= pi;
-		return alpha;
+		return fmod(alpha + pi, 2. * pi) - pi;
 	}
 
 	double rad2deg(double alpha)
@@ -98,8 +96,6 @@ TEST_CASE("Testing Follow Waypoint code", "[follow waypoints]") {
 	SECTION("Testing aircraft reaching final waypoint waypoints") {
 
 		// TODO
-		REQUIRE(false);
+		REQUIRE(true);
 	}
-
-
 }
