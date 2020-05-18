@@ -1,4 +1,4 @@
-#include "angle_utils.h"
+#include "utilities/angle_utils.h"
 #include "division_utils.h"
 #include <cmath>
 
@@ -7,7 +7,7 @@ namespace
 	const double pi = std::acos(-1.);
 }
 
-namespace TestUtilities
+namespace Utilities
 {
 	double rad2deg(double alpha)
 	{

@@ -2,27 +2,15 @@
 #include "geometry3d/orientation.h"
 #include "geometry3d/rotation.h"
 #include "quaternion.h"
+#include "utilities/angle_utils.h"
 
 namespace
 {
-	const double pi = std::acos(-1.);
-
-	double clampBetweenPlusOrMinus90Degrees(double alpha)
-	{
-		return fmod(alpha + .25 * pi, .5 * pi) - .25 * pi;
-	}
-
-	double clampBetweenPlusOrMinus180Degrees(double alpha)
-	{
-		return fmod(alpha + .5 * pi, pi) - .5 * pi;
-	}
-
-
 	void fixAttitude(double& pitch, double& roll, double& yaw)
 	{
-		yaw = clampBetweenPlusOrMinus180Degrees(yaw);
-		roll = clampBetweenPlusOrMinus180Degrees(roll);
-		pitch = clampBetweenPlusOrMinus90Degrees(pitch);
+		yaw = Utilities::clampBetweenPlusOrMinusPiRadians(yaw);
+		roll = Utilities::clampBetweenPlusOrMinusPiRadians(roll);
+		pitch = Utilities::clampBetweenPlusOrMinusHalfPiRadians(pitch); // this is extremely dodgy
 
 	}
 }
@@ -66,10 +54,7 @@ namespace Geometry3D
 	Orientation Orientation::interpolate(const Orientation& start, const Orientation & final, double frac)
 	{
 		Quoternion q = Quoternion::slerp(Quoternion(start), Quoternion(final), frac);
-		double pitch = clampBetweenPlusOrMinus90Degrees(q.pitch());
-		double roll = clampBetweenPlusOrMinus180Degrees(q.roll());
-		double yaw = clampBetweenPlusOrMinus180Degrees(q.yaw());
-		return Orientation(pitch, roll, yaw);
+		return Orientation(q.pitch(), q.roll(), q.yaw());
 	}
 
 	Orientation Orientation::update(const Rotation& Vr, double time) const

@@ -22,6 +22,7 @@ PRIVATE
 target_link_libraries(geometry3d
 PRIVATE
   $<$<TARGET_EXISTS:Microsoft.GSL::GSL>:Microsoft.GSL::GSL>
+  Utilities
 )
 
 target_compile_features(geometry3d

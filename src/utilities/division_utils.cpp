@@ -1,7 +1,7 @@
 #include "division_utils.h"
 #include <cmath>
 
-namespace TestUtilities
+namespace Utilities
 {
 	double truncatingDivide(double dividend, double divisor)
 	{

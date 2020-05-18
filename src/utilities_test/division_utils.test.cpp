@@ -1,9 +1,9 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
-#include <test_utilities/division_utils.h>
+#include <utilities/division_utils.h>
 #include <cmath>
 
-using namespace TestUtilities;
+using namespace Utilities;
 
 TEST_CASE("Divisions work correctly", "[division]") {
 

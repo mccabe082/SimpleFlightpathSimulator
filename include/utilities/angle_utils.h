@@ -1,6 +1,6 @@
 #pragma once
 
-namespace TestUtilities
+namespace Utilities
 {
 	double rad2deg(double alpha);
 
