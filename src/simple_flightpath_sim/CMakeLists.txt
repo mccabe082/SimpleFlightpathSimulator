@@ -40,10 +40,10 @@ install(TARGETS SimpleFlightpathSim
 )
 
 install(
-  #FILES ${CURRENT_BINARY_DIR}/simpleflightpathsim_export.h
   FILES ${PROJECT_BINARY_DIR}/src/simple_flightpath_sim/simpleflightpathsim_export.h
   DESTINATION ${CMAKE_INSTALL_PREFIX}
 )
+
 install(EXPORT SimpleFlightpathSimConfig
   FILE
     SimpleFlightpathSimConfig.cmake

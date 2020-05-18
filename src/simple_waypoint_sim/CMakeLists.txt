@@ -25,20 +25,7 @@ PRIVATE
   ::RapidXML
 )
 
-# https://stackoverflow.com/questions/41308933/how-to-enable-c17-compiling-in-visual-studio
-message(AUTHOR_WARNING "Need to reconsider - look at target_compile_features and target_compile_options")
 target_compile_features(SimpleWaypointSim
 PUBLIC
   cxx_std_17
-)
-
-target_compile_options(SimpleWaypointSim
-PUBLIC
-  "-std:c++17"
-  "-fp:strict"
-  "-fp:except"
-)
-
-set_target_properties(SimpleWaypointSim PROPERTIES
-  CXX_STANDARD 17
 )

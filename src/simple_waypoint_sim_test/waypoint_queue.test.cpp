@@ -47,7 +47,7 @@ TEST_CASE("Testing Waypoint_queue code", "[waypoint_queue]") {
 
 	}
 
-	SECTION("Reading waypoints from XML") {
+	/*SECTION("Reading waypoints from XML") {
 
 		WaypointQueue wpq;
 		std::filesystem::path temp = std::filesystem::current_path();
@@ -57,7 +57,7 @@ TEST_CASE("Testing Waypoint_queue code", "[waypoint_queue]") {
 		Waypoint wp = wpq.nextWaypoint(0.9).value();
 		REQUIRE(1.5 == Approx(wp.position().y()));
 		REQUIRE(0.2 == Approx(wp.orientation().roll()));
-	}
+	}*/
 
 	SECTION("Testing nominal cases") {
 

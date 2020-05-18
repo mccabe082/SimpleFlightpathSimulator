@@ -2,24 +2,15 @@
 #include "geometry3d/orientation.h"
 #include "geometry3d/rotation.h"
 #include "quaternion.h"
+#include "utilities/angle_utils.h"
 
 namespace
 {
-	const double pi = std::acos(-1.);
-
-	double clampBetweenPlusOrMinus180Degrees(double alpha)
-	{
-		alpha = fmod(alpha, 2. * pi);
-		if (alpha > pi) alpha -= 2.*pi;
-		if (alpha < -pi) alpha += 2.*pi;
-		return alpha;
-	}
-
 	void fixAttitude(double& pitch, double& roll, double& yaw)
 	{
-		yaw = clampBetweenPlusOrMinus180Degrees(yaw);
-		roll = clampBetweenPlusOrMinus180Degrees(roll);
-		pitch = clampBetweenPlusOrMinus180Degrees(pitch);
+		yaw = Utilities::clampBetweenPlusOrMinusPiRadians(yaw);
+		roll = Utilities::clampBetweenPlusOrMinusPiRadians(roll);
+		pitch = Utilities::clampBetweenPlusOrMinusHalfPiRadians(pitch); // this is extremely dodgy
 
 	}
 }
