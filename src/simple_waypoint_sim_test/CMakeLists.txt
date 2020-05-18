@@ -24,7 +24,6 @@ PRIVATE
 
 add_test("SimpleWaypointSimTest" ${CMAKE_BINARY_DIR}/src/scripted_6dof_flight_test/Debug/SimpleWaypointSimTest.exe)
 
-message(AUTHOR_WARNING "Need to reconsider - look at target_compile_features and target_compile_options")
 target_compile_features(SimpleWaypointSimTest
 PUBLIC
   cxx_std_17
