@@ -16,9 +16,9 @@ A **Waypoint** has;
   - z, Altitude (Relative)
 
 - a **3D Orientation**
-  - Roll - Rotation about x [-180,180)
-  - Pitch - Rotation about y [-90,90)
-  - Yaw - Rotation about z [-180,180)
+  - Roll - Rotation about x (-180,180]
+  - Pitch - Rotation about y (-90,90]
+  - Yaw - Rotation about z (-180,180]
 
 ## Waypoint Queue
 ![Waypoint Illustration 2](./docs/artwork/Waypoint-Illustrations/Waypoint-Illustration2.PNG)

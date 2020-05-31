@@ -1,0 +1,3 @@
+[submodule "external/rapidxml"]
+	path = external/rapidxml
+	url = git@github.com:dwd/rapidxml.git
