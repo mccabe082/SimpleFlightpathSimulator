@@ -7,8 +7,6 @@ using namespace Geometry3D;
 
 namespace SimpleWaypointSim
 {
-	class Geometry3D::Velocity;
-
 	class Waypoint
 	{
 	public:

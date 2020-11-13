@@ -1,12 +1,13 @@
 #include "waypoint_queue.h"
 #include "waypoint.h"
+#include <algorithm>
 #include <limits>
 #include <iterator>
 #include <fstream>
 #include <string>
 #include "rapidxml.hpp"
 #include "rapidxml_utils.hpp"
-
+#include <cmath>
 namespace
 {
 	const double pi = std::acos(-1.);

@@ -5,7 +5,6 @@
 #include "aircraft_state.h"
 
 
-
 namespace
 {
 	struct SimData
