@@ -14,4 +14,9 @@ PRIVATE
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/NPTG-metadata.xml
      DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
-add_test("test" ${CMAKE_BINARY_DIR}/external/rapidxml_test/Debug/rapidxmlTest.exe)
+add_test(
+NAME
+  "rapidxml_learning tests"
+COMMAND
+  rapidxmlTest
+)

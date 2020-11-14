@@ -17,4 +17,9 @@ PRIVATE
   ::Catch2
 )
 
-add_test("UtilitiesTest" ${CMAKE_BINARY_DIR}/src/geometry3d_test/Debug/UtilitiesTest.exe)
+add_test(
+NAME
+  "UtilitiesTest"
+COMMAND
+  UtilitiesTest
+)

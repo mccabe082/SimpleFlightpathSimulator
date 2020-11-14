@@ -11,4 +11,9 @@ PRIVATE
   ::Catch2
 )
 
-add_test("odeint_learning_tests" ${CMAKE_BINARY_DIR}/external/odeint_test/Debug/odeintTest.exe)
+add_test(
+NAME
+  "odeint_learning_tests"
+COMMAND
+  odeintTest
+)

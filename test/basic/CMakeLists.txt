@@ -57,4 +57,9 @@ RUNTIME DESTINATION
 
 ### Test ############################
 
-add_test("Simple flightpath sim - end to end testing" ${CMAKE_INSTALL_PREFIX}/SimpleFlightpathSimBasicTest.exe)
+add_test(
+NAME
+  "Simple flightpath sim - end to end testing"
+COMMAND
+  SimpleFlightpathSimBasicTest
+)

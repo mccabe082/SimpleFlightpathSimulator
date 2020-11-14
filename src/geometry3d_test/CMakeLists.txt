@@ -21,4 +21,9 @@ PRIVATE
   Utilities
 )
 
-add_test("geometry3dTest" ${CMAKE_BINARY_DIR}/src/geometry3d_test/Debug/geometry3dTest.exe)
+add_test(
+NAME
+  "geometry3dTest"
+COMMAND
+  geometry3dTest
+)

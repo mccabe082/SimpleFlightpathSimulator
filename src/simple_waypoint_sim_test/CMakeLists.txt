@@ -29,7 +29,12 @@ PRIVATE
 #  sample_waypoint_queue.xml
 #)
 
-add_test("SimpleWaypointSimTest" ${CMAKE_BINARY_DIR}/src/scripted_6dof_flight_test/Debug/SimpleWaypointSimTest.exe)
+add_test(
+NAME
+  "SimpleWaypointSimTest"
+COMMAND
+  SimpleWaypointSimTest
+)
 
 target_compile_features(SimpleWaypointSimTest
 PUBLIC

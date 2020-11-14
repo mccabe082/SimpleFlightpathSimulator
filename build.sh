@@ -9,3 +9,7 @@ pushd build
 	cmake --build . --config Debug
 	cmake --install . --config Debug
 popd
+
+pushd build
+ctest -C Debug -VV
+popd
