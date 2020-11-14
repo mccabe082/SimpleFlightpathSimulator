@@ -1,6 +1,6 @@
-# Jason Turner #80: https://www.youtube.com/watch?v=R8OrWVVf5CM
+install:
+  - git submodule update --init --recursive
 
-# https://www.appveyor.com/docs/windows-images-software/#visual-studio-2019
 image: 
   - Visual Studio 2019
 
