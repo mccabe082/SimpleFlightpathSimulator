@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.5)
 enable_language(CXX)
 project(simple-flightpath-simulator)
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 set(CMAKE_VISIBILITY_INLINES_HIDDEN YES)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON) # https://wiki.gentoo.org/wiki/Project:AMD64/Fixing_-fPIC_Errors_Guide
