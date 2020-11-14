@@ -2,6 +2,8 @@
 #include "geometry3d/rotation.h"
 #include <numeric>
 #include <limits>
+#include <cmath>
+#include <algorithm>
 #include "quaternion.h"
 
 namespace
