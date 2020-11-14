@@ -16,7 +16,7 @@ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/NPTG-metadata.xml
 
 add_test(
 NAME
-  "rapidxml_learning tests"
+  "rapidxml_learning_tests"
 COMMAND
   rapidxmlTest
 )

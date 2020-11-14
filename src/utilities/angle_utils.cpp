@@ -26,6 +26,7 @@ namespace Utilities
 
 	double clampBetweenPlusOrMinusPiRadians(double alpha)
 	{
+	    //todo: doesn't handle the case pi<angle<2*pi
 		return pi - euclideanModulo(pi - alpha, 2. * pi);
 	}
 
